@@ -73,7 +73,9 @@ public class UserSettingActivity extends bpActivity implements View.OnClickListe
         int rssi = savedInstanceState.getInt(APPConfig.RSSI_LEVEL_Tag);
         curr_rssi_level = APPConfig.Convert_RSSI_to_LEVEL(rssi);
         mDeviceNameTV.setValue(deviceName);
+        Util.debugMessage(TAG,"curr_rssi="+rssi,debugFlag);
         int expectLevel = loadDeviceRSSILevel(deviceBDDR);
+        Util.debugMessage(TAG,"expectLevel="+expectLevel,debugFlag);
         mExpectLEVELTV.setValue(""+expectLevel);
         setListeners();
 
@@ -118,6 +120,7 @@ public class UserSettingActivity extends bpActivity implements View.OnClickListe
         mDoorSwitch.setVisibility(View.GONE);
         versionTV = (FontTextView) findViewById(R.id.version);
         versionTV.setVisibility(View.GONE);
+        findViewById(R.id.setting_fw_vr_title).setVisibility(View.GONE);
         mAdminPWDTV = (My2TextView) findViewById(R.id.AdminPWD);
         mAdminPWDTV.setVisibility(View.GONE);
         mExpectLEVELTV = (My2TextView) findViewById(R.id.proximityReadRange);
