@@ -115,7 +115,7 @@ public class AdminMenu {
                     isAdmin = true;
                 }
                 byte[] password_buf = Util.convertStringToByteBuffer(addUserPassword.getText().toString(), BPprotocol.UserPD_maxLen);
-                byte[] name_buf   = Util.convertStringToByteBuffer(ID, BPprotocol.UserID_maxLen);
+                byte[] name_buf   = Util.convertStringToByteBufferForAddUser(ID, BPprotocol.UserID_maxLen);
 
                 if(isAdmin)
                     bpProtocol.setEnrollAdmin(mSYS_BLE_MAC_Address_RAW, password_buf, name_buf);

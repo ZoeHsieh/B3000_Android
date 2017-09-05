@@ -270,6 +270,7 @@ public class UserInfoActivity extends bpActivity implements View.OnClickListener
                             //Update UI
                             update_UI_Page_User_Edit();*/
                             byte updateData[]= Arrays.copyOfRange(tmpWriteUserProperty,2,tmpWriteUserProperty.length);
+
                             update_UserProperty(updateData);
                             message = getResources().getString(R.string.program_success);
                         }else
@@ -311,7 +312,7 @@ public class UserInfoActivity extends bpActivity implements View.OnClickListener
                     limitContent = startTimeStr + "~" + endTimeStr;
                 }else if (limitType == BPprotocol.LIMIT_TYPE_TIMES) {
                     mLimitTypeTV.setValue(getString(R.string.access_times));
-                    limitContent = res.getString(R.string.users_edit_access_control_dialog_type_times_mark)+ String.valueOf(times);
+                    limitContent = res.getString(R.string.users_edit_access_control_dialog_type_times_mark)+ String.valueOf(times&0xFF);
 
                 }else if (limitType == BPprotocol.LIMIT_TYPE_WEEKLY) {
                     mLimitTypeTV.setValue(getString(R.string.recurrent));
@@ -391,7 +392,7 @@ public class UserInfoActivity extends bpActivity implements View.OnClickListener
 
                     GeneralDialog.MessagePromptDialog(currActivity, "", getResources().getString(R.string.users_manage_edit_status_duplication_name));
                 else {
-                    byte id_buff[] = Util.convertStringToByteBuffer(new_User_Data.getId(),BPprotocol.UserID_maxLen);
+                    byte id_buff[] = Util.convertStringToByteBufferForAddUser(new_User_Data.getId(),BPprotocol.UserID_maxLen);
                     Util.debugMessage(TAG,"user edit id index="+new_User_Data.getUserIndex(),debugFlag);
                     bpProtocol.setUserID(id_buff, new_User_Data.getUserIndex());
                     tmpID = id_buff;

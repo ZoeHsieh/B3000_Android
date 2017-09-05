@@ -18,6 +18,7 @@ package com.anxell.e3ak.transport;
 
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
+import java.util.List;
 import java.util.UUID;
 
 import android.app.Service;
@@ -460,6 +461,10 @@ public class RBLService extends Service {
 		return false;
 	}
 
+	public List<BluetoothDevice> getConnectedDevices() {
+
+		return mBluetoothManager.getConnectedDevices(BluetoothProfile.GATT);
+	}
 	public String getBluetoothDeviceAddress() {
 		return mBluetoothDeviceAddress;
 	}

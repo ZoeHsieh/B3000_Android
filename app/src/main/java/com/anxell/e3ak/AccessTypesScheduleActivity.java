@@ -82,7 +82,7 @@ public class AccessTypesScheduleActivity extends bpActivity implements View.OnCl
             schedule_RDB.setChecked(false);
             accessTimes_RDB.setChecked(true);
             recurrent_RDB.setChecked(false);
-            mAccessTimesDetailET.setText(String.valueOf(currProperty[18]));
+            mAccessTimesDetailET.setText(String.valueOf(currProperty[18]&0xFF));
             mAccessTimesDetailET.setETSelection(mAccessTimesDetailET.getText().length());
 
         }else if(currProperty[3]==BPprotocol.LIMIT_TYPE_PERIOD){
@@ -301,7 +301,7 @@ public class AccessTypesScheduleActivity extends bpActivity implements View.OnCl
                 case R.id.accessTimes:
                     currProperty[3]= BPprotocol.LIMIT_TYPE_TIMES;
                     updateUI(mAccessTimesDetailET);
-                    mAccessTimesDetailET.setText(String.valueOf(currProperty[18]));
+                    mAccessTimesDetailET.setText(String.valueOf(currProperty[18]&0xFF));
                     mAccessTimesDetailET.setETSelection(mAccessTimesDetailET.getText().length());
                     break;
 

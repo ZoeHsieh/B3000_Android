@@ -76,6 +76,26 @@ private static final boolean debugFlag = false;
         }
         return data;
     }
+    public static byte[] convertStringToByteBufferForAddUser(String data, int len) {
+        byte[] data_buf = new byte[len];
+
+        byte[] data_tmp = data.getBytes();
+
+        int max_len = (data_tmp.length > data_buf.length) ? data_buf.length : data_tmp.length;
+
+        //Initial Byte Buffer
+        Arrays.fill(data_buf, (byte) BPprotocol.nullData);
+
+       if(data_tmp[data.length()-1] == 0x20)
+            data_tmp[data.length()-1] =(byte) 0xFF;
+
+        for (int i = 0; i < max_len; i++){
+            data_buf[i] = data_tmp[i];
+            Util.debugMessage("Util","util data="+ String.format("%02x",data_buf[i]),debugFlag);
+        }
+
+        return data_buf;
+    }
     public static byte[] convertStringToByteBuffer(String data, int len) {
         byte[] data_buf = new byte[len];
 
@@ -86,8 +106,7 @@ private static final boolean debugFlag = false;
         //Initial Byte Buffer
         Arrays.fill(data_buf, (byte) BPprotocol.nullData);
 
-        if(data_tmp[data.length()-1] == 0x20)
-            data_tmp[data.length()-1] =(byte) 0xFF;
+
 
         for (int i = 0; i < max_len; i++){
             data_buf[i] = data_tmp[i];

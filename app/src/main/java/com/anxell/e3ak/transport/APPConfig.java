@@ -28,8 +28,9 @@ public class APPConfig {
     public static final int  conTimeOut = 15000;
     public static final String deviceNameTag = "deviceNameTag";
     public static final String deviceBddrTag = "bdAddrTag";
+    public static final String isAutoTag = "isAutoTag";
     public static final String ADMINPWD_Tag = ADMIN_ID+"PWD";
-    public static final String AppVersion = "v1.2.5";
+    public static final String AppVersion = "v1.3";
 
 
     public static int Convert_RSSI_to_LEVEL(int rssi)

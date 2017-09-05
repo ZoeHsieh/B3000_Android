@@ -19,6 +19,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.ParcelUuid;
 import android.os.Process;
 import android.provider.Settings;
@@ -62,7 +63,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class HomeActivity extends bpActivity implements View.OnClickListener {
     private String TAG = HomeActivity.class.getSimpleName().toString();
-    private Boolean debugFlag = true;
+    private Boolean debugFlag = false;
     private PercentRelativeLayout mFoundV;
     private MyDeviceView mDeviceV;
     private FontTextView mDoorStatusTV;
@@ -80,8 +81,6 @@ public class HomeActivity extends bpActivity implements View.OnClickListener {
     private BluetoothLeScanner mLEScanner;
     private ScanSettings mLEScanSettings;
     private List<ScanFilter> mLEScanFilters;
-
-
     private ScanItemData deviceInfoList = new ScanItemData();
     private static final int REQUEST_ENABLE_BT = 1;
     private int reconnectTime = 6; // 6 sec
@@ -95,14 +94,15 @@ public class HomeActivity extends bpActivity implements View.OnClickListener {
     private boolean bgAutoTimerflag = false;
     private Thread scaningTimer = null;
     private Thread bgAutoTimer  = null;
-    private Timer disConTimer= null;
-    private Timer ConTimer= null;
+    private Handler disConTimer = new Handler();
+    private Handler  ConTimer = new Handler();
     public  static String befSettingBDAddr = "";
     public  static boolean isEditDeviceName = false;
     private static boolean  isConService = false;
     private boolean isReady = false;
     private boolean isScanning = false;
-
+    private boolean isCheckConnection = false;
+    private Thread CheckConnection = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,8 +129,7 @@ public class HomeActivity extends bpActivity implements View.OnClickListener {
         mCurrentView = mSearchingV;
         String PhoneModel = android.os.Build.MODEL;
         Util.debugMessage(TAG,"PhoneModel ="+PhoneModel,debugFlag);
-        String PhoneModel2 = Build.MANUFACTURER;
-        Util.debugMessage(TAG,"MANUFACTURER="+PhoneModel2,debugFlag);
+
     }
 
     @Override
@@ -146,7 +145,7 @@ public class HomeActivity extends bpActivity implements View.OnClickListener {
             filter.addAction("android.bluetooth.device.action.PAIRING_REQUEST");
         registerReceiver(mGattUpdateReceiver, filter);
             //deviceInfoList.scanItems.clear();
-
+            isCheckConnection = true;
              if(isEditDeviceName) {
                 BLE_Scanner_Start(false);
 
@@ -194,19 +193,102 @@ public class HomeActivity extends bpActivity implements View.OnClickListener {
 
 
     }
+
+
+    public void checkEventClose(){
+
+        CheckConnection = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true){
+                    while(isCheckConnection) {
+
+                        if(getConnectedDevices().size()>0){
+
+                        if(!isOpenDoor && !isEnroll &&!isKeepOpen){
+                            Util.debugMessage(TAG,"disconnect not success",debugFlag);
+
+                                disconnect();
+                            runOnUiThread(checkEventTask);
+                            }
+                        }
+                        try {
+                            Thread.sleep(1000);
+
+                        } catch (java.lang.InterruptedException e) {
+
+                        }
+                    }
+                    try {
+                        Thread.sleep(1000);
+
+                    } catch (java.lang.InterruptedException e) {
+
+                    }
+                }
+            }
+        });
+        CheckConnection.start();
+
+
+    }
+    private Runnable checkEventTask = new Runnable() {
+        @Override
+        public void run() {
+            disconnectUpdate();
+        }
+    };
     @Override
     public void getERROREvent(String bdAddress){
         connect(bdAddress);
         StartConnectTimer();
     }
 
+    @Override
+    public void noSuchElement(){
+        if(isAutoMode){
+        bpProtocol.reInitQueue();
+        StopBgAutoTimer();
+
+            try{
+            Thread.sleep(1000);
+
+            }catch (java.lang.InterruptedException e){
+            }
+
+            StartBgAutoTimer();
+        }
 
 
+
+    }
     @Override
     public void update_service_connect() {
         super.update_service_connect();
         Util.debugMessage(TAG,"service connection",debugFlag);
         isConService = true;
+        isAutoMode = sharedPreferences.getBoolean(APPConfig.isAutoTag,false);
+
+        if(isAutoMode){
+            Util.debugMessage(TAG,"auto on",debugFlag);
+            StopScanningTimer();
+            CreateBgAutoTimer();
+            StartBgAutoTimer();
+            mAutoOpenTV.setCompoundDrawablesWithIntrinsicBounds(R.drawable.checkbox_tick, 0, 0, 0);
+
+        }
+
+        String PhoneModel2 = Build.MANUFACTURER;
+
+        //if(PhoneModel2.equals("OPPO")){
+
+
+            isCheckConnection = true;
+            checkEventClose();
+        //}
+        Util.debugMessage(TAG,"MANUFACTURER="+PhoneModel2,debugFlag);
+
+
     }
 
     @Override
@@ -255,7 +337,7 @@ public class HomeActivity extends bpActivity implements View.OnClickListener {
 
         } else {
 
-                mLEScanner.stopScan(mScanCallback);
+            mLEScanner.stopScan(mScanCallback);
             isScanning = false;
             Util.debugMessage(TAG,"stop BLE Scan",debugFlag);
 
@@ -402,13 +484,13 @@ public class HomeActivity extends bpActivity implements View.OnClickListener {
     public void BLEReady() {
         super.BLEReady();
         isReady = true;
-        if(ConTimer != null){
-            ConTimer.cancel();
-            ConTimer.purge();
-        }
+
+        ConTimer.removeCallbacksAndMessages(null);
+
+
         if(!isEnroll)
         bpProtocol.queueClear();
-        Util.debugMessage(TAG,"the device is connected ",true);
+        Util.debugMessage(TAG,"the device is connected ",debugFlag);
 
 
         boolean isAdminConfig_Latest = sharedPreferences.getBoolean(getBluetoothDeviceAddress(), false);
@@ -442,10 +524,10 @@ public class HomeActivity extends bpActivity implements View.OnClickListener {
             case BPprotocol.cmd_admin_indentify:
             case BPprotocol.cmd_user_indentify:
 
-                if(disConTimer  == null){
+
                     Util.debugMessage(TAG,"create disconnect timer",debugFlag);
-                    disConTimer = new Timer();
-                    disConTimer.schedule(new TimerTask() {
+                    disConTimer.postDelayed(DisConTask,APPConfig.disTimeOut);
+                 /*   disConTimer.schedule(new TimerTask() {
                         @Override
                         public void run() {
                             runOnUiThread(new Runnable() {
@@ -456,15 +538,15 @@ public class HomeActivity extends bpActivity implements View.OnClickListener {
                                     if(!isKeepOpen)
                                     ForceDisconnect();
 
-                                    disConTimer = null;
+
                                 }
                             });
 
 
                         }
                     },APPConfig.disTimeOut);
+*/
 
-                }
                 break;
 
             /*
@@ -486,7 +568,27 @@ public class HomeActivity extends bpActivity implements View.OnClickListener {
         }
 
     }
+    private Runnable DisConTask = new Runnable() {
+        @Override
+        public void run() {
+            Util.debugMessage(TAG,"disconnect start",debugFlag);
+            if(!isKeepOpen)
+                ForceDisconnect();
+        }
+    };
+    private Runnable ConTask = new Runnable() {
+        @Override
+        public void run() {
+            if(!isReady && isOpenDoor){
+                Util.debugMessage(TAG,"connect time out1",debugFlag);
+                isOpenDoor = false;
+                isKeepOpen = false;
 
+                ForceDisconnect();
+
+            }
+        }
+    };
     @Override
     public void cmdAnalysis(byte cmd, byte cmdType, byte data[], int datalen){
 
@@ -523,15 +625,15 @@ public class HomeActivity extends bpActivity implements View.OnClickListener {
                             boolean ir_sensor_opt = (data[4] != 0);
 
                             if (lock_type == BPprotocol.door_statis_KeepOpen) {
-                                Util.debugMessage(TAG, "delay Time", true);
+                                Util.debugMessage(TAG, "delay Time", debugFlag);
                                 lock_type = BPprotocol.door_statis_delayTime;
 
                             } else {
-                                Util.debugMessage(TAG, "KeepOpen", true);
+                                Util.debugMessage(TAG, "KeepOpen", debugFlag);
                                 lock_type = BPprotocol.door_statis_KeepOpen;
 
                             }
-                            Util.debugMessage(TAG, "send new config", true);
+                            Util.debugMessage(TAG, "send new config", debugFlag);
 
                             bpProtocol.setConfig(door_sensor_opt, lock_type, delay_secs, ir_sensor_opt);
 
@@ -705,6 +807,7 @@ public class HomeActivity extends bpActivity implements View.OnClickListener {
                     StopScanningTimer();
                     if (deviceInfoList.size() >0 && !isEnroll && !isOpenDoor) {
                         BLE_Scanner_Start(false);
+                        isCheckConnection = false;
                         openSettingPage();
                     }else{
                         StartScanningTimer();
@@ -725,7 +828,7 @@ public class HomeActivity extends bpActivity implements View.OnClickListener {
                 break;
 
             case R.id.autoOpen:
-                if(deviceInfoList.size() >0)
+                //if(deviceInfoList.size()>0)
                 updateStatus();
                 break;
 
@@ -823,39 +926,17 @@ public class HomeActivity extends bpActivity implements View.OnClickListener {
     }
     public  void StartConnectTimer(){
         Util.debugMessage(TAG,"connect time start",debugFlag);
-        if(ConTimer != null){
+        /*if(ConTimer!=null){
             ConTimer.cancel();
             ConTimer.purge();
-        }
+
+        }*/
         isReady = false;
-        if(ConTimer  == null){
-            ConTimer = new Timer();
-            ConTimer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            if(!isReady && isOpenDoor){
-                                Util.debugMessage(TAG,"connect time out1",debugFlag);
-                            isOpenDoor = false;
-                            isKeepOpen = false;
-
-                                ForceDisconnect();
-
-                            }
 
 
-                            ConTimer = null;
-                        }
-                    });
+        ConTimer.postDelayed(ConTask,APPConfig.conTimeOut);
 
 
-                }
-            },APPConfig.conTimeOut);
-
-        }
     }
     private void StopScanningTimer(){
 
@@ -867,59 +948,77 @@ public class HomeActivity extends bpActivity implements View.OnClickListener {
     }
     private void StartBgAutoTimer(){
             bgAutoTimerflag = true;
-           BLE_Scanner_Start(true);
+
+    }
+    private void CreateBgAutoTimer(){
+        bgAutoTimerflag = true;
+        Util.debugMessage(TAG,"start bgAuto",true);
+        BLE_Scanner_Start(true);
+        if(bgAutoTimer == null ){
             bgAutoTimer = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    while(bgAutoTimerflag){
-                        Util.debugMessage(TAG,"bg thread work",debugFlag);
-                        boolean isTriggerOpenDoor = false;
-                        BluetoothDevice selectTarget = null;
-                        String targetBdAddr = "";
-                        if ((deviceInfoList.size() >0 ) && !isOpenDoor){
-
+                    while(true){
+                        while(bgAutoTimerflag) {
+                            Util.debugMessage(TAG, "bg thread work", debugFlag);
+                            boolean isTriggerOpenDoor = false;
+                            BluetoothDevice selectTarget = null;
+                            String targetBdAddr = "";
+                            if ( !isOpenDoor)
+                                Util.debugMessage(TAG, "!isOpenDoor", debugFlag);
+                            if (deviceInfoList.size() > 0)
+                            Util.debugMessage(TAG, "deviceInfoList.size() > 0", debugFlag);
+                            if ((deviceInfoList.size() > 0) && !isOpenDoor) {
+                                Util.debugMessage(TAG, "deviceInfoList.size() > 0", debugFlag);
                                 selectTarget = getTargetDevice();
                                 targetBdAddr = selectTarget.getAddress();
                                 isTriggerOpenDoor = checkConnectLimitTime(targetBdAddr);
-
-                        }
-                        if (isTriggerOpenDoor && selectTarget != null){
-
-                            int expectLEVEL = loadDeviceRSSILevel(targetBdAddr);
-                            int currrentLEVEL =  APPConfig.Convert_RSSI_to_LEVEL(getCurrLevel(targetBdAddr));
-                            Util.debugMessage(TAG,"currrentLEVEL="+currrentLEVEL +"expectLEVEL"+ expectLEVEL,debugFlag);
-                            if (expectLEVEL >= currrentLEVEL){
-                                 BLE_Scanner_Start(true);
-                                 if(connect(targetBdAddr))
-                                     Util.debugMessage(TAG,"connect ok",debugFlag);
-                                 else
-                                     Util.debugMessage(TAG,"connect fai;",debugFlag);
-                                 StartConnectTimer();
-                                 isOpenDoor = true;
-                                 bgAutoTimerflag = false;
-                             }
-                        }else if(!isOpenDoor){
+                                if(selectTarget != null)
+                                Util.debugMessage(TAG, "selectTarget != null", debugFlag);
+                                if(isTriggerOpenDoor)
+                                    Util.debugMessage(TAG, "isTriggerOpenDoor", debugFlag);
+                            }
+                            if (isTriggerOpenDoor && selectTarget != null) {
+                                Util.debugMessage(TAG, "start auto connection", debugFlag);
+                                int expectLEVEL = loadDeviceRSSILevel(targetBdAddr);
+                                int currrentLEVEL = APPConfig.Convert_RSSI_to_LEVEL(getCurrLevel(targetBdAddr));
+                                Util.debugMessage(TAG, "currrentLEVEL=" + currrentLEVEL + "expectLEVEL" + expectLEVEL, debugFlag);
+                                if (expectLEVEL >= currrentLEVEL) {
+                                    //BLE_Scanner_Start(true);
+                                    if (connect(targetBdAddr))
+                                        Util.debugMessage(TAG, "auto connect ok", debugFlag);
+                                    else
+                                        Util.debugMessage(TAG, "connect fai;", debugFlag);
+                                    StartConnectTimer();
+                                    isOpenDoor = true;
+                                    bgAutoTimerflag = false;
+                                }
+                            } else if (!isOpenDoor) {
 
                                 checkDeviceAlive();
-                        }
+                            }
 
-                        try{
-                            Thread.sleep(1000);
+                            try {
+                                Thread.sleep(1000);
 
-                        }catch (java.lang.InterruptedException e){
+                            } catch (java.lang.InterruptedException e) {
 
+                            }
                         }
 
                     }
                 }
             });
-          bgAutoTimer.start();
+            bgAutoTimer.start();
+        }
     }
     private void StopBgAutoTimer(){
-            bgAutoTimerflag = false;
+        bgAutoTimerflag = false;
+          /*  bgAutoTimerflag = false;
             if(bgAutoTimer!=null)
             bgAutoTimer.interrupt();
             bgAutoTimer = null;
+            Util.debugMessage(TAG,"stop bgAuto",true);*/
     }
 
     private void openPasswordPage() {
@@ -1054,12 +1153,16 @@ public class HomeActivity extends bpActivity implements View.OnClickListener {
             StartScanningTimer();
             StopBgAutoTimer();
             isAutoMode = false;
+           // bgAutoTimer = null;
+            sharedPreferences.edit().putBoolean(APPConfig.isAutoTag,false).commit();
             mAutoOpenTV.setCompoundDrawablesWithIntrinsicBounds(R.drawable.checkbox_none, 0, 0, 0);
         } else {
             Util.debugMessage(TAG,"auto on",debugFlag);
             StopScanningTimer();
+            CreateBgAutoTimer();
             StartBgAutoTimer();
             isAutoMode = true;
+            sharedPreferences.edit().putBoolean(APPConfig.isAutoTag,true).commit();
             mAutoOpenTV.setCompoundDrawablesWithIntrinsicBounds(R.drawable.checkbox_tick, 0, 0, 0);
         }
 

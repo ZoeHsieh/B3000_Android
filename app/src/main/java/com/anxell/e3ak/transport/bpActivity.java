@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
+import android.bluetooth.BluetoothProfile;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -40,6 +41,7 @@ import static com.anxell.e3ak.transport.APPConfig.E3K_DEVICES_BLE_RSSI_LEVEL_DEF
 public class bpActivity extends BaseActivity {
     private static RBLService bleService;
     private Activity app = null;
+    private Handler delay =new Handler();
     public static String currentClassName = "";
     public String localClassName = "";
     private String tmpBuff="";
@@ -57,13 +59,13 @@ public class bpActivity extends BaseActivity {
     public byte mSYS_BLE_MAC_Address_RAW[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
     public String mSYS_BLE_MAC_Address;
     public static List<UserData> mUserDataList = new ArrayList<>();
-
+    private Thread CmdWorkerThread = null;
 
     public void Initial(String localClassName) {
 
         this.localClassName = localClassName;
         sharedPreferences = getSharedPreferences("data" , MODE_PRIVATE);
-
+        CmdWorkerInit();
     }
 
     public int getUserPosition(int userIndex){
@@ -125,6 +127,7 @@ public class bpActivity extends BaseActivity {
     public void getDataUpdate(String rawData) {}
     public void writeSuccess()  {}
     public void getERROREvent(String bdAddress) {}
+    public void noSuchElement(){}
     public void writeError()  {}
     public void BLEReady(){
         isBLE_Service_Ready = true;
@@ -327,14 +330,19 @@ public class bpActivity extends BaseActivity {
 
     private void cmdSendProcess(Queue<Queue_Item> queue) {
 
-        Queue_Item temp;
+        Queue_Item temp = null;
 
 
         //Check Connect
         if (isBLE_Service_Ready) {
             if (!isMessageProcessing) {
-                temp = queue.poll();
-
+                try {
+                    if(queue!=null)
+                    temp = queue.poll();
+                }catch ( java.util.NoSuchElementException e){
+                    Util.debugMessage(TAG,"No such issue",true);
+                    noSuchElement();
+                }
                 if (temp != null) {
 
                     isMessageProcessing = true;
@@ -346,7 +354,7 @@ public class bpActivity extends BaseActivity {
                         if (E3AK_ble_ch != null) {
                             cmdDataCache(temp.data);
                             byte packet []= encode.SLIP_Encode(temp.data,temp.data.length);
-                            Util.debugMessage(TAG,"cmd="+encode.BytetoHexString(packet),debugFlag);
+                            Util.debugMessage(TAG,"Send cmd="+encode.BytetoHexString(packet),debugFlag);
                             bleService.writeData(E3AK_ble_ch,packet);
 
                             // Log.w(TAG, "QUEUE:" + "UUID_BLE_E1K_USER_ENROLL");
@@ -391,37 +399,41 @@ public class bpActivity extends BaseActivity {
             }, 500);
         }
     }
- private void cmdDataCache(byte rawData[]){
-     Util.debugMessage(TAG, "cmdDataCache",debugFlag);
-        final byte cmd [] = rawData;
-        if(cmd.length>3) {
-            Util.debugMessage(TAG, "cmdPacket=" + encode.BytetoHexString(cmd),debugFlag);
-            final int datalen = cmd[2] << 8 | cmd[3];
-            Util.debugMessage(TAG,"datalen=" + datalen + "length=" + cmd.length,debugFlag);
+ private void cmdDataCache(byte rawData[]) {
+     Util.debugMessage(TAG, "cmdDataCache", debugFlag);
+     final byte cmd[] = rawData;
+     if (cmd.length > 3) {
+         Util.debugMessage(TAG, "cmdPacket=" + encode.BytetoHexString(cmd), debugFlag);
+         final int datalen = cmd[2] << 8 | cmd[3];
+         Util.debugMessage(TAG, "datalen=" + datalen + "length=" + cmd.length, debugFlag);
 
-           final byte data[] = Arrays.copyOfRange(cmd, 4, cmd.length);
-            if (datalen == cmd.length - 4) {
-                Util.debugMessage(TAG,"cmdDataCacheEvent",debugFlag);
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if(currentClassName.equals(localClassName))
-                        cmdDataCacheEvent(cmd[0],cmd[1],data,datalen);
-                    }
-                });
+         final byte data[] = Arrays.copyOfRange(cmd, 4, cmd.length);
+         if (datalen == cmd.length - 4) {
+             Util.debugMessage(TAG, "cmdDataCacheEvent", debugFlag);
+             runOnUiThread(new Runnable() {
+                 @Override
+                 public void run() {
+                     if (currentClassName.equals(localClassName))
+                         cmdDataCacheEvent(cmd[0], cmd[1], data, datalen);
+                 }
+             });
 
-            }else
-                Util.debugMessage(TAG,"cmd fail",debugFlag);
-        }
-    }
+         } else
+             Util.debugMessage(TAG, "cmd fail", debugFlag);
+     }
+ }
 
-private void startCmdWorkerThread() {
-    new Thread() {
+
+private void CmdWorkerInit(){
+if(CmdWorkerThread == null){
+    CmdWorkerThread = new Thread(new Runnable() {
+        @Override
         public void run() {
-
             Process.setThreadPriority(APPConfig.PROCESS_THREAD_PRIORITY);
 
             while (true) {
+
+
                 if (bleService != null) {
 
                     //cmd send Queue Process
@@ -439,8 +451,12 @@ private void startCmdWorkerThread() {
                 }
             }
         }
-    }.start();
+    });
+  }
+    CmdWorkerThread.start();
 }
+
+
     public boolean checkDeviceLevelExist(String bdAddr){
 
         return  sharedPreferences.getBoolean(APPConfig.RSSI_DB_EXIST+bdAddr,false);
@@ -504,27 +520,28 @@ private void startCmdWorkerThread() {
         //Check characteristic
         if (E3AK_ble_ch != null) {
 
-           bleService.setCharacteristicNotification(E3AK_ble_ch,true);
-            startCmdWorkerThread();
-            Handler delay =new Handler();
-            delay.postDelayed(new Runnable() {
-                @Override
-                public void run() {
+            bleService.setCharacteristicNotification(E3AK_ble_ch,true);
+            //startCmdWorkerThread();
 
-                   // sendProcessMessage(MSG_DEV_READY);
-                    if(currentClassName.equals(localClassName))
-                    BLEReady();
-                }
-            } ,btPreDelay);
+            delay.postDelayed(delayTask,btPreDelay);
 
-            delay = null;
+
 
         }
 
 
-
     }
+    public List<BluetoothDevice> getConnectedDevices() {
 
-
+        return bleService.getConnectedDevices();
+    }
+    private Runnable delayTask = new Runnable() {
+        @Override
+        public void run() {
+            // sendProcessMessage(MSG_DEV_READY);
+            if(currentClassName.equals(localClassName))
+                BLEReady();
+        }
+    };
 
 }

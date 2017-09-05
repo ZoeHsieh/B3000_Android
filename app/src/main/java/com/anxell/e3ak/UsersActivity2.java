@@ -89,7 +89,7 @@ public class UsersActivity2 extends bpActivity implements View.OnClickListener, 
                 userTmpItem = userInfoData;
                 break;
             case up_user_Add:
-                byte id[] = Util.convertStringToByteBuffer(userInfoData.getId(),BPprotocol.UserID_maxLen);
+                byte id[] = Util.convertStringToByteBufferForAddUser(userInfoData.getId(),BPprotocol.UserID_maxLen);
                 byte password[] = Util.convertStringToByteBuffer(userInfoData.getPasswrod(),BPprotocol.UserPD_maxLen);
                 userTmpItem = new UserData(userInfoData.getId(),userInfoData.getPasswrod(),0);
                 bpProtocol.setUserAdd(password,id);

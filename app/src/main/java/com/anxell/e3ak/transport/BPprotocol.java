@@ -171,6 +171,10 @@ public class BPprotocol {
         queue.clear();
 
     }
+    public void reInitQueue(){
+        queue = null;
+        queue = new LinkedList<>();
+    }
     public Queue<Queue_Item> getQueue(){
 
         return queue;
