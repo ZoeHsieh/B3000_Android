@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical"
+    tools:context="com.anxell.e3ak.DoorReLockTimeActivity">
+
+    <com.anxell.e3ak.custom.MyToolbar
+        android:id="@+id/toolbarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@android:color/white"
+        app:leftText="@string/cancel"
+        app:leftTextColor="@color/gray4"
+        app:rightText="@string/add"
+        app:rightTextColor="@color/green"
+        app:showLeftText="true"
+        app:showRightText="true"
+        app:titleText="@string/add_user" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/green" />
+
+    <com.anxell.e3ak.custom.MyEditText
+        android:id="@+id/id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="@string/characters_16"
+        android:maxLength="16"
+        app:subject="@string/id" />
+
+    <com.anxell.e3ak.custom.MyEditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:hint="@string/_4_8_digits"
+        android:maxLength="8"
+        app:subject="@string/password" />
+
+    <com.anxell.e3ak.custom.MyEditText
+        android:id="@+id/userName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:hint="@string/characters_16"
+        android:maxLength="16"
+        android:visibility="gone"
+        app:subject="@string/user_name_optional" />
+</LinearLayout>

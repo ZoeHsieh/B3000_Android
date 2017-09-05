@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical"
+    tools:context="com.anxell.e3ak.DoorReLockTimeActivity">
+
+    <com.anxell.e3ak.custom.MyToolbar
+        android:id="@+id/toolbarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@android:color/white"
+        app:rightText="@string/add"
+        app:rightTextColor="@color/green"
+        app:showRightText="true"
+        app:titleText="@string/user" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/green" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#b5b5b5">
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/bg_search"
+            android:focusable="false"
+            android:iconifiedByDefault="false"
+            android:queryHint="@string/search" />
+    </RelativeLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="13dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="25dp"
+        android:orientation="horizontal"
+        android:paddingBottom="6dp"
+        android:paddingEnd="12dp"
+        android:paddingStart="12dp"
+        android:visibility="gone"
+        android:weightSum="10">
+
+        <com.anxell.e3ak.custom.FontTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@string/id"
+            android:textColor="@color/gray3"
+            android:textSize="@dimen/text_size_13" />
+
+        <com.anxell.e3ak.custom.FontTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.9"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@string/password"
+            android:textColor="@color/gray3"
+            android:textSize="@dimen/text_size_13" />
+
+        <com.anxell.e3ak.custom.FontTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4.1"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@string/user_name"
+            android:textColor="@color/gray3"
+            android:textSize="@dimen/text_size_13" />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp" />
+</LinearLayout>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical"
+    tools:context="com.anxell.e3ak.DoorLockActionActivity">
+
+    <com.anxell.e3ak.custom.MyToolbar
+        android:id="@+id/toolbarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@android:color/white"
+        app:titleText="@string/door_lock_action" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/green" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
+    <com.anxell.e3ak.custom.FontTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="15dp"
+        android:text="@string/please_choose"
+        android:textColor="@color/gray2"
+        android:textSize="@dimen/text_size_13" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray1" />
+
+    <RadioGroup
+        android:id="@+id/rgroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/use_re_lock_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:checked="true"
+            android:paddingBottom="14dp"
+            android:paddingRight="11dp"
+            android:paddingTop="14dp"
+            android:text="@string/use_re_lock_time"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_17" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray1" />
+
+        <RadioButton
+            android:id="@+id/always_unlocked"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:paddingBottom="14dp"
+            android:paddingRight="11dp"
+            android:paddingTop="14dp"
+            android:text="@string/always_unlocked"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_17" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray1" />
+
+        <RadioButton
+            android:id="@+id/always_locked"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:paddingBottom="14dp"
+            android:paddingRight="11dp"
+            android:paddingTop="14dp"
+            android:text="@string/always_locked"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_17" />
+
+    </RadioGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray1" />
+
+</LinearLayout>

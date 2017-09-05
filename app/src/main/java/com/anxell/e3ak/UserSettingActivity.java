@@ -18,6 +18,7 @@ import android.widget.ScrollView;
 import com.anxell.e3ak.custom.FontEditText;
 import com.anxell.e3ak.custom.FontTextView;
 import com.anxell.e3ak.custom.My2TextView;
+import com.anxell.e3ak.custom.My4TextView;
 import com.anxell.e3ak.custom.MySwitch;
 import com.anxell.e3ak.transport.APPConfig;
 import com.anxell.e3ak.transport.AdminMenu;
@@ -41,11 +42,11 @@ import java.util.Locale;
 public class UserSettingActivity extends bpActivity implements View.OnClickListener {
     private String TAG = UserSettingActivity.class.getSimpleName().toString();
     private Boolean debugFlag = true;
-    private My2TextView mDeviceNameTV;
+    private My4TextView mDeviceNameTV;
     private My2TextView mDeviceTimeTV;
-    private My2TextView mDoorReLockTimeTV;
+    private My4TextView mDoorReLockTimeTV;
     private My2TextView mDoorActionTV;
-    private My2TextView mAdminPWDTV;
+    private My4TextView mAdminPWDTV;
     private My2TextView mExpectLEVELTV;
     private MySwitch mTampSwitch;
     private MySwitch mDoorSwitch;
@@ -106,10 +107,10 @@ public class UserSettingActivity extends bpActivity implements View.OnClickListe
     }
 
     private void findViews() {
-        mDeviceNameTV = (My2TextView) findViewById(R.id.deviceName);
+        mDeviceNameTV = (My4TextView) findViewById(R.id.deviceName);
         mDeviceTimeTV = (My2TextView) findViewById(R.id.deviceTime);
         mDeviceTimeTV.setVisibility(View.GONE);
-        mDoorReLockTimeTV = (My2TextView) findViewById(R.id.doorReLockTime);
+        mDoorReLockTimeTV = (My4TextView) findViewById(R.id.doorReLockTime);
         mDoorReLockTimeTV.setVisibility(View.GONE);
         mDoorActionTV = (My2TextView) findViewById(R.id.doorLockAction);
         mDoorActionTV.setVisibility(View.GONE);
@@ -121,7 +122,7 @@ public class UserSettingActivity extends bpActivity implements View.OnClickListe
         versionTV = (FontTextView) findViewById(R.id.version);
         versionTV.setVisibility(View.GONE);
         findViewById(R.id.setting_fw_vr_title).setVisibility(View.GONE);
-        mAdminPWDTV = (My2TextView) findViewById(R.id.AdminPWD);
+        mAdminPWDTV = (My4TextView) findViewById(R.id.AdminPWD);
         mAdminPWDTV.setVisibility(View.GONE);
         mExpectLEVELTV = (My2TextView) findViewById(R.id.proximityReadRange);
         loadDeviceDataBar = (ProgressBar)findViewById(R.id.setting_loadingBar);

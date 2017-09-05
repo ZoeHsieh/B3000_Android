@@ -1,0 +1,14 @@
+<resources>
+    <dimen name="text_size_12">15.36dp</dimen>
+    <dimen name="text_size_13">16.64dp</dimen>
+    <dimen name="text_size_14">17.92dp</dimen>
+    <dimen name="text_size_15">19.2dp</dimen>
+    <dimen name="text_size_16">20.48dp</dimen>
+    <dimen name="text_size_17">21.76dp</dimen>
+    <dimen name="text_size_18">23.04dp</dimen>
+    <dimen name="text_size_20">25.6dp</dimen>
+    <dimen name="text_size_24">30.72dp</dimen>
+    <dimen name="text_size_26">33.28dp</dimen>
+    <dimen name="text_size_36">46.08dp</dimen>
+    <dimen name="btn_height_60">76.8dp</dimen>
+</resources>

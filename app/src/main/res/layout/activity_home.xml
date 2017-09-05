@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="25dp"
+    android:background="@android:color/white"
+    tools:context="com.anxell.e3ak.HomeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="搜尋中"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/notFound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="無裝置"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/found"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="有裝置"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/foundView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_heightPercent="63%">
+
+        <com.anxell.e3ak.custom.MyDeviceView
+            android:id="@+id/deviceView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="15dp"
+            android:textSize="@dimen/text_size_26"
+            app:layout_widthPercent="60%"
+            app:showDot="true" />
+
+        <com.anxell.e3ak.custom.FontTextView
+            android:id="@+id/model"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/deviceView"
+            android:layout_centerHorizontal="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:singleLine="true"
+            android:text="@string/model"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/text_size_12"
+            app:layout_widthPercent="60%" />
+
+        <com.anxell.e3ak.custom.FontButton
+            android:id="@+id/setup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@null"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/setup"
+            android:paddingBottom="10dp"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
+            android:paddingTop="20dp"
+            android:text="@string/setting"
+            android:textAllCaps="false"
+            android:textColor="@color/gray4"
+            android:textSize="@dimen/text_size_12" />
+
+        <com.anxell.e3ak.custom.FontButton
+            android:id="@+id/relogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:background="@null"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/relogin"
+            android:paddingBottom="10dp"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
+            android:paddingTop="20dp"
+            android:text="@string/Enroll"
+            android:textAllCaps="false"
+            android:textColor="@color/gray4"
+            android:textSize="@dimen/text_size_12" />
+    </android.support.percent.PercentRelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/notFoundView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:visibility="gone">
+
+        <com.anxell.e3ak.custom.FontTextView
+            android:id="@+id/notFoundDevice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@string/can_not_find_device"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/text_size_24" />
+
+        <com.anxell.e3ak.custom.FontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/notFoundDevice"
+            android:layout_centerHorizontal="true"
+            android:ellipsize="end"
+            android:paddingTop="5dp"
+            android:singleLine="true"
+            android:text="@string/please_try_later"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/text_size_12" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/searchingView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:visibility="gone">
+
+        <com.anxell.e3ak.custom.FontTextView
+            android:id="@+id/searching"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@string/searching2"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/text_size_24" />
+
+        <com.anxell.e3ak.custom.FontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/searching"
+            android:layout_centerHorizontal="true"
+            android:ellipsize="end"
+            android:paddingTop="5dp"
+            android:singleLine="true"
+            android:text="@string/please_wait"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/text_size_12" />
+
+    </RelativeLayout>
+
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/bottomView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/layer_gray"
+        app:layout_heightPercent="37%">
+
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/autoOpen">
+
+            <com.anxell.e3ak.custom.MyButton
+                android:id="@+id/open"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/green_btn"
+                android:text="@string/open"
+                android:visibility="visible" />
+
+            <ImageButton
+                android:id="@+id/opened"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:background="@null"
+                android:scaleType="fitCenter"
+                android:src="@drawable/green_btn_ok"
+                android:visibility="gone" />
+
+            <ImageButton
+                android:id="@+id/refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:background="@null"
+                android:scaleType="fitCenter"
+                android:src="@drawable/disabled_btn_refresh"
+                android:visibility="gone" />
+
+            <android.support.percent.PercentRelativeLayout
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/disabled_btn" />
+
+                <ProgressBar
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_centerInParent="true"
+                    android:indeterminateDrawable="@drawable/progress_bar_white" />
+
+            </android.support.percent.PercentRelativeLayout>
+
+        </android.support.percent.PercentRelativeLayout>
+
+        <com.anxell.e3ak.custom.FontTextView
+            android:id="@+id/autoOpen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:drawableLeft="@drawable/checkbox_none"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:paddingTop="5dp"
+            android:text="@string/automatic_sensor_to_open"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/text_size_16"
+            app:layout_marginBottomPercent="15%" />
+    </android.support.percent.PercentRelativeLayout>
+
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/doorContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_heightPercent="68%"
+        android:layout_below="@+id/notFoundView"
+        android:layout_toEndOf="@+id/notFoundView">
+
+        <com.anxell.e3ak.custom.FontTextView
+            android:id="@+id/doorStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/door_closed"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/text_size_20"
+            app:layout_marginBottomPercent="6%"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+        <ImageButton
+            android:id="@+id/door"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/door_close"
+            app:layout_heightPercent="45%" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/plants"
+            app:layout_marginBottomPercent="6.5%"
+            app:layout_marginLeftPercent="8%" />
+    </android.support.percent.PercentRelativeLayout>
+
+</android.support.percent.PercentRelativeLayout>

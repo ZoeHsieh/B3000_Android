@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical"
+    tools:context="com.anxell.e3ak.AccessTypesScheduleActivity">
+
+    <com.anxell.e3ak.custom.MyToolbar
+        android:id="@+id/toolbarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@android:color/white"
+        app:titleText="@string/access_types_schedule" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/green" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+            <com.anxell.e3ak.custom.FontTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="15dp"
+                android:text="@string/types"
+                android:textColor="@color/gray2"
+                android:textSize="@dimen/text_size_13" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray1" />
+
+            <RadioGroup
+                android:id="@+id/rgroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/permanent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="9dp"
+                    android:checked="true"
+                    android:paddingBottom="14dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="14dp"
+                    android:text="@string/permanent"
+                    android:textColor="@color/gray3"
+                    android:textSize="@dimen/text_size_17" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray1" />
+
+                <RadioButton
+                    android:id="@+id/schedule"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="9dp"
+                    android:paddingBottom="14dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="14dp"
+                    android:text="@string/schedule"
+                    android:textColor="@color/gray3"
+                    android:textSize="@dimen/text_size_17" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray1" />
+
+                <RadioButton
+                    android:id="@+id/accessTimes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="9dp"
+                    android:paddingBottom="14dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="14dp"
+                    android:text="@string/access_times"
+                    android:textColor="@color/gray3"
+                    android:textSize="@dimen/text_size_17" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray1" />
+
+                <RadioButton
+                    android:id="@+id/recurrent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="9dp"
+                    android:paddingBottom="14dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="14dp"
+                    android:text="@string/recurrent"
+                    android:textColor="@color/gray3"
+                    android:textSize="@dimen/text_size_17" />
+
+            </RadioGroup>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray1" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+            <include
+                android:id="@+id/scheduleDetailContent"
+                layout="@layout/content_schedule_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <com.anxell.e3ak.custom.MyEditText
+                android:id="@+id/accessTimesDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/access_times_2"
+                android:inputType="number"
+                android:visibility="gone"
+                app:subject="@string/access_times" />
+
+            <include
+                android:id="@+id/recurrentDetailContent"
+                layout="@layout/content_recurrent_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

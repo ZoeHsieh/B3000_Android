@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical"
+    tools:context="com.anxell.e3ak.DoorReLockTimeActivity">
+
+    <com.anxell.e3ak.custom.MyToolbar
+        android:id="@+id/toolbarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@android:color/white"
+        app:rightText="@string/delete"
+        app:rightTextColor="@color/red"
+        app:showRightText="true"
+        app:titleText="@string/user_info" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/green" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/userInfoLayout"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:id="@+id/userID_layOut"
+                android:clickable="true">
+
+                <com.anxell.e3ak.custom.MyEditText
+                    android:id="@+id/id_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:focusable="false"
+                    android:editable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/characters_16"
+                    android:maxLength="16"
+                    app:subject="@string/id" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/userPwd_layOut"
+                android:clickable="true"
+                android:orientation="horizontal">
+
+                <com.anxell.e3ak.custom.MyEditText
+                    android:id="@+id/password_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="30dp"
+                    android:hint="@string/_4_8_digits"
+                    android:maxLength="8"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    app:subject="@string/password_pin_code" />
+            </LinearLayout>
+
+
+            <com.anxell.e3ak.custom.MyEditText
+                android:id="@+id/userName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:hint="@string/characters_16"
+                android:maxLength="16"
+                android:visibility="gone"
+                app:subject="@string/user_name_up_to_12_characters" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray1" />
+
+                <com.anxell.e3ak.custom.MySwitch
+                    android:id="@+id/keypad_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:myTitle="@string/enable_keypad_pin_code_to_access" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray1" />
+
+                <com.anxell.e3ak.custom.My2TextView
+                    android:id="@+id/limitType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:myTitle="@string/access_types_schedule"
+                    app:value="@string/permanent"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray1" />
+            </LinearLayout>
+
+            <com.anxell.e3ak.custom.FontTextView
+                android:id="@+id/schedule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                tools:text="星期二、四、五、六，時間為 04:00 ~ 16:00"
+                android:textColor="@color/gray2"
+                android:textSize="@dimen/text_size_13" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,206 @@
+<resources>
+    <string name="app_name">E3AK</string>
+
+    <string name="bluetooth_access_control_system">Bluetooth Access Control System</string>
+    <string name="anxell_technology_coproration">&#169; 2017 Anxell Technology Coproration</string>
+
+    <string name="hello">Hello!</string>
+    <string name="welcome">歡迎使用 E3AK</string>
+    <string name="searching1">搜尋中請稍候</string>
+    <string name="next">下一步</string>
+    <string name="skip">略過</string>
+
+    <string name="search_result">已搜尋到裝置</string>
+    <string name="please_press_next_to_continue">請按下一步進行設定</string>
+
+    <string name="hello_user">Hello! %1$s.</string>
+    <string name="please_enter_account">請輸入帳號</string>
+    <string name="please_enter_password">請輸入密碼</string>
+    <string name="you_can_find_the_password_from_the_manual">密碼請參閱說明書</string>
+
+    <string name="there_is_no_users">目前沒有使用者，要現在新增嗎？</string>
+    <string name="add">新增</string>
+
+    <string name="ok">確定</string>
+    <string name="cancel">取消</string>
+    <string name="model">%1$s</string>
+    <string name="choose_device">請選擇裝置</string>
+    <string name="door_closed">DOOR CLOSED</string>
+    <string name="door_opened">DOOR OPENED</string>
+    <string name="open">OPEN</string>
+    <string name="automatic_sensor_to_open">自動感應開門</string>
+
+    <string name="setting">設定</string>
+    <string name="user">使用者</string>
+    <string name="history">歷史進出紀錄</string>
+    <string name="backup">資料備份</string>
+    <string name="revert">資料還原</string>
+    <string name="device_name">裝置名稱</string>
+    <string name="door_sensor">門位偵測</string>
+    <string name="door_lock_action">門鎖動作</string>
+
+    <string name="use_re_lock_time">依據延遲上鎖時間</string>
+    <string name="always_unlocked">常開</string>
+    <string name="always_locked">常閉</string>
+
+    <string name="tamper_sensor">防拆感應</string>
+    <string name="proximity_read_range">感應距離</string>
+    <string name="door_re_lock_time">延遲上鎖時間</string>
+    <string name="sec">%1$s 秒</string>
+
+    <string name="please_choose">請選擇</string>
+
+    <string name="can_not_find_device">目前找不到裝置</string>
+    <string name="please_try_later">請稍候再試</string>
+
+    <string name="searching2">搜尋中…</string>
+    <string name="please_wait">請稍候</string>
+
+    <string name="device_distance">您目前距離裝置</string>
+    <string name="proximity_read_range_setting">感應距離設定</string>
+
+    <string name="edit_door_re_lock_time">請輸入上鎖時間 (1~1800秒)</string>
+    <string name="please_enter_the_number_of_seconds">請輸入秒數</string>
+
+    <string name="id">帳號</string>
+    <string name="password">密碼</string>
+    <string name="user_name">使用者名稱</string>
+
+    <string name="add_user">新增使用者</string>
+    <string name="characters_16">請輸入(最多只能16個字元)</string>
+
+    <!--<string name="characters_12">請輸入 &#040;最多只能12個字元&#041;</string>-->
+    <string name="user_name_optional">使用者名稱 &#040;非必填&#041;</string>
+
+    <string name="user_info">使用者資訊</string>
+    <string name="delete">刪除</string>
+    <string name="password_pin_code">密碼(4~8個字元)</string>
+    <string name="user_name_up_to_12_characters">使用者名稱 &#040;最多12個字元&#041;</string>
+    <string name="access_types_schedule">進出管制模式</string>
+
+    <string name="types">請選擇模式</string>
+    <string name="permanent">永久開門的權限</string>
+    <string name="schedule">起迄時間</string>
+    <string name="access_times">限制開門次數</string>
+    <string name="access_times_2">請輸入次數</string>
+    <string name="recurrent">週期排程</string>
+    <string name="start">開始</string>
+    <string name="end">結束</string>
+    <string name="repeat">週期</string>
+
+    <string name="start_time">開始時間</string>
+    <string name="end_time">結束時間</string>
+
+    <string name="select_repeat">選擇週期</string>
+
+    <string-array name="week">
+        <item>星期一</item>
+        <item>星期二</item>
+        <item>星期三</item>
+        <item>星期四</item>
+        <item>星期五</item>
+        <item>星期六</item>
+        <item>星期天</item>
+    </string-array>
+
+    <string name="monday">星期一</string>
+    <string name="tuesday">星期二</string>
+    <string name="wednesday">星期三</string>
+    <string name="thursday">星期四</string>
+    <string name="friday">星期五</string>
+    <string name="saturday">星期六</string>
+    <string name="sunday">星期天</string>
+
+    <string name="date">日期</string>
+    <string name="device">開鎖方式</string>
+
+    <string name="add_more">新增更多</string>
+
+    <string name="done">完成</string>
+    <string name="please_setting_proximity_read_range">請設定感測距離</string>
+    <string name="msg_password_error">密碼錯誤，請重新輸入</string>
+    <string name="msg_please_enter_account">請輸入帳號</string>
+    <string name="msg_please_enter_password_1">請輸入密碼</string>
+    <string name="msg_please_enter_password_2">密碼需4到8個字元</string>
+
+    <string name="edit_device_name">編輯裝置名稱</string>
+    <string name="up_to_16_characters">最多16個位元組</string>
+    <string name="msg_please_enter_device_name">請輸入裝置名稱</string>
+    <string name="msg_delete">確定要刪除？</string>
+
+    <string name="search">搜尋</string>
+
+    <string name="restore_all_data_now">確定要還原備份資料？</string>
+    <string name="backup_all_data_now">確定要備份資料？</string>
+
+
+    <string name="restore_success">還原成功</string>
+    <string name="msg_searching">需要連結裝置才能進行設定</string>
+    <string name="if_you_forget_your_id_or_password">如果您忘記了密碼或是帳號，請聯絡您的管理員</string>
+    <string name="hello_1">Hello！</string>
+    <string name="device_time">裝置時間</string>
+    <string name="about_us">關於我們</string>
+    <string name="automatic_setting">自動設定</string>
+
+    <string name="time">時間為</string>
+    <string name="enable_keypad_pin_code_to_access">啟用按鍵密碼開門</string>
+    <string name="every_week">每週</string>
+    <string name="Recurrent">週期排程</string>
+    <string name="Schedule">起迄時間</string>
+    <string name="Permanent">永久開門的權限</string>
+    <string name="Access_Times">限制開門次數</string>
+    <string name="weekly_Sun">[日]</string>
+    <string name="weekly_Mon">[一]</string>
+    <string name="weekly_Fri">[五]</string>
+    <string name="weekly_Thu">[四]</string>
+    <string name="weekly_Wed">[三]</string>
+    <string name="weekly_Sat">[六]</string>
+    <string name="weekly_Tue">[二]</string>
+    <string name="enroll_dialog_title">註冊使用者</string>
+    <string name="AUTO_ENABLE_CONFLICT">請先取消AUTO</string>
+    <string name="_4_8_digits">4~8碼</string>
+    <string name="Please_Provide_Up_to_16_characters">請輸入(最多只能16個字元)</string>
+    <string name="Enroll">註冊</string>
+    <string name="program_fail">失敗</string>
+    <string name="program_success">成功</string>
+    <string name="settings_Admin_pwd">管理者密碼</string>
+    <string name="Confirm">確定</string>
+
+    <string name="Device_Model">裝置型號:</string>
+    <string name="ID">帳號</string>
+    <string name="Password">密碼</string>
+    <string name="backup_dialog_message">備份中…</string>
+    <string name="backup_dialog_title">備份裝置資料</string>
+    <string name="backup_status">備份狀態</string>
+    <string name="backup_completed">備份完成</string>
+    <string name="users_edit_access_control_dialog_type_times_mark">剩餘次數:</string>
+    <string name="users_id_edit_dialog_title">編輯帳號: (16 字元)</string>
+    <string name="users_pwd_edit_dialog_title">編輯密碼: (4~8 數字)</string>
+    <string name="users_manage_edit_status_Admin_name">無效的ID!!</string>
+    <string name="users_manage_edit_status_Admin_pwd">無效的密碼!!</string>
+    <string name="users_manage_edit_status_duplication_name">ID重複!!</string>
+    <string name="users_manage_edit_status_duplication_password">密碼重複!!</string>
+    <string name="settings_Admin_pwd_Edit">編輯管理者密碼</string>
+    <string name="settings_users_manage_list">使用者資料</string>
+    <string name="settings_history_list">進出紀錄資料</string>
+    <string name="download_dialog_title">下載</string>
+    <string name="download_dialog_message">載入中...</string>
+    <string name="no_user_note">目前沒有使用者!!</string>
+    <string name="openType_Alarm">警報</string>
+    <string name="openType_Button">按鈕</string>
+    <string name="openType_Keypad">鍵盤</string>
+    <string name="progress_dialog_hide_btn_title">隱藏</string>
+    <string name="progress_dialog_cancel_btn_title">取消</string>
+    <string name="restore_check_dialog_title">確定要還原這個裝置?</string>
+    <string name="restore_completed">還原完成！！</string>
+    <string name="restore_dialog_message">還原中...</string>
+    <string name="restore_status_file_not_found">沒有備份檔案!! 請先執行備份！</string>
+    <string name="restore_status">還原狀態</string>
+    <string name="restore_dialog_title">還原裝置資料</string>
+
+
+    <string name="settings_device_vr">韌體版本</string>
+    <string name="APP_version">APP 版本:</string>
+    <string name="over_range_alarm">超過範圍</string>
+
+</resources>

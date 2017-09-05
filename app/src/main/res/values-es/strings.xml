@@ -1,0 +1,200 @@
+<resources>
+    <string name="app_name">E3AK</string>
+
+    <string name="bluetooth_access_control_system">Bluetooth Access Control System</string>
+    <string name="anxell_technology_coproration">&#169; 2017 Anxell Technology Coproration</string>
+
+    <string name="hello">Hello!</string>
+    <string name="welcome">Welcome</string>
+    <string name="searching1">Buscando…</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+
+    <string name="search_result">Search result</string>
+    <string name="please_press_next_to_continue">Please press "Next" to continue</string>
+
+    <string name="hello_user">Hello! %1$s.</string>
+    <string name="please_enter_account">Your ID</string>
+    <string name="please_enter_password">Contraseña</string>
+    <string name="you_can_find_the_password_from_the_manual">You can find default password from the manual. Please change your Admin password for security control.</string>
+    <string name="there_is_no_users">No hay usuarios, añadir ahora?</string>
+
+    <string name="add">Añadir</string>
+
+    <string name="ok">Listo</string>
+    <string name="cancel">Anular</string>
+    <string name="model">%1$s</string>
+    <string name="choose_device">Ruego elegir </string>
+    <string name="door_closed">PUERTA CERRADA</string>
+    <string name="door_opened">PUERTA ABIERTA</string>
+    <string name="open">Abre</string>
+    <string name="automatic_sensor_to_open">Auto</string>
+
+    <string name="setting">Ajustes</string>
+    <string name="user">Usuarios</string>
+    <string name="history">Audit Trail</string>
+    <string name="backup">BackUp datos</string>
+    <string name="revert">Recuperación de datos</string>
+    <string name="device_name">Nombre del dispositivo</string>
+    <string name="settings_Admin_pwd">Contraseña</string>
+    <string name="settings_Admin_pwd_Edit">Cambiar contraseña de administrador</string>
+    <string name="users_manage_edit_status_duplication_password">Contraseña doble</string>
+    <string name="door_sensor">Sensor puerta</string>
+    <string name="door_lock_action">Comando cerradura</string>
+
+    <string name="use_re_lock_time">Tiempo de recierre</string>
+    <string name="always_unlocked">Puerta siempre cerrada</string>
+    <string name="always_locked">Puerta siempre abierta</string>
+
+    <string name="tamper_sensor">Anti-Tamper</string>
+    <string name="proximity_read_range">Rango de acción</string>
+    <string name="door_re_lock_time">Tiempo de cierre</string>
+    <string name="sec">%1$s Seg.</string>
+
+    <string name="please_choose">Ruego elegir </string>
+
+    <string name="can_not_find_device">No encuentro dispositivos</string>
+
+    <string name="please_try_later">Intente más tarde</string>
+
+    <string name="searching2">Buscando…</string>
+    <string name="please_wait">Un momento..</string>
+
+    <string name="device_distance">Distancia del dispositivo</string>
+    <string name="proximity_read_range_setting">Rango de acción</string>
+
+    <string name="edit_door_re_lock_time">Cambiar el tiempo de recierre</string>
+    <string name="please_enter_the_number_of_seconds">Ruego pulsar los segundos deseados</string>
+
+    <string name="id">Nombre</string>
+    <string name="password">Contraseña</string>
+    <string name="user_name">Nombre</string>
+
+    <string name="add_user">Añadir usuarios</string>
+    <string name="Please_Provide_Up_to_16_characters">Hasta 16 caracteres</string>
+    <string name="_4_8_digits">4-8 números</string>
+
+    <string name="user_name_optional">使用者名稱 &#040;非必填&#041;</string>
+
+    <string name="user_info">Info usuarios</string>
+    <string name="delete">Eliminar</string>
+    <string name="password_pin_code">Password/Pin (4-8 números)</string>
+    <string name="user_name_up_to_12_characters">使用者名稱 &#040;最多12個字元&#041;</string>
+    <string name="access_types_schedule">Tipo de acceso</string>
+
+    <string name="types">Tipo de acceso</string>
+    <string name="permanent">Permanente</string>
+    <string name="schedule">Planificado</string>
+    <string name="access_times">Número de accesos permitidos</string>
+    <string name="access_times_2">Introduzca el número de accesos permitidos</string>
+    <string name="recurrent">Recurrente</string>
+    <string name="start">Inicio</string>
+    <string name="end">Fin</string>
+    <string name="repeat">Repetir</string>
+
+    <string name="start_time">Inicio</string>
+    <string name="end_time">Fin</string>
+
+    <string name="select_repeat">Repetir</string>
+
+    <string-array name="week">
+        <item>Todos los lunes</item>
+        <item>Todos los martes</item>
+        <item>Todos los miércoles</item>
+        <item>Todos los jueves</item>
+        <item>Todos los viernes</item>
+        <item>Todos los sábados</item>
+        <item>Todos los domingos</item>
+    </string-array>
+
+    <string name="monday">Todos los lunes</string>
+    <string name="tuesday">Todos los martes</string>
+    <string name="wednesday">Todos los miércoles</string>
+    <string name="thursday">Todos los jueves</string>
+    <string name="friday">Todos los viernes</string>
+    <string name="saturday">Todos los sábados</string>
+    <string name="sunday">Todos los domingos</string>
+
+    <string name="date">Fecha</string>
+    <string name="device">Abierto por</string>
+
+    <string name="add_more">Añadir otro</string>
+
+    <string name="done">Listo</string>
+    <string name="please_setting_proximity_read_range">Rango de acción</string>
+    <string name="msg_password_error">Password incorrecta</string>
+    <string name="msg_please_enter_account">Añadir nombre</string>
+    <string name="msg_please_enter_password_1">Añadir password</string>
+    <string name="msg_please_enter_password_2">4-8 números</string>
+
+    <string name="edit_device_name">Editar nombre dispositivo</string>
+    <string name="up_to_16_characters">Hasta 16 caracteres</string>
+    <string name="msg_please_enter_device_name">Editar nombre dispositivo</string>
+    <string name="msg_delete">Eliminar usuario?</string>
+
+    <string name="search">Buscando</string>
+
+    <string name="restore_all_data_now">Recuperación de datos ahora?</string>
+    <string name="backup_all_data_now">Hacer el backup ahora?</string>
+    <string name="restore_check_dialog_title">¿Está seguro de que desea restaurar el dispositivo?</string>
+    <string name="backup_dialog_message">Haciendo el backup</string>
+    <string name="backup_dialog_title">Backup datos</string>
+    <string name="restore_dialog_title">Recuperación de datos ahora?</string>
+    <string name="restore_dialog_message">Haciendo la recuperación</string>
+    <string name="restore_status">Estado de la recuperación</string>
+    <string name="restore_status_file_not_found">Archivo no encontrado Por favor haga el Backup</string>
+    <string name="restore_success">Listo</string>
+    <string name="msg_searching">Tienes que conectarte a un dispositivo</string>
+    <string name="if_you_forget_your_id_or_password">Si ha olvidado los datos, póngase en contacto con su administrador</string>
+    <string name="hello_1">Hello！</string>
+    <string name="settings_device_vr">Versión del firmware</string>
+    <string name="device_time">Hora del dispositivo</string>
+    <string name="about_us">Quienes Somos</string>
+    <string name="automatic_setting">Ajuste automático</string>
+    <string name="time">Time: </string>
+    <string name="backup_status">Estado del Backup</string>
+    <string name="backup_completed">Backup listo</string>
+    <string name="restore_completed">Recuperación lista</string>
+    <string name="download_dialog_title">"Descargar "</string>
+    <string name="download_dialog_message">Cargando…</string>
+    <string name="enable_keypad_pin_code_to_access">Acceso con teclado</string>
+    <string name="every_week">Cada semana</string>
+    <string name="Enroll">Registrar</string>
+    <string name="Permanent">Permanente</string>
+    <string name="Schedule">Planificado</string>
+    <string name="Recurrent">Recurrente</string>
+    <string name="Access_Times">Número de accesos permitidos</string>
+    <string name="weekly_Sun">[DOM]</string>
+    <string name="weekly_Mon">[LUN]</string>
+    <string name="weekly_Tue">[MAR]</string>
+    <string name="weekly_Wed">[MIER]</string>
+    <string name="weekly_Thu">[JUE]</string>
+    <string name="weekly_Fri">[VIER]</string>
+    <string name="weekly_Sat">[SAB]</string>
+    <string name="enroll_dialog_title">Añadir usuario</string>
+    <string name="AUTO_ENABLE_CONFLICT">Desconectar AUTO</string>
+    <string name="characters_16">Hasta 16 caracteres</string>
+    <string name="program_success">Success</string>
+    <string name="program_fail">Fail</string>
+    <string name="Device_Model">Modelo del dispositivo:</string>
+    <string name="openType_Button">Botón</string>
+    <string name="openType_Alarm">Alarma</string>
+    <string name="openType_Keypad">Teclado</string>
+    <string name="settings_history_list"> History List</string>
+    <string name="settings_users_manage_list"> Lista de usuarios</string>
+    <string name="progress_dialog_hide_btn_title">OCULTAR</string>
+    <string name="progress_dialog_cancel_btn_title">Anular</string>
+    <string name="no_user_note">No hay usuarios, añadir ahora?</string>
+    <string name="users_manage_edit_status_Admin_name">Invalid ID !!</string>
+    <string name="users_manage_edit_status_Admin_pwd">Invalid Password!!</string>
+    <string name="users_manage_edit_status_duplication_name">Nombre duplicado</string>
+    <string name="ID">Nombre</string>
+    <string name="Password">Contraseña</string>
+    <string name="users_edit_access_control_dialog_type_times_mark">Número de accesos seleccionados:</string>
+    <string name="users_id_edit_dialog_title">Cambiar el nombre (16 caracteres)</string>
+    <string name="users_pwd_edit_dialog_title">Cambiar contraseña</string>
+    <string name="Confirm">Confirmar</string>
+    <string name="APP_version"> Versión App:</string>
+    <string name="over_range_alarm">Over range</string>
+
+</resources>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical"
+    tools:context="com.anxell.e3ak.ProximityReadRangeActivity2">
+
+    <com.anxell.e3ak.custom.MyToolbar
+        android:id="@+id/toolbarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@android:color/white"
+        app:titleText="@string/proximity_read_range" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/green" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="26dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_white"
+        android:paddingBottom="24dp"
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp"
+        android:paddingTop="20dp">
+
+        <com.anxell.e3ak.custom.FontTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/deviceDistance"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@string/device_distance"
+            android:textColor="@color/gray3"
+            android:textSize="@dimen/text_size_15" />
+
+        <com.anxell.e3ak.custom.FontTextView
+            android:id="@+id/deviceDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="10"
+            android:textColor="@color/gray3"
+            android:textSize="@dimen/text_size_15" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="26dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_white"
+        android:paddingBottom="24dp"
+        android:paddingTop="20dp">
+
+        <com.anxell.e3ak.custom.FontTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/deviceDistanceValue"
+            android:ellipsize="end"
+            android:paddingEnd="15dp"
+            android:paddingStart="15dp"
+            android:singleLine="true"
+            android:text="@string/proximity_read_range_setting"
+            android:textColor="@color/gray3"
+            android:textSize="@dimen/text_size_15" />
+
+        <com.anxell.e3ak.custom.FontTextView
+            android:id="@+id/deviceDistanceValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="10"
+            android:paddingEnd="15dp"
+            android:paddingStart="15dp"
+            android:textColor="@color/gray3"
+            android:textSize="@dimen/text_size_15" />
+
+        <SeekBar
+            android:id="@+id/proximity_expect_seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/deviceDistanceValue"
+            android:layout_marginTop="22dp"
+            android:max="20"
+            android:progress="10" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    tools:context="com.anxell.e3ak.SettingActivity">
+
+    <com.anxell.e3ak.custom.MyToolbar
+        android:id="@+id/toolbarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@android:color/white"
+        app:titleText="@string/about_us" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/toolbarView"
+        android:background="@color/green" />
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/anxell_logo" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/icon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="26dp"
+        android:layout_marginStart="26dp"
+        android:orientation="vertical">
+
+        <com.anxell.e3ak.custom.My3TextView
+            android:id="@+id/deviceName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:myTitle="@string/Device_Model"
+            app:value="E3AK" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="323dp"
+            android:layout_height="1dp"
+            android:background="@color/gray6" />
+
+        <com.anxell.e3ak.custom.FontButton
+            android:id="@+id/build"
+            android:layout_width="323dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:drawableLeft="@drawable/icon_version"
+            android:drawablePadding="10dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="left|center_vertical"
+            android:paddingEnd="7dp"
+            android:paddingStart="7dp"
+            android:text="Build 2.0.0"
+            android:clickable="false"
+            android:textColor="@color/gray3"
+            android:textSize="@dimen/text_size_14" />
+
+        <View
+            android:layout_width="323dp"
+            android:layout_height="1dp"
+            android:background="@color/gray6" />
+
+        <com.anxell.e3ak.custom.FontButton
+            android:id="@+id/web"
+            android:layout_width="323dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:drawableLeft="@drawable/icon_website"
+            android:drawablePadding="10dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="left|center_vertical"
+            android:paddingEnd="7dp"
+            android:paddingStart="7dp"
+            android:clickable="false"
+            android:text="www.anxell.com"
+            android:textColor="@color/gray3"
+            android:textSize="@dimen/text_size_14" />
+
+        <View
+            android:layout_width="323dp"
+            android:layout_height="1dp"
+            android:background="@color/gray6" />
+
+        <com.anxell.e3ak.custom.FontButton
+            android:id="@+id/email"
+            android:layout_width="323dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:drawableLeft="@drawable/icon_email"
+            android:drawablePadding="10dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="left|center_vertical"
+            android:paddingEnd="7dp"
+            android:paddingStart="7dp"
+            android:clickable="false"
+            android:text="info@anxell.com"
+            android:textColor="@color/gray3"
+            android:textSize="@dimen/text_size_14" />
+
+    </LinearLayout>
+</RelativeLayout>

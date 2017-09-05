@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MyDeviceViewAttr">
+        <attr name="showDot" format="boolean" />
+        <attr name="android:textSize" />
+    </declare-styleable>
+
+    <declare-styleable name="MyToolbarAttr">
+        <attr name="showLeftText" format="boolean" />
+        <attr name="leftTextColor" format="reference" />
+        <attr name="leftText" format="string|reference" />
+
+        <attr name="showRight1Icon" format="boolean" />
+        <attr name="right1Icon" format="reference" />
+
+        <attr name="showRight2Icon" format="boolean" />
+        <attr name="right2Icon" format="reference" />
+
+        <attr name="showRightText" format="boolean" />
+        <attr name="rightTextColor" format="reference" />
+        <attr name="rightText" format="string|reference" />
+
+        <attr name="titleText" format="string|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="MyFieldAttr">
+        <attr name="myTitle" format="string|reference" />
+        <attr name="showIndicator" format="boolean" />
+        <attr name="value" format="string|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="MyEditTextAttr">
+        <attr name="subject" format="string|reference" />
+        <attr name="android:hint" />
+        <attr name="android:inputType" />
+        <attr name="android:maxLength" />
+    </declare-styleable>
+
+    <declare-styleable name="MyButtonAttr">
+        <attr name="android:text" />
+        <attr name="android:src" />
+    </declare-styleable>
+
+    <!--<declare-styleable name="MyTypeAttr">-->
+        <!--<attr name="languageTW" format="string|reference" />-->
+        <!--<attr name="languageJP" format="string|reference" />-->
+        <!--<attr name="languageUS" format="string|reference" />-->
+        <!--<attr name="icon" format="reference" />-->
+    <!--</declare-styleable>-->
+
+    <!--<declare-styleable name="MyInfoAttr">-->
+        <!--<attr name="content" format="string|reference" />-->
+        <!--<attr name="icon_right" format="reference" />-->
+        <!--<attr name="icon_left" format="reference" />-->
+    <!--</declare-styleable>-->
+</resources>
