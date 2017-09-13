@@ -1,0 +1,166 @@
+CURRENT STATS:
+System memory usage:
+  SOn /Norm: 1 samples:
+    Cached: 557MB min, 557MB avg, 557MB max
+    Free: 615MB min, 615MB avg, 615MB max
+    ZRam: 5.7MB min, 5.7MB avg, 5.7MB max
+    Kernel: 154MB min, 154MB avg, 154MB max
+    Native: 162MB min, 162MB avg, 162MB max
+
+Per-Package Stats:
+  * com.anxell.e3ak / u0a328 / v3:
+      * com.anxell.e3ak / u0a328 / v3:
+               TOTAL: 0.98% (92MB-92MB-92MB/75MB-75MB-75MB over 1)
+                 Top: 0.98% (92MB-92MB-92MB/75MB-75MB-75MB over 1)
+            (Cached): 99% (63MB-64MB-65MB/54MB-56MB-57MB over 3)
+      * com.anxell.e3ak.transport.RBLService:
+        Process: com.anxell.e3ak
+            Running count 2 / time 100%
+              Bound count 2 / time 100%
+          Executing count 1 / time 0.00%
+
+Summary:
+  * com.anxell.e3ak / u0a328 / v3:
+           TOTAL: 0.98% (92MB-92MB-92MB/75MB-75MB-75MB over 1)
+             Top: 0.98% (92MB-92MB-92MB/75MB-75MB-75MB over 1)
+        (Cached): 99% (63MB-64MB-65MB/54MB-56MB-57MB over 3)
+
+Run time Stats:
+  SOff/Norm: +59m50s659ms (running)
+  SOn /Norm: +3s238ms
+      TOTAL: +59m53s897ms
+
+Memory usage:
+  Kernel : 154MB (8 samples)
+  Native : 162MB (8 samples)
+  Persist: 241MB (50 samples)
+  Top    : 49MB (9 samples)
+  ImpFg  : 129MB (54 samples)
+  ImpBg  : 11MB (22 samples)
+  Service: 318MB (163 samples)
+  Receivr: 5.4KB (37 samples)
+  Home   : 47MB (4 samples)
+  CchAct : 76MB (14 samples)
+  CchEmty: 98MB (47 samples)
+  Cached : 557MB (8 samples)
+  Free   : 615MB (8 samples)
+  Z-Ram  : 5.7MB (8 samples)
+  TOTAL  : 2.4GB
+  ServRst: 1.9KB (27 samples)
+
+          Start time: 2017-08-23 08:15:02
+  Total elapsed time: +59m53s933ms (partial) libart.so
+
+AGGREGATED OVER LAST 24 HOURS:
+System memory usage:
+  SOff/Norm: 4 samples:
+    Cached: 0.00 min, 334MB avg, 1.2GB max
+    Free: 101MB min, 0.92GB avg, 1.2GB max
+    ZRam: 2.4MB min, 4.3MB avg, 5.7MB max
+    Kernel: 152MB min, 160MB avg, 165MB max
+    Native: 163MB min, 169MB avg, 176MB max
+  SOn /Norm: 4 samples:
+    Cached: 557MB min, 0.99GB avg, 1.3GB max
+    Free: 110MB min, 248MB avg, 615MB max
+    ZRam: 1.7MB min, 4.3MB avg, 5.7MB max
+    Kernel: 154MB min, 168MB avg, 183MB max
+    Native: 162MB min, 163MB avg, 164MB max
+
+Per-Package Stats:
+  * com.anxell.e3ak / u0a328 / v3:
+      * com.anxell.e3ak / u0a328 / v3:
+               TOTAL: 63% (85MB-107MB-133MB/68MB-90MB-116MB over 76)
+                 Top: 63% (85MB-107MB-133MB/68MB-90MB-116MB over 76)
+            (Cached): 33% (57MB-75MB-87MB/49MB-67MB-78MB over 18)
+      * com.anxell.e3ak.transport.RBLService:
+        Process: com.anxell.e3ak
+            Running count 15 / time 97%
+              Bound count 15 / time 97%
+          Executing count 7 / time 0.00%
+
+Summary:
+  * com.anxell.e3ak / u0a328 / v3:
+           TOTAL: 63% (85MB-107MB-133MB/68MB-90MB-116MB over 76)
+             Top: 63% (85MB-107MB-133MB/68MB-90MB-116MB over 76)
+        (Cached): 33% (57MB-75MB-87MB/49MB-67MB-78MB over 18)
+
+Run time Stats:
+  SOff/Norm: +23h28m43s883ms
+       Mod : +296ms
+  SOn /Norm: +16m33s894ms
+      TOTAL: +23h45m18s73ms
+
+Memory usage:
+  Kernel : 160MB (56 samples)
+  Native : 169MB (56 samples)
+  Persist: 245MB (2098 samples)
+  Top    : 89MB (415 samples)
+  ImpFg  : 124MB (2588 samples)
+  ImpBg  : 18MB (908 samples)
+  Service: 291MB (5827 samples)
+  Receivr: 36KB (4084 samples)
+  Home   : 43MB (110 samples)
+  LastAct: 3.4MB (36 samples)
+  CchAct : 33MB (62 samples)
+  CchEmty: 104MB (3341 samples)
+  Cached : 342MB (56 samples)
+  Free   : 0.91GB (56 samples)
+  Z-Ram  : 4.3MB (56 samples)
+  TOTAL  : 2.5GB
+  ServRst: 835 (1104 samples)
+
+          Start time: 2017-08-22 09:28:25
+  Total elapsed time: +23h45m33s361ms (partial) libart.so
+
+AGGREGATED OVER LAST 3 HOURS:
+System memory usage:
+  SOn /Norm: 1 samples:
+    Cached: 557MB min, 557MB avg, 557MB max
+    Free: 615MB min, 615MB avg, 615MB max
+    ZRam: 5.7MB min, 5.7MB avg, 5.7MB max
+    Kernel: 154MB min, 154MB avg, 154MB max
+    Native: 162MB min, 162MB avg, 162MB max
+
+Per-Package Stats:
+  * com.anxell.e3ak / u0a328 / v3:
+      * com.anxell.e3ak / u0a328 / v3:
+               TOTAL: 15% (86MB-92MB-99MB/69MB-75MB-82MB over 3)
+                 Top: 15% (86MB-92MB-99MB/69MB-75MB-82MB over 3)
+            (Cached): 85% (57MB-63MB-66MB/49MB-55MB-58MB over 8)
+      * com.anxell.e3ak.transport.RBLService:
+        Process: com.anxell.e3ak
+            Running count 3 / time 100%
+              Bound count 3 / time 100%
+          Executing count 1 / time 0.00%
+
+Summary:
+  * com.anxell.e3ak / u0a328 / v3:
+           TOTAL: 15% (86MB-92MB-99MB/69MB-75MB-82MB over 3)
+             Top: 15% (86MB-92MB-99MB/69MB-75MB-82MB over 3)
+        (Cached): 85% (57MB-63MB-66MB/49MB-55MB-58MB over 8)
+
+Run time Stats:
+  SOff/Norm: +3h59m52s168ms
+  SOn /Norm: +3s238ms
+      TOTAL: +3h59m55s406ms
+
+Memory usage:
+  Kernel : 154MB (8 samples)
+  Native : 162MB (8 samples)
+  Persist: 237MB (170 samples)
+  Top    : 54MB (30 samples)
+  ImpFg  : 132MB (168 samples)
+  ImpBg  : 11MB (77 samples)
+  Service: 309MB (475 samples)
+  Receivr: 9.6KB (178 samples)
+  Home   : 47MB (16 samples)
+  CchAct : 68MB (34 samples)
+  CchEmty: 97MB (228 samples)
+  Cached : 557MB (8 samples)
+  Free   : 615MB (8 samples)
+  Z-Ram  : 5.7MB (8 samples)
+  TOTAL  : 2.4GB
+  ServRst: 1.3KB (76 samples)
+
+          Start time: 2017-08-23 05:15:00
+  Total elapsed time: +3h59m55s424ms (partial) libart.so

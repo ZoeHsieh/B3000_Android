@@ -42,7 +42,7 @@
     <string name="door_sensor">Door Sensor</string>
     <string name="door_lock_action">Lock Action</string>
 
-    <string name="use_re_lock_time">Use Re-lock Time</string>
+    <string name="use_re_lock_time">Door Re-lock Time</string>
     <string name="always_unlocked">Door Always Unlocked</string>
     <string name="always_locked">Door Always Locked</string>
 

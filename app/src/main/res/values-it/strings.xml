@@ -180,7 +180,7 @@
     <string name="openType_Button">Pulsante</string>
     <string name="openType_Alarm">Allarme</string>
     <string name="openType_Keypad">Tastiera</string>
-    <string name="settings_history_list"> History List</string>
+    <string name="settings_history_list">" Elenco eventi"</string>
     <string name="settings_users_manage_list"> Lista utenti</string>
     <string name="progress_dialog_hide_btn_title">NASCONDI</string>
     <string name="progress_dialog_cancel_btn_title">Cancella</string>

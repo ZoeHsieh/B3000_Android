@@ -117,18 +117,27 @@ public class DeviceTimeActivity extends BaseActivity implements View.OnClickList
         dateTimeDialogFragment.setOnButtonClickListener(new SwitchDateTimeDialogFragment.OnButtonClickListener() {
             @Override
             public void onPositiveButtonClick(Date date) {
-                view.setValue(dateTimeFormat(date));
                 Calendar calendar = Calendar.getInstance();
+                Calendar nowCalendar = Calendar.getInstance();
                 calendar.setTime(date);
-                SettingActivity.tmpTime[0] = (byte)(calendar.get(Calendar.YEAR) >> 8);
-                SettingActivity.tmpTime[1]  = (byte)(calendar.get(Calendar.YEAR) &0xFF);
+                //if(nowCalendar.get(Calendar.YEAR) > calendar.get(Calendar.YEAR)) {
+                    calendar.set(Calendar.YEAR,nowCalendar.get(Calendar.YEAR));
+
+                    SettingActivity.tmpTime[0] = (byte) (nowCalendar.get(Calendar.YEAR) >> 8);
+                    SettingActivity.tmpTime[1] = (byte) (nowCalendar.get(Calendar.YEAR) & 0xFF);
+
+                //}else{
+                  //  SettingActivity.tmpTime[0] = (byte) (calendar.get(Calendar.YEAR) >> 8);
+                    //SettingActivity.tmpTime[1] = (byte) (calendar.get(Calendar.YEAR) & 0xFF);
+
+                //}
                 SettingActivity.tmpTime[2]  = (byte)((calendar.get(Calendar.MONTH) &0xFF)+1);
                 SettingActivity.tmpTime[3]  = (byte)(calendar.get(Calendar.DAY_OF_MONTH) &0xFF);
                 SettingActivity.tmpTime[4]  = (byte)(calendar.get(Calendar.HOUR_OF_DAY) &0xFF);
                 SettingActivity.tmpTime[5]  = (byte)(calendar.get(Calendar.MINUTE) &0xFF);
                 SettingActivity.tmpTime[6]  = (byte)(0x00);
                 SettingActivity.updateStatus = SettingActivity.up_deviceTime;
-
+                view.setValue(dateTimeFormat(calendar.getTime()));
 
             }
 
@@ -137,6 +146,7 @@ public class DeviceTimeActivity extends BaseActivity implements View.OnClickList
                 // Date is get on negative button click
             }
         });
+
 
         dateTimeDialogFragment.show(getSupportFragmentManager(), "dialog_time");
     }

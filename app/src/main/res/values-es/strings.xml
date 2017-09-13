@@ -180,7 +180,7 @@
     <string name="openType_Button">Botón</string>
     <string name="openType_Alarm">Alarma</string>
     <string name="openType_Keypad">Teclado</string>
-    <string name="settings_history_list"> History List</string>
+    <string name="settings_history_list">" Lista de eventos"</string>
     <string name="settings_users_manage_list"> Lista de usuarios</string>
     <string name="progress_dialog_hide_btn_title">OCULTAR</string>
     <string name="progress_dialog_cancel_btn_title">Anular</string>

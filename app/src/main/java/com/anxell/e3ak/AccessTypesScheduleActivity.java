@@ -210,7 +210,7 @@ public class AccessTypesScheduleActivity extends bpActivity implements View.OnCl
         {
              year = ((startTime[0] << 8) & 0x0000ff00) | (startTime[1] & 0x000000ff);
             c.set(Calendar.YEAR,year);
-            c.set(Calendar.MONTH,startTime[2]);
+            c.set(Calendar.MONTH,startTime[2]-1);
             c.set(Calendar.DAY_OF_MONTH,startTime[3]);
             c.set(Calendar.HOUR_OF_DAY, startTime[4]);
             c.set(Calendar.MINUTE, startTime[5]);
@@ -235,7 +235,7 @@ public class AccessTypesScheduleActivity extends bpActivity implements View.OnCl
         {
             year = ((endTime[0] << 8) & 0x0000ff00) | (endTime[1] & 0x000000ff);
             c.set(Calendar.YEAR,year);
-            c.set(Calendar.MONTH,endTime[2]);
+            c.set(Calendar.MONTH,endTime[2]-1);
             c.set(Calendar.DAY_OF_MONTH,endTime[3]);
             c.set(Calendar.HOUR_OF_DAY, endTime[4]);
             c.set(Calendar.MINUTE, endTime[5]);
@@ -370,7 +370,7 @@ public class AccessTypesScheduleActivity extends bpActivity implements View.OnCl
         //if(year_dl <= now.get(Calendar.YEAR))
         //    year_dl = now.get(Calendar.YEAR);
         Util.debugMessage(TAG,"year n= "+year_dl,debugFlag);
-        int month_dl = (dateTime[2]);
+        int month_dl = (dateTime[2]-1);
         int day_dl = (dateTime[3]);
         int hour_dl = (dateTime[4]);
         int minute_dl = (dateTime[5]);
@@ -381,7 +381,7 @@ public class AccessTypesScheduleActivity extends bpActivity implements View.OnCl
         dateTimeDialogFragment.setDefaultHourOfDay(hour_dl);
         dateTimeDialogFragment.setDefaultMinute(minute_dl);
         // dateTimeDialogFragment.setDefaultDateTime(new Date());
-Util.debugMessage(TAG,"get year = "+dateTimeDialogFragment.getYear(),debugFlag);
+        Util.debugMessage(TAG,"get year = "+dateTimeDialogFragment.getYear(),debugFlag);
         try {
             dateTimeDialogFragment.setSimpleDateMonthAndDayFormat(new SimpleDateFormat("MMMM dd", Locale.getDefault()));
         } catch (SwitchDateTimeDialogFragment.SimpleDateMonthAndDayFormatException e) {
@@ -390,25 +390,45 @@ Util.debugMessage(TAG,"get year = "+dateTimeDialogFragment.getYear(),debugFlag);
         dateTimeDialogFragment.setOnButtonClickListener(new SwitchDateTimeDialogFragment.OnButtonClickListener() {
             @Override
             public void onPositiveButtonClick(Date date) {
-                view.setValue(dateTimeFormat(date));
 
                 Calendar calendar = Calendar.getInstance();
-
+                Calendar nowCalendar = Calendar.getInstance();
                 calendar.setTime(date);
 
                 Util.debugMessage(TAG,"calendar = "+dateTimeFormat(calendar.getTime()),debugFlag);
                 if(type == type_StartTime){
-                    startTime[0] = (byte)(calendar.get(Calendar.YEAR) >> 8);
-                    startTime[1]  = (byte)(calendar.get(Calendar.YEAR) &0xFF);
-                    startTime[2]  = (byte)(calendar.get(Calendar.MONTH) &0xFF);
+
+                    if(nowCalendar.get(Calendar.YEAR)> calendar.get(Calendar.YEAR))
+                    {
+                        calendar.set(Calendar.YEAR,nowCalendar.get(Calendar.YEAR));
+                        startTime[0] = (byte) (nowCalendar.get(Calendar.YEAR) >> 8);
+                        startTime[1] = (byte) (nowCalendar.get(Calendar.YEAR) & 0xFF);
+                    }else{
+
+                        startTime[0] = (byte) (calendar.get(Calendar.YEAR) >> 8);
+                        startTime[1] = (byte) (calendar.get(Calendar.YEAR) & 0xFF);
+                    }
+                    startTime[2]  = (byte)((calendar.get(Calendar.MONTH)+1)&0xFF);
                     startTime[3]  = (byte)(calendar.get(Calendar.DAY_OF_MONTH) &0xFF);
                     startTime[4]  = (byte)(calendar.get(Calendar.HOUR_OF_DAY) &0xFF);
                     startTime[5]  = (byte)(calendar.get(Calendar.MINUTE) &0xFF);
                     startTime[6]  = (byte)(0x00);
+
+                    for(int i =0;i<endTime.length;i++)
+                        Util.debugMessage(TAG,"start["+i+"]="+String.format("%02x",startTime[i]),debugFlag);
+
                 }else if(type == type_EndTime){
-                    endTime[0] = (byte)(calendar.get(Calendar.YEAR) >> 8);
-                    endTime[1]  = (byte)(calendar.get(Calendar.YEAR) &0xFF);
-                    endTime[2]  = (byte)(calendar.get(Calendar.MONTH) &0xFF);
+                    if(nowCalendar.get(Calendar.YEAR) > calendar.get(Calendar.YEAR)){
+                        calendar.set(Calendar.YEAR,nowCalendar.get(Calendar.YEAR));
+                        endTime[0] = (byte)(nowCalendar.get(Calendar.YEAR) >> 8);
+                    endTime[1]  = (byte)(nowCalendar.get(Calendar.YEAR) &0xFF);
+                    }else{
+
+
+                        endTime[0] = (byte)(calendar.get(Calendar.YEAR) >> 8);
+                        endTime[1]  = (byte)(calendar.get(Calendar.YEAR) &0xFF);
+                    }
+                    endTime[2]  = (byte)((calendar.get(Calendar.MONTH)+1) &0xFF);
                     endTime[3]  = (byte)(calendar.get(Calendar.DAY_OF_MONTH) &0xFF);
                     endTime[4]  = (byte)(calendar.get(Calendar.HOUR_OF_DAY) &0xFF);
                     endTime[5]  = (byte)(calendar.get(Calendar.MINUTE) &0xFF);
@@ -418,6 +438,7 @@ Util.debugMessage(TAG,"get year = "+dateTimeDialogFragment.getYear(),debugFlag);
 
                 }
 
+                view.setValue(dateTimeFormat(calendar.getTime()));
 
             }
 

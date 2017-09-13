@@ -1,0 +1,65 @@
+Applications Memory Usage (kB):
+Uptime: 57536225 Realtime: 57536223
+
+** MEMINFO in pid 11405 [com.anxell.e3ak] **
+                   Pss  Private  Private  Swapped     Heap     Heap     Heap
+                 Total    Dirty    Clean    Dirty     Size    Alloc     Free
+                ------   ------   ------   ------   ------   ------   ------
+  Native Heap     5944     5912        0        0    10496     7910     2585
+  Dalvik Heap    40678    40604        0        0    58825    55539     3286
+ Dalvik Other     1068     1068        0        0                           
+        Stack      164      164        0        0                           
+       Ashmem        2        0        0        0                           
+      Gfx dev     8684     2324        0        0                           
+    Other dev        4        0        4        0                           
+     .so mmap     1153      156      196        4                           
+    .apk mmap      210        0       20        0                           
+    .dex mmap     2728        4     2724        0                           
+    .oat mmap      828        0      112        0                           
+    .art mmap     2286     2124        0        0                           
+   Other mmap      168        8       20        0                           
+      Unknown      184      184        0        0                           
+        TOTAL    64101    52548     3076        4    69321    63449     5871
+ 
+ App Summary
+                       Pss(KB)
+                        ------
+           Java Heap:    42728
+         Native Heap:     5912
+                Code:     3212
+               Stack:      164
+            Graphics:     2324
+       Private Other:     1284
+              System:     8477
+ 
+               TOTAL:    64101      TOTAL SWAP (KB):        4
+ 
+ Objects
+               Views:       43         ViewRootImpl:        1
+         AppContexts:        3           Activities:        1
+              Assets:       20        AssetManagers:        2
+       Local Binders:       13        Proxy Binders:       17
+       Parcel memory:        3         Parcel count:       12
+    Death Recipients:        0      OpenSSL Sockets:        0
+ 
+ SQL
+         MEMORY_USED:        0
+  PAGECACHE_OVERFLOW:        0          MALLOC_SIZE:        0
+ 
+ 
+ Asset Allocations
+    : 1K
+    zip:/data/app/com.anxell.e3ak-2/base.apk:/assets/fonts/Montserrat_Regular.ttf: 28K
+    zip:/data/app/com.anxell.e3ak-2/base.apk:/assets/fonts/Montserrat_Regular.ttf: 28K
+    zip:/data/app/com.anxell.e3ak-2/base.apk:/assets/fonts/Montserrat_Regular.ttf: 28K
+    zip:/data/app/com.anxell.e3ak-2/base.apk:/assets/fonts/Montserrat_Regular.ttf: 28K
+    zip:/data/app/com.anxell.e3ak-2/base.apk:/assets/fonts/Montserrat_Regular.ttf: 28K
+    zip:/data/app/com.anxell.e3ak-2/base.apk:/assets/fonts/Montserrat_Regular.ttf: 28K
+    zip:/data/app/com.anxell.e3ak-2/base.apk:/assets/fonts/Montserrat_Regular.ttf: 28K
+    zip:/data/app/com.anxell.e3ak-2/base.apk:/assets/fonts/Montserrat_Regular.ttf: 28K
+    zip:/data/app/com.anxell.e3ak-2/base.apk:/assets/fonts/Montserrat_Regular.ttf: 28K
+    zip:/data/app/com.anxell.e3ak-2/base.apk:/assets/fonts/Montserrat_Regular.ttf: 28K
+    zip:/data/app/com.anxell.e3ak-2/base.apk:/assets/fonts/Montserrat_Regular.ttf: 28K
+    zip:/data/app/com.anxell.e3ak-2/base.apk:/assets/fonts/Montserrat_Regular.ttf: 28K
+    zip:/data/app/com.anxell.e3ak-2/base.apk:/assets/fonts/Montserrat_Regular.ttf: 28K
+    zip:/data/app/com.anxell.e3ak-2/base.apk:/assets/fonts/Montserrat_Regular.ttf: 28K

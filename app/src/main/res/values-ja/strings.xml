@@ -1,0 +1,200 @@
+<resources>
+    <string name="app_name">E3AK</string>
+
+    <string name="bluetooth_access_control_system">Bluetooth Access Control System</string>
+    <string name="anxell_technology_coproration">&#169; 2017 Anxell Technology Coproration</string>
+
+    <string name="hello">Hello!</string>
+    <string name="welcome">Welcome</string>
+    <string name="searching1">探しています…</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+
+    <string name="search_result">Search result</string>
+    <string name="please_press_next_to_continue">Please press "Next" to continue</string>
+
+    <string name="hello_user">Hello! %1$s.</string>
+    <string name="please_enter_account">Your ID</string>
+    <string name="please_enter_password">パスワード</string>
+    <string name="you_can_find_the_password_from_the_manual">You can find default password from the manual. Please change your Admin password for security control.</string>
+    <string name="there_is_no_users">ユーザーがいません、追加しますか？</string>
+
+    <string name="add">追加</string>
+
+    <string name="ok">完了</string>
+    <string name="cancel">キャンセル</string>
+    <string name="model">%1$s</string>
+    <string name="choose_device">選んでください </string>
+    <string name="door_closed">ドアクローズ</string>
+    <string name="door_opened">ドアオープン</string>
+    <string name="open">オープン</string>
+    <string name="automatic_sensor_to_open">オート</string>
+
+    <string name="setting">設定</string>
+    <string name="user">ユーザー</string>
+    <string name="history">アクセス履歴</string>
+    <string name="backup">バックアップデータ</string>
+    <string name="revert">バックアップの復元</string>
+    <string name="device_name">デバイス名</string>
+    <string name="settings_Admin_pwd">アドミン  パスワード</string>
+    <string name="settings_Admin_pwd_Edit">アドミンパスワードの編集</string>
+    <string name="users_manage_edit_status_duplication_password">パスワードの複製 !!</string>
+    <string name="door_sensor">ドアセンサー</string>
+    <string name="door_lock_action">ロックアクション</string>
+
+    <string name="use_re_lock_time">リロックタイム</string>
+    <string name="always_unlocked">常にアンロック</string>
+    <string name="always_locked">常にロック</string>
+
+    <string name="tamper_sensor">衝撃アラーム センサー</string>
+    <string name="proximity_read_range">非接触読み取り距離</string>
+    <string name="door_re_lock_time">ドアリロックタイム</string>
+    <string name="sec">%1$s 秒</string>
+
+    <string name="please_choose">選んでください </string>
+
+    <string name="can_not_find_device">デバイスが見つかりません</string>
+
+    <string name="please_try_later">後でまた行ってください</string>
+
+    <string name="searching2">探しています…</string>
+    <string name="please_wait">お待ちください…</string>
+
+    <string name="device_distance">デバイスの距離</string>
+    <string name="proximity_read_range_setting">非接触読み取り距離</string>
+
+    <string name="edit_door_re_lock_time">ドアリロックタイムの編集（1~1800秒）</string>
+    <string name="please_enter_the_number_of_seconds">秒数を入力してください</string>
+
+    <string name="id">ID</string>
+    <string name="password">パスワード</string>
+    <string name="user_name">ID</string>
+
+    <string name="add_user">ユーザーを追加</string>
+    <string name="Please_Provide_Up_to_16_characters">16文字まで</string>
+    <string name="_4_8_digits">4~8桁</string>
+
+    <string name="user_name_optional">使用者名稱 &#040;非必填&#041;</string>
+
+    <string name="user_info">ユーザー情報</string>
+    <string name="delete">削除</string>
+    <string name="password_pin_code">パスワード / PINコード(4~8桁）</string>
+    <string name="user_name_up_to_12_characters">使用者名稱 &#040;最多12個字元&#041;</string>
+    <string name="access_types_schedule">アクセスタイプ</string>
+
+    <string name="types">アクセスタイプ</string>
+    <string name="permanent">常時</string>
+    <string name="schedule">スケジュール</string>
+    <string name="access_times">アクセス制限回数</string>
+    <string name="access_times_2">アクセス数を入力してください</string>
+    <string name="recurrent">自動更新</string>
+    <string name="start">スタート</string>
+    <string name="end">終了</string>
+    <string name="repeat">リピート</string>
+
+    <string name="start_time">スタート</string>
+    <string name="end_time">終了</string>
+
+    <string name="select_repeat">リピート</string>
+
+    <string-array name="week">
+        <item>毎週月曜日</item>
+        <item>毎週火曜日</item>
+        <item>毎週水曜日</item>
+        <item>毎週木曜日</item>
+        <item>毎週金曜日</item>
+        <item>毎週土曜日</item>
+        <item>毎週日曜日</item>
+    </string-array>
+
+    <string name="monday">毎週月曜日</string>
+    <string name="tuesday">毎週火曜日</string>
+    <string name="wednesday">毎週水曜日</string>
+    <string name="thursday">毎週木曜日</string>
+    <string name="friday">毎週金曜日</string>
+    <string name="saturday">毎週土曜日</string>
+    <string name="sunday">毎週日曜日</string>
+
+    <string name="date">日付</string>
+    <string name="device">アンロックした人</string>
+
+    <string name="add_more">更に追加</string>
+
+    <string name="done">完了</string>
+    <string name="please_setting_proximity_read_range">非接触読み取り距離</string>
+    <string name="msg_password_error">パスワードが間違っています。もう一度トライしてください</string>
+    <string name="msg_please_enter_account">IDを入力してください</string>
+    <string name="msg_please_enter_password_1">パスワードを入力してください</string>
+    <string name="msg_please_enter_password_2">4~8桁</string>
+
+    <string name="edit_device_name">デバイス名の編集</string>
+    <string name="up_to_16_characters">16文字まで</string>
+    <string name="msg_please_enter_device_name">デバイス名の編集</string>
+    <string name="msg_delete">ユーザーを削除しますか？</string>
+
+    <string name="search">探す</string>
+
+    <string name="restore_all_data_now">今全てのデータを今復元しますか？</string>
+    <string name="backup_all_data_now">今全てのデータをバックアップしますか？</string>
+    <string name="restore_check_dialog_title">このデバイスを本当に復元しますか？</string>
+    <string name="backup_dialog_message">データのバックアップ中…</string>
+    <string name="backup_dialog_title">デバイスデータのバックアップ</string>
+    <string name="restore_dialog_title">デバイスのデータの復元</string>
+    <string name="restore_dialog_message">バックアップの復元中…</string>
+    <string name="restore_status">復元のステータス</string>
+    <string name="restore_status_file_not_found">バックアップファイルが見つかりません バックアップを先に行ってください</string>
+    <string name="restore_success">完了</string>
+    <string name="msg_searching">セットアップのためにBluetoothに接続してください</string>
+    <string name="if_you_forget_your_id_or_password">IDまたはパスワードを忘れたら管理者に確認してください</string>
+    <string name="hello_1">Hello！</string>
+    <string name="settings_device_vr">ファームウエアのバージョン</string>
+    <string name="device_time">デバイスの時間</string>
+    <string name="about_us">会社概要</string>
+    <string name="automatic_setting">オート設定</string>
+    <string name="time">Time: </string>
+    <string name="backup_status">バックアップ　ステータス</string>
+    <string name="backup_completed">バックアップ　ステータス</string>
+    <string name="restore_completed">復元完了</string>
+    <string name="download_dialog_title">"ダウンロード "</string>
+    <string name="download_dialog_message">ロード中…</string>
+    <string name="enable_keypad_pin_code_to_access">キーパッド　アクセス</string>
+    <string name="every_week">毎週</string>
+    <string name="Enroll">登録</string>
+    <string name="Permanent">常時</string>
+    <string name="Schedule">スケジュール</string>
+    <string name="Recurrent">自動更新</string>
+    <string name="Access_Times">アクセス制限回数</string>
+    <string name="weekly_Sun">[日]</string>
+    <string name="weekly_Mon">[月]</string>
+    <string name="weekly_Tue">[火]</string>
+    <string name="weekly_Wed">[水]</string>
+    <string name="weekly_Thu">[木]</string>
+    <string name="weekly_Fri">[金]</string>
+    <string name="weekly_Sat">[土]</string>
+    <string name="enroll_dialog_title">ユーザーの登録</string>
+    <string name="AUTO_ENABLE_CONFLICT">先ず「AUTO」を無効にしてください</string>
+    <string name="characters_16">16文字まで</string>
+    <string name="program_success">Success</string>
+    <string name="program_fail">Fail</string>
+    <string name="Device_Model">デバイスのモデル:</string>
+    <string name="openType_Button">押しボタン</string>
+    <string name="openType_Alarm">アラーム</string>
+    <string name="openType_Keypad">キーパッド</string>
+    <string name="settings_history_list"> ヒストリーリスト</string>
+    <string name="settings_users_manage_list"> ユーザーリスト</string>
+    <string name="progress_dialog_hide_btn_title">非表示</string>
+    <string name="progress_dialog_cancel_btn_title">キャンセル</string>
+    <string name="no_user_note">ユーザーがいません!!</string>
+    <string name="users_manage_edit_status_Admin_name">Invalid ID !!</string>
+    <string name="users_manage_edit_status_Admin_pwd">Invalid Password!!</string>
+    <string name="users_manage_edit_status_duplication_name">IDの複製 !!</string>
+    <string name="ID">ID</string>
+    <string name="Password">パスワード</string>
+    <string name="users_edit_access_control_dialog_type_times_mark">現在のアクセス回数：</string>
+    <string name="users_id_edit_dialog_title">IDの編集：（16文字）</string>
+    <string name="users_pwd_edit_dialog_title">パスワードの編集：(4~8桁）</string>
+    <string name="Confirm">承認</string>
+    <string name="APP_version">APPのバージョン:</string>
+    <string name="over_range_alarm">Over range</string>
+
+</resources>

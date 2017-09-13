@@ -733,7 +733,8 @@ public class SettingActivity extends bpActivity implements View.OnClickListener 
             case BPprotocol.cmd_device_time:
 
                 if(cmdType == (byte) BPprotocol.type_read){
-
+                    for(int i=0;i<data.length;i++)
+                    Util.debugMessage(TAG,String.format("Time[%d]=%02x\r\n",i,data[i]),true);
                     updata_device_time(data);
                 }else{
 
@@ -941,7 +942,10 @@ public class SettingActivity extends bpActivity implements View.OnClickListener 
 
     private void updata_device_time(byte data[]){
         String deviceTimeStr = "";
-        Calendar deviceDataTime  = Calendar.getInstance();;
+        Calendar deviceDataTime  = Calendar.getInstance();
+
+        Util.debugMessage(TAG,String.format("curr_Y =%04d\r\n, d_Y= %04x=", deviceDataTime.get(Calendar.YEAR),(((data[0] << 8) & 0x0000ff00) | (data[1] & 0x000000ff))),true);
+        if( deviceDataTime.get(Calendar.YEAR) < (((data[0] << 8) & 0x0000ff00) | (data[1] & 0x000000ff)))
         deviceDataTime.set(Calendar.YEAR,((data[0] << 8) & 0x0000ff00) | (data[1] & 0x000000ff));
         deviceDataTime.set(Calendar.MONTH,data[2]-1);
         deviceDataTime.set(Calendar.DAY_OF_MONTH,data[3]);

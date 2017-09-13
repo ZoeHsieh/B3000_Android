@@ -180,7 +180,7 @@
     <string name="openType_Button">Bouton</string>
     <string name="openType_Alarm">Alarme</string>
     <string name="openType_Keypad">Clavier</string>
-    <string name="settings_history_list"> History List</string>
+    <string name="settings_history_list">" Liste des événements"</string>
     <string name="settings_users_manage_list"> Liste des utilisateurs</string>
     <string name="progress_dialog_hide_btn_title">CACHER</string>
     <string name="progress_dialog_cancel_btn_title">Effacer</string>

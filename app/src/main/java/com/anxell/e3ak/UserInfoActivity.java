@@ -42,6 +42,7 @@ import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class UserInfoActivity extends bpActivity implements View.OnClickListener {
@@ -293,8 +294,42 @@ public class UserInfoActivity extends bpActivity implements View.OnClickListener
                 Resources res = getResources();
                 Calendar calendar = Calendar.getInstance();
                 String limitContent = "";
+                int isfirstAdd = 0;
+                for(int i=0;i<startTime.length;i++) {
+                    if (startTime[i]==0x00){
+                        ++isfirstAdd;
+                    }
 
+                }
+                if(isfirstAdd == 7){
+                    data[2] = (byte)(calendar.get(Calendar.YEAR) >> 8);
+                    data[3] = (byte)(calendar.get(Calendar.YEAR)&0x00FF);
+                    data[4] = (byte)(byte)(calendar.get(Calendar.MONTH)+1);
+                    data[5] = (byte)(byte)(calendar.get(Calendar.DAY_OF_MONTH));
+                    data[6] = (byte)(byte)(calendar.get(Calendar.HOUR_OF_DAY));
+                    data[7] = (byte)(byte)(calendar.get(Calendar.MINUTE));
+                    data[8] = (byte)(byte)(calendar.get(Calendar.SECOND));
+                    data[9] = (byte)(calendar.get(Calendar.YEAR) >> 8);
+                    data[10] = (byte)(calendar.get(Calendar.YEAR)&0x00FF);
+                    data[11] = (byte)(byte)(calendar.get(Calendar.MONTH)+1);
+                    data[12] = (byte)(byte)(calendar.get(Calendar.DAY_OF_MONTH));
+                    data[13] = (byte)(byte)(calendar.get(Calendar.HOUR_OF_DAY));
+                    data[14] = (byte)(byte)(calendar.get(Calendar.MINUTE));
+                    data[15] = (byte)(byte)(calendar.get(Calendar.SECOND));
 
+                }else{
+                if(calendar.get(Calendar.YEAR) > (((data[2] << 8) & 0x0000ff00) | (data[3] & 0x000000ff)))
+                {
+                    data[2] = (byte)(calendar.get(Calendar.YEAR) >> 8);
+                    data[3] = (byte)(calendar.get(Calendar.YEAR)&0x00FF);
+                }
+
+                if(calendar.get(Calendar.YEAR) > (((data[9] << 8) & 0x0000ff00) | (data[10] & 0x000000ff)))
+                {
+                    data[9] = (byte)(calendar.get(Calendar.YEAR) >> 8);
+                    data[10] = (byte)(calendar.get(Calendar.YEAR)&0x00FF);
+                }
+                }
                 mKeyPadSwitch.setSwitchCheck(isKeypad);
 
                 if (limitType == BPprotocol.LIMIT_TYPE_NA) {
@@ -304,11 +339,16 @@ public class UserInfoActivity extends bpActivity implements View.OnClickListener
                     mLimitTypeTV.setValue(getString(R.string.schedule));
                     int year = ((startTime[0] << 8) & 0x0000ff00) | (startTime[1] & 0x000000ff);
 
-                    calendar.set(year,startTime[2],startTime[3],startTime[4],startTime[5],startTime[6]);
-                    String startTimeStr = Util.Convert_Date_Time_Str(calendar);
+                    calendar.set(year,startTime[2]-1,startTime[3],startTime[4],startTime[5],startTime[6]);
+                    Date date = calendar.getTime();
+                    String startTimeStr = dateTimeFormat(date); //Util.Convert_Date_Time_Str(calendar);
+                    Util.debugMessage(TAG,"start date="+date.toString(),debugFlag);
                     year = ((endTime[0] << 8) & 0x0000ff00) | (endTime[1] & 0x000000ff);
-                    calendar.set(year,endTime[2],endTime[3],endTime[4],endTime[5],endTime[6]);
-                    String endTimeStr = Util.Convert_Date_Time_Str(calendar);
+                    calendar.set(year,endTime[2]-1,endTime[3],endTime[4],endTime[5],endTime[6]);
+                    date = calendar.getTime();
+                    Util.debugMessage(TAG,"end date="+date.toString(),debugFlag);
+
+                    String endTimeStr = dateTimeFormat(date);//Util.Convert_Date_Time_Str(calendar);
                     limitContent = startTimeStr + "~" + endTimeStr;
                 }else if (limitType == BPprotocol.LIMIT_TYPE_TIMES) {
                     mLimitTypeTV.setValue(getString(R.string.access_times));
