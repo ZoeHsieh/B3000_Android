@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 /**
  * Created by zoe on 2018/6/11.
+ * taggggggg
  */
 
 public class AdvertisingData {
