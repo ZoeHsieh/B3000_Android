@@ -2,6 +2,8 @@ package com.anxell.e3ak.transport;
 
 import android.os.Process;
 
+import com.anxell.e3ak.BuildConfig;
+
 /**
  * Created by Sean on 7/25/2017.
  */
@@ -30,12 +32,28 @@ public class APPConfig {
     public static final String deviceBddrTag = "bdAddrTag";
     public static final String isAutoTag = "isAutoTag";
     public static final String ADMINPWD_Tag = ADMIN_ID+"PWD";
-    public static final String AppVersion = "v1.4.1";
+    public static final String AppVersion = BuildConfig.VERSION_NAME;
+
+    public static final AdvertisingData advertisingData = new AdvertisingData();
+    public static final String deviceSeries = "BK-3000B,BK-3000S";  //0322 新增型號Easiprox⁺,Easiprox⁺ Slim,DG-800⁺,DG-160⁺
+    public static final String CustomID = (String)APPConfig.advertisingData.CUSTOM_IDs.get("0001");
 
 
     public static int Convert_RSSI_to_LEVEL(int rssi)
     {
-        return ((rssi - E3K_DEVICES_BLE_RSSI_MIN) / E3K_DEVICES_BLE_RSSI_LEVEL_CONVERT_BASE);
+//        return ((rssi - E3K_DEVICES_BLE_RSSI_MIN) / E3K_DEVICES_BLE_RSSI_LEVEL_CONVERT_BASE);
+        int value = (E3K_DEVICES_BLE_RSSI_MAX - rssi) / E3K_DEVICES_BLE_RSSI_LEVEL_CONVERT_BASE;
+
+        if (value > E3K_DEVICES_BLE_RSSI_LEVEL_MAX)
+        {
+            value = E3K_DEVICES_BLE_RSSI_LEVEL_MAX;
+        }
+
+        if (value < E3K_DEVICES_BLE_RSSI_LEVEL_MIN)
+        {
+            value = E3K_DEVICES_BLE_RSSI_LEVEL_MIN;
+        }
+        return value;
     }
 
     public static int Convert_LEVEL_to_RSSI(int level)

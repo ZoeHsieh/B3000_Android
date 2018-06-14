@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.content.FileProvider;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -49,7 +50,6 @@ public class HistoryActivity extends bpActivity implements View.OnClickListener,
     private ProgressDialog progressDialog = null;
     private boolean isLiveHTHD = false;
     private boolean isCancel = false;
-    private static List<HistoryData> mHistoryDatas = new ArrayList<>();;
     private final byte OPEN_TYPE_NA = 0x00;  //Not Available
     private final byte OPEN_TYPE_ANDROID = 0x01;  //Android
     private final byte OPEN_TYPE_IOS = 0x02;  //IOS
@@ -148,6 +148,8 @@ public class HistoryActivity extends bpActivity implements View.OnClickListener,
 
 
                     }else{
+                        mHistoryDatas.clear();
+                        mAdapter.notifyDataSetChanged();
                         historyMax = 0;
                         isHistoryDownloadOK = true;
                     }
@@ -376,7 +378,7 @@ public class HistoryActivity extends bpActivity implements View.OnClickListener,
                 out.close();
 
                 Uri uriToImage;
-                uriToImage = Uri.fromFile(file);
+                uriToImage = FileProvider.getUriForFile(HistoryActivity.this, BuildConfig.APPLICATION_ID + ".provider",file);
 
                 Intent shareIntent = new Intent();
                 shareIntent.setAction(Intent.ACTION_SEND);

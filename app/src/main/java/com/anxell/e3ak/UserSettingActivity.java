@@ -3,14 +3,18 @@ package com.anxell.e3ak;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -20,6 +24,7 @@ import com.anxell.e3ak.custom.FontTextView;
 import com.anxell.e3ak.custom.My2TextView;
 import com.anxell.e3ak.custom.My4TextView;
 import com.anxell.e3ak.custom.MySwitch;
+import com.anxell.e3ak.custom.MyToolbar;
 import com.anxell.e3ak.transport.APPConfig;
 import com.anxell.e3ak.transport.AdminMenu;
 import com.anxell.e3ak.transport.BPprotocol;
@@ -53,6 +58,8 @@ public class UserSettingActivity extends bpActivity implements View.OnClickListe
     private ScrollView settingUI;
     private FontTextView versionTV;
     private ProgressBar loadDeviceDataBar;
+    private MyToolbar toolbar;
+    private ImageButton toolbar_right_button1;
     private String deviceBDDR = "";
     private double vr = 0.0;
     private double vrLimit = 1.02;
@@ -79,6 +86,19 @@ public class UserSettingActivity extends bpActivity implements View.OnClickListe
         Util.debugMessage(TAG,"expectLevel="+expectLevel,debugFlag);
         mExpectLEVELTV.setValue(""+expectLevel);
         setListeners();
+
+
+        String language =Locale.getDefault().getLanguage();
+        Util.debugMessage(TAG,language,debugFlag);
+
+        if (language.equals("en") || language.equals("it") || language.equals("fr") || language.equals("ja") || language.equals("es"))
+        {
+            toolbar_right_button1.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            toolbar_right_button1.setVisibility(View.INVISIBLE);
+        }
 
     }
 
@@ -126,18 +146,30 @@ public class UserSettingActivity extends bpActivity implements View.OnClickListe
         mAdminPWDTV.setVisibility(View.GONE);
         mExpectLEVELTV = (My2TextView) findViewById(R.id.proximityReadRange);
         loadDeviceDataBar = (ProgressBar)findViewById(R.id.setting_loadingBar);
-       loadDeviceDataBar.setVisibility(View.GONE);
+        loadDeviceDataBar.setVisibility(View.GONE);
         findViewById(R.id.user).setVisibility(View.GONE);
         findViewById(R.id.history).setVisibility(View.GONE);
         findViewById(R.id.backup).setVisibility(View.GONE);
         findViewById(R.id.restore).setVisibility(View.GONE);
 
+        toolbar = (MyToolbar) findViewById(R.id.toolbarView);
+        toolbar_right_button1 = (ImageButton) findViewById(R.id.rightIcon1);
     }
 
 
     private void setListeners() {
         findViewById(R.id.proximityReadRange).setOnClickListener(this);
         findViewById(R.id.aboutUs).setOnClickListener(this);
+
+
+        toolbar.setRight1IconClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openUserFAQ();
+            }
+        });
+
+
     }
 
     @Override
@@ -203,6 +235,17 @@ public class UserSettingActivity extends bpActivity implements View.OnClickListe
 
         overridePendingTransitionRightToLeft();
     }
+
+
+
+
+
+    private void openUserFAQ() {
+        Intent intent = new Intent(this, UserFAQ.class);
+        startActivity(intent);
+        overridePendingTransitionRightToLeft();
+    }
+
 
 
 

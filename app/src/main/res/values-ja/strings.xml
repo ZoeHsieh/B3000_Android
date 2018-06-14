@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">E3AK</string>
+    <string name="app_name">ROFU B3000</string>
 
     <string name="bluetooth_access_control_system">Bluetooth Access Control System</string>
-    <string name="anxell_technology_coproration">&#169; 2017 Anxell Technology Coproration</string>
+    <string name="anxell_technology_coproration">© 2018 Copyright ROFU Security International Corp.</string>
 
     <string name="hello">Hello!</string>
     <string name="welcome">Welcome</string>
@@ -15,7 +15,7 @@
 
     <string name="hello_user">Hello! %1$s.</string>
     <string name="please_enter_account">Your ID</string>
-    <string name="please_enter_password">パスワード</string>
+    <string name="please_enter_password">パスコード</string>
     <string name="you_can_find_the_password_from_the_manual">You can find default password from the manual. Please change your Admin password for security control.</string>
     <string name="there_is_no_users">ユーザーがいません、追加しますか？</string>
 
@@ -36,9 +36,9 @@
     <string name="backup">バックアップデータ</string>
     <string name="revert">バックアップの復元</string>
     <string name="device_name">デバイス名</string>
-    <string name="settings_Admin_pwd">アドミン  パスワード</string>
-    <string name="settings_Admin_pwd_Edit">アドミンパスワードの編集</string>
-    <string name="users_manage_edit_status_duplication_password">パスワードの複製 !!</string>
+    <string name="settings_Admin_pwd">管理者パスコード</string>
+    <string name="settings_Admin_pwd_Edit">管理者パスコードの編集</string>
+    <string name="users_manage_edit_status_duplication_password">パスコードの複製 !!</string>
     <string name="door_sensor">ドアセンサー</string>
     <string name="door_lock_action">ロックアクション</string>
 
@@ -47,7 +47,7 @@
     <string name="always_locked">常にロック</string>
 
     <string name="tamper_sensor">衝撃アラーム センサー</string>
-    <string name="proximity_read_range">非接触読み取り距離</string>
+    <string name="proximity_read_range">オート時の読み取り距離</string>
     <string name="door_re_lock_time">ドアリロックタイム</string>
     <string name="sec">%1$s 秒</string>
 
@@ -61,13 +61,13 @@
     <string name="please_wait">お待ちください…</string>
 
     <string name="device_distance">デバイスの距離</string>
-    <string name="proximity_read_range_setting">非接触読み取り距離</string>
+    <string name="proximity_read_range_setting">オート時の読み取り距離</string>
 
     <string name="edit_door_re_lock_time">ドアリロックタイムの編集（1~1800秒）</string>
     <string name="please_enter_the_number_of_seconds">秒数を入力してください</string>
 
     <string name="id">ID</string>
-    <string name="password">パスワード</string>
+    <string name="password">パスコード</string>
     <string name="user_name">ID</string>
 
     <string name="add_user">ユーザーを追加</string>
@@ -78,7 +78,7 @@
 
     <string name="user_info">ユーザー情報</string>
     <string name="delete">削除</string>
-    <string name="password_pin_code">パスワード / PINコード(4~8桁）</string>
+    <string name="password_pin_code">パスコード(4~8桁）</string>
     <string name="user_name_up_to_12_characters">使用者名稱 &#040;最多12個字元&#041;</string>
     <string name="access_types_schedule">アクセスタイプ</string>
 
@@ -121,10 +121,10 @@
     <string name="add_more">更に追加</string>
 
     <string name="done">完了</string>
-    <string name="please_setting_proximity_read_range">非接触読み取り距離</string>
-    <string name="msg_password_error">パスワードが間違っています。もう一度トライしてください</string>
+    <string name="please_setting_proximity_read_range">オート時の読み取り距離</string>
+    <string name="msg_password_error">パスコードが間違っています。もう一度トライしてください</string>
     <string name="msg_please_enter_account">IDを入力してください</string>
-    <string name="msg_please_enter_password_1">パスワードを入力してください</string>
+    <string name="msg_please_enter_password_1">パスコードを入力してください</string>
     <string name="msg_please_enter_password_2">4~8桁</string>
 
     <string name="edit_device_name">デバイス名の編集</string>
@@ -145,10 +145,10 @@
     <string name="restore_status_file_not_found">バックアップファイルが見つかりません バックアップを先に行ってください</string>
     <string name="restore_success">完了</string>
     <string name="msg_searching">セットアップのためにBluetoothに接続してください</string>
-    <string name="if_you_forget_your_id_or_password">IDまたはパスワードを忘れたら管理者に確認してください</string>
+    <string name="if_you_forget_your_id_or_password">IDまたはパスコードを忘れたら管理者に確認してください</string>
     <string name="hello_1">Hello！</string>
     <string name="settings_device_vr">ファームウエアのバージョン</string>
-    <string name="device_time">デバイスの時間</string>
+    <string name="device_time">デバイス上の時間</string>
     <string name="about_us">会社概要</string>
     <string name="automatic_setting">オート設定</string>
     <string name="time">Time: </string>
@@ -189,12 +189,37 @@
     <string name="users_manage_edit_status_Admin_pwd">Invalid Password!!</string>
     <string name="users_manage_edit_status_duplication_name">IDの複製 !!</string>
     <string name="ID">ID</string>
-    <string name="Password">パスワード</string>
+    <string name="Password">パスコード</string>
     <string name="users_edit_access_control_dialog_type_times_mark">現在のアクセス回数：</string>
     <string name="users_id_edit_dialog_title">IDの編集：（16文字）</string>
-    <string name="users_pwd_edit_dialog_title">パスワードの編集：(4~8桁）</string>
+    <string name="users_pwd_edit_dialog_title">パスコードの編集：(4~8桁）</string>
     <string name="Confirm">承認</string>
     <string name="APP_version">APPのバージョン:</string>
-    <string name="over_range_alarm">Over range</string>
+    <string name="over_range_alarm">検出範囲外です、0〜255の数字を入力してください。</string>
 
+    <string name="open_fail_permission_denied">アクセスが拒否されました。 あなたの管理者に連絡してください。</string>
+    <string name="open_fail_no_eroll">アクセスが拒否されました。 最初にログインしてアクセスしてください。</string>
+    <string name="eroll_fail">ログインに失敗しました。 ログイン情報を確認するか、管理者に連絡してください。</string>
+    <string name="eroll_success">あなたは正常にログインしました。 あなたは今ドアを開けることができます。</string>
+
+    <string name="tooltip_FAQ">よくある質問</string>
+    <string name="tooltip_dsc_door_sensor">ドアセンサーはデフォルトでは無効になっています。ドアセンサーを有効にするには、 閉回路の磁気センサーに接続する時、またはドアセンサー（またはロックセンサー）出力を備えた監視可能な錠を使用して、ドアの開閉状態をモニターします。</string>
+    <string name="tooltip_dsc_tamper_alarm">衝撃アラームはデフォルトでは無効になっています。 キーパッド/リーダが移動された場合、または盗難や不法に侵入した場合、衝撃アラームを有効にすると、衝撃アラームは破壊や不法侵入を防ぐのに効果的です。 衝撃アラームは、管理者だけがオフにすることができます。</string>
+    <string name="tooltip_dsc_proximity_read_range">自動ロック解除アクセスでは、オート時の読み取り距離を最小1から最大20まで調整できます。 スマートフォンごとに異なる地域や状況によって異なる結果が生じることがあります。</string>
+    <string name="tooltip_dsc_device_time">現在の時間をデバイス上の時間として正確に設定してください。 正確にデータと情報にアクセスするのに役立ちます。</string>
+    <string name="tooltip_dsc_users">最大1000人のユーザ / パスコードが利用可能です。 ユーザー情報を追加 / 削除 / 編集をする事ができます。</string>
+    <string name="tooltip_dsc_history">アクセス履歴は、改ざんを含む1000件のイベントログを追跡しています。 アクセス履歴はExcelファイルにエクスポートできます。</string>
+    <string name="tooltip_dsc_backup">バックアップデータとは、すべてのデータを管理者のスマートフォンにバックアップすることで、デバイス名、アクセス履歴ログ、デバイス時間を除いて復元できます。</string>
+    <string name="tooltip_dsc_restore">バックアップの復元は、管理者のスマートフォンから最後のバックアップを新しいアクセスコントロール・デバイスに復元することです。</string>
+    <string name="tooltip_dsc_admin_passcode">12345は管理者のデフォルトパスコードです。 管理者のパスコードをすぐに変更することが重要です。 管理者のパスコードは、4〜8の数値のパスコードでなければなりません。</string>
+    <string name="tooltip_dsc_reset_title">リセット手順</string>
+    <string name="tooltip_dsc_reset_button_title">PCのリセットボタンでBluetoothキーパッドをリセットするには？</string>
+    <string name="tooltup_dsc_reset_button_detail">1.アクセスコントロール・キーパッド / リーダーの電源を切る。\n2.リセットボタンを押したまま電源を入れます。\n3.リセットの手順を完了するまで長いビープ音が聞こえます。\n4.管理者としてログインし、すべてのユーザをチェックすると、デバイス名、非接触読み取り距離、デバイス時間を除き、すべてのデータが工場出荷時の設定にリセットされ、すべてのデータがクリアされます。</string>
+    <string name="tooltip_dsc_reset_pins_title">PCボード上でリセットピン付きBluetoothリーダーをリセットするには？</string>
+    <string name="tooltup_dsc_reset_pins_detail">1.アクセスコントロール・キーパッド / リーダーの電源を切ります。\n2. 2つのリセットピンを短絡してから電源を入れます。\n3.リセットの手順を完了するまで長いビープ音が聞こえます。\n4.管理者としてログインし、すべてのユーザをチェックすると、デバイス名、非接触読み取り距離、デバイス時間を除き、すべてのデータが工場出荷時の設定にリセットされ、すべてのデータがクリアされます。</string>
+
+    <string name="permission_title">Functionality limited</string>
+    <string name="permission_message_location">Since location access has not been granted, this app will not be able to discover beacons.</string>
+    <string name="permission_message_storage">Since storage access has not been granted, this app will not be able to backup settings.</string>
+    <string name="need_gps">Android OS 6.0 and up require to enable Location service to find nearby Bluetooth devices. Make sure to enable Location service on your phone.</string>
 </resources>

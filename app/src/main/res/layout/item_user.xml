@@ -31,10 +31,10 @@
 
                 <com.anxell.e3ak.custom.FontTextView
                     android:id="@+id/fontTextView"
-                    android:layout_width="80dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
-                    android:gravity="right"
+                    android:gravity="end"
                     android:singleLine="true"
                     android:text="@string/ID"
                     android:textColor="@color/gray3"
@@ -62,10 +62,10 @@
 
                 <com.anxell.e3ak.custom.FontTextView
                     android:id="@+id/fontTextView2"
-                    android:layout_width="80dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
-                    android:gravity="right"
+                    android:gravity="end"
                     android:singleLine="true"
                     android:text="@string/Password"
                     android:textColor="@color/gray3"

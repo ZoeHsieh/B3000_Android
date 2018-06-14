@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">E3AK</string>
+    <string name="app_name">ROFU B3000</string>
 
     <string name="bluetooth_access_control_system">Bluetooth Access Control System</string>
-    <string name="anxell_technology_coproration">&#169; 2017 Anxell Technology Coproration</string>
+    <string name="anxell_technology_coproration">© 2018 Copyright ROFU Security International Corp.</string>
 
     <string name="hello">Hello!</string>
     <string name="welcome">Welcome</string>
@@ -15,9 +15,9 @@
 
     <string name="hello_user">Hello! %1$s.</string>
     <string name="please_enter_account">Your ID</string>
-    <string name="please_enter_password">Password</string>
-    <string name="you_can_find_the_password_from_the_manual">You can find default password from the manual. Please change your Admin password for security control.</string>
-    <string name="there_is_no_users">There\'s no users, add now?</string>
+    <string name="please_enter_password">Passcode</string>
+    <string name="you_can_find_the_password_from_the_manual">You can find default passcode from the manual. Please change your Admin passcode for security control.</string>
+    <string name="there_is_no_users">There\'s no user. Tap "Add" to add new users.</string>
 
     <string name="add">Add</string>
 
@@ -25,8 +25,8 @@
     <string name="cancel">Cancel</string>
     <string name="model">%1$s</string>
     <string name="choose_device">Please Choose </string>
-    <string name="door_closed">DOOR CLOSED</string>
-    <string name="door_opened">DOOR OPENED</string>
+    <string name="door_closed">LOCKED</string>
+    <string name="door_opened">UNLOCKED</string>
     <string name="open">OPEN</string>
     <string name="automatic_sensor_to_open">Auto</string>
 
@@ -36,9 +36,9 @@
     <string name="backup">Backup Data</string>
     <string name="revert">Restore Backup</string>
     <string name="device_name">Device Name</string>
-    <string name="settings_Admin_pwd">Admin Password</string>
-    <string name="settings_Admin_pwd_Edit">Edit Admin Password</string>
-    <string name="users_manage_edit_status_duplication_password">Password Duplication!!</string>
+    <string name="settings_Admin_pwd">Admin Passcode</string>
+    <string name="settings_Admin_pwd_Edit">Edit Admin Passcode</string>
+    <string name="users_manage_edit_status_duplication_password">Passcode Duplication!!</string>
     <string name="door_sensor">Door Sensor</string>
     <string name="door_lock_action">Lock Action</string>
 
@@ -46,8 +46,8 @@
     <string name="always_unlocked">Door Always Unlocked</string>
     <string name="always_locked">Door Always Locked</string>
 
-    <string name="tamper_sensor">Tamper Sensor</string>
-    <string name="proximity_read_range">Proximity Read Range</string>
+    <string name="tamper_sensor">Tamper Alarm</string>
+    <string name="proximity_read_range">Auto Proximity Range</string>
     <string name="door_re_lock_time">Door Re-lock Time</string>
     <string name="sec">%1$s Sec.</string>
 
@@ -61,33 +61,33 @@
     <string name="please_wait">Please wait a moment…</string>
 
     <string name="device_distance">Device Distance</string>
-    <string name="proximity_read_range_setting">Proximity Read Range</string>
+    <string name="proximity_read_range_setting">Auto Proximity Range</string>
 
     <string name="edit_door_re_lock_time">Edit Door Re-lock Time (1~1800 seconds)</string>
     <string name="please_enter_the_number_of_seconds">Please enter the number of seconds</string>
 
     <string name="id">ID</string>
-    <string name="password">Password</string>
+    <string name="password">Passcode</string>
     <string name="user_name">ID</string>
 
     <string name="add_user">Add Users</string>
-    <string name="Please_Provide_Up_to_16_characters">Up to 16 characters</string>
-    <string name="_4_8_digits">4~8 digits</string>
+    <string name="Please_Provide_Up_to_16_characters">ID: Up to 16 characters</string>
+    <string name="_4_8_digits">Passcode: 4~8 digits</string>
 
     <string name="user_name_optional">使用者名稱 &#040;非必填&#041;</string>
 
     <string name="user_info">User Info</string>
     <string name="delete">Delete</string>
-    <string name="password_pin_code">Password/PIN Code (4~8 Digits)</string>
+    <string name="password_pin_code">Passcode (4~8 Digits)</string>
     <string name="user_name_up_to_12_characters">使用者名稱 &#040;最多12個字元&#041;</string>
     <string name="access_types_schedule">Access Types</string>
 
     <string name="types">Access Types</string>
     <string name="permanent">Permanent</string>
-    <string name="schedule">Schedule</string>
+    <string name="schedule">Temporary</string>
     <string name="access_times">Number of Times</string>
     <string name="access_times_2">Please enter Number of Times</string>
-    <string name="recurrent">Recurring</string>
+    <string name="recurrent">Scheduled</string>
     <string name="start">Start</string>
     <string name="end">End</string>
     <string name="repeat">Repeat</string>
@@ -121,10 +121,10 @@
     <string name="add_more">Add more</string>
 
     <string name="done">Done</string>
-    <string name="please_setting_proximity_read_range">Proximity Read Range</string>
-    <string name="msg_password_error">Incorrect password. Please try again</string>
+    <string name="please_setting_proximity_read_range">Auto Proximity Range</string>
+    <string name="msg_password_error">Incorrect passcode. Please try again</string>
     <string name="msg_please_enter_account">Please enter ID</string>
-    <string name="msg_please_enter_password_1">Please enter password</string>
+    <string name="msg_please_enter_password_1">Please enter passcode</string>
     <string name="msg_please_enter_password_2">4~8 digits</string>
 
     <string name="edit_device_name">Edit Device Name</string>
@@ -145,7 +145,7 @@
     <string name="restore_status_file_not_found">Backup File Not Found!! Please Do Backup First!!</string>
     <string name="restore_success">Done</string>
     <string name="msg_searching">You must connect to a Bluetooth device to set up</string>
-    <string name="if_you_forget_your_id_or_password">If you forgot your ID or password, please contact your administrator.</string>
+    <string name="if_you_forget_your_id_or_password">If you forgot your ID or passcode, please contact your administrator.</string>
     <string name="hello_1">Hello！</string>
     <string name="settings_device_vr">Firmware Version</string>
     <string name="device_time">Device Time</string>
@@ -159,9 +159,9 @@
     <string name="download_dialog_message">Loading...</string>
     <string name="enable_keypad_pin_code_to_access">Keypad Access</string>
     <string name="every_week">Every Week</string>
-    <string name="Enroll">Enroll</string>
+    <string name="Enroll">Login</string>
     <string name="Permanent">Permanent</string>
-    <string name="Schedule">Schedule</string>
+    <string name="Schedule">Temporary</string>
     <string name="Recurrent">Recurring</string>
     <string name="Access_Times">Number of Times</string>
     <string name="weekly_Sun">[SUN]</string>
@@ -171,7 +171,7 @@
     <string name="weekly_Thu">[THU]</string>
     <string name="weekly_Fri">[FRI]</string>
     <string name="weekly_Sat">[SAT]</string>
-    <string name="enroll_dialog_title">Enroll User</string>
+    <string name="enroll_dialog_title">Login</string>
     <string name="AUTO_ENABLE_CONFLICT">Please disable \'AUTO\' first!!</string>
     <string name="characters_16">Please Provide Up to 16 characters</string>
     <string name="program_success">Success</string>
@@ -184,17 +184,42 @@
     <string name="settings_users_manage_list"> Users List</string>
     <string name="progress_dialog_hide_btn_title">HIDE</string>
     <string name="progress_dialog_cancel_btn_title">CANCEL</string>
-    <string name="no_user_note">There\'s no users!!</string>
+    <string name="no_user_note">There\'s no user. Tap "Add" to add new users.</string>
     <string name="users_manage_edit_status_Admin_name">Invalid ID !!</string>
-    <string name="users_manage_edit_status_Admin_pwd">Invalid Password!!</string>
+    <string name="users_manage_edit_status_Admin_pwd">Invalid Passcode!!</string>
     <string name="users_manage_edit_status_duplication_name">ID Duplication!!</string>
     <string name="ID">ID</string>
-    <string name="Password">Password</string>
-    <string name="users_edit_access_control_dialog_type_times_mark">Current number of times:</string>        
+    <string name="Password">Passcode</string>
+    <string name="users_edit_access_control_dialog_type_times_mark">Current number of times:</string>
     <string name="users_id_edit_dialog_title">Edit ID: (16 characters)</string>
-    <string name="users_pwd_edit_dialog_title">Edit Password: (4~8 digits)</string>
+    <string name="users_pwd_edit_dialog_title">Edit Passcode: (4~8 digits)</string>
     <string name="Confirm">Confirm</string>
     <string name="APP_version">APP version:</string>
-    <string name="over_range_alarm">Over range</string>
+    <string name="over_range_alarm">Out of range!! Please enter a number within 0-255.</string>
 
+    <string name="open_fail_permission_denied">Access Denied. Please Contact Your Administrator.</string>
+    <string name="open_fail_no_eroll">Access Denied. Please Login First to Get Access.</string>
+    <string name="eroll_fail">Login Failed. Please Verify Your Login Information Or Contact Your Administrator.</string>
+    <string name="eroll_success">You Have Successfully Logged In. You May Now Unlock A Door.</string>
+
+    <string name="tooltip_FAQ">FAQ</string>
+    <string name="tooltip_dsc_door_sensor">Door Sensor is deactivated by default. To enable Door Sensor when you connect to a closed-circuit magnetic sensors or a monitored door lock that has door sensor (or lock sensor) outputs to monitor the open or closed state of a door.</string>
+    <string name="tooltip_dsc_tamper_alarm">Tamper Alarm is deactivated by default. Once activated the Tamper Alarm if the keypad/reader has been moved or if burglars or vandals break in, Tamper Alarm will be effectively for deterring potential thieves and vandals. Note that Tamper Alarm only can be switched off by the Administrator.</string>
+    <string name="tooltip_dsc_proximity_read_range">You can adjust Auto Proximity Range between minimum 1 to maximum 20 for your Auto unlock access. May have different results due to different areas and circumstances with different smartphones.</string>
+    <string name="tooltip_dsc_device_time">Make sure to set up Device Time precisely as your current time zone of where you are. It helps having correct and precise access data and information.</string>
+    <string name="tooltip_dsc_users">Up to 1000 users/passcodes available. You can Add/Delete/Edit user information.</string>
+    <string name="tooltip_dsc_history">Audit Trail is tracking last 1000 event logs, including Tamper Alarm. Audit Trail can be exported in an excel file.</string>
+    <string name="tooltip_dsc_backup">Backup Data is to backup all data to Administrator\'s smartphone and can be restored, except Device Name, Audit Trail logs and Device Time.</string>
+    <string name="tooltip_dsc_restore">Restore Backup is to restore last backup from Administrator\’s smartphone to a new Access Control Device.</string>
+    <string name="tooltip_dsc_admin_passcode">12345 is Admin default passcode. It’s important to change your Admin passcode immediately. Admin passcode must be between 4 to 8 numeric passcodes.</string>
+    <string name="tooltip_dsc_reset_title">Reset Procedures</string>
+    <string name="tooltip_dsc_reset_button_title">How to Reset a Bluetooth Keypad with Reset Button on the PC board?</string>
+    <string name="tooltup_dsc_reset_button_detail">1. Power off Access Control Keypad/Reader.\n2. Press and hold the Reset Button, then power on.\n3. Hear a long beep to complete resetting procedures.\n4. Login as Admin and check all users, audit trail events are all cleared and all data is reset to factory default setting, except device name and device time.</string>
+    <string name="tooltip_dsc_reset_pins_title">How to Reset a Bluetooth Reader with Reset Pins on the PC board?</string>
+    <string name="tooltup_dsc_reset_pins_detail">1. Power off Access Control Keypad/Reader.\n2. Short the two Reset Pins, then power on.\n3. Hear a long beep to complete resetting procedures.\n4. Login as Admin and check all users, audit trail events are all cleared and all data is reset to factory default setting, except device name and device time.</string>
+
+    <string name="permission_title">Functionality limited</string>
+    <string name="permission_message_location">Since location access has not been granted, this app will not be able to discover beacons.</string>
+    <string name="permission_message_storage">Since storage access has not been granted, this app will not be able to backup settings.</string>
+    <string name="need_gps">Android OS 6.0 and up require to enable Location service to find nearby Bluetooth devices. Make sure to enable Location service on your phone.</string>
 </resources>

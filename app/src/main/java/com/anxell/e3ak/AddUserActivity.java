@@ -75,8 +75,10 @@ public class AddUserActivity extends bpActivity implements View.OnClickListener 
 
             }
         });
+
         mPasswordET.setInputType(this.getResources().getConfiguration().KEYBOARD_12KEY);
         mPasswordET.setTextChangedListener(new TextWatcher() {
+
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -89,7 +91,8 @@ public class AddUserActivity extends bpActivity implements View.OnClickListener 
 
             @Override
             public void afterTextChanged(Editable s) {
-                if ((s.toString().length() < 4) || (mIdET.toString().isEmpty()))
+
+                if ((mPasswordET.getLength() <4) || (mIdET.getLength() <=0 ))
                     isADDOK = false;
                 else
                     isADDOK = true;
@@ -98,7 +101,7 @@ public class AddUserActivity extends bpActivity implements View.OnClickListener 
                 try {
 
                     int isNumeric = Integer.parseInt(mPasswordET.getText().toString());
-                    isADDOK = true;
+
                 }catch(NumberFormatException e){
                     isADDOK = false;
                 }

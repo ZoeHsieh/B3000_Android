@@ -46,38 +46,38 @@ import java.util.Date;
 import java.util.List;
 
 public class UserInfoActivity extends bpActivity implements View.OnClickListener {
-            private final String TAG = UserInfoActivity.class.getSimpleName().toString();
-            private boolean debugFlag = true;
-            private My2TextView mLimitTypeTV;
-            private MySwitch mKeyPadSwitch;
-            private MyEditText mIDETV;
-            private MyEditText mPWDETV;
-            private FontTextView mScheduleTV;
-            private String deviceBD_ADDR = "";
-            private UserData userData;
-            private byte currUserProperty[] = new byte[BPprotocol.len_UserProperty_read];
-            private byte tmpID[] = new byte[BPprotocol.UserID_maxLen];
-            private byte tmpPWD[] = new byte[BPprotocol.UserPD_maxLen];
-            public static byte tmpWriteUserProperty[] = new byte[BPprotocol.len_UserProperty_write];
-            public static boolean isUpdateProperty = false;
+    private final String TAG = UserInfoActivity.class.getSimpleName().toString();
+    private boolean debugFlag = true;
+    private My2TextView mLimitTypeTV;
+    private MySwitch mKeyPadSwitch;
+    private MyEditText mIDETV;
+    private MyEditText mPWDETV;
+    private FontTextView mScheduleTV;
+    private String deviceBD_ADDR = "";
+    private UserData userData;
+    private byte currUserProperty[] = new byte[BPprotocol.len_UserProperty_read];
+    private byte tmpID[] = new byte[BPprotocol.UserID_maxLen];
+    private byte tmpPWD[] = new byte[BPprotocol.UserPD_maxLen];
+    public static byte tmpWriteUserProperty[] = new byte[BPprotocol.len_UserProperty_write];
+    public static boolean isUpdateProperty = false;
 
-            @Override
-            protected void onCreate(Bundle savedInstanceState) {
-                super.onCreate(savedInstanceState);
-                Initial(getLocalClassName());
-                setContentView(R.layout.activity_user_info);
-                registerReceiver(mGattUpdateReceiver,  getIntentFilter());
-                Bundle bundle =getIntent().getExtras();
-                deviceBD_ADDR =  bundle.getString(APPConfig.deviceBddrTag);
-                userData = (UserData) bundle.getSerializable("data");
-                findViews();
-                setListeners();
-                mIDETV.setText(userData.getId());
-                mPWDETV.setText(userData.getPasswrod());
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Initial(getLocalClassName());
+        setContentView(R.layout.activity_user_info);
+        registerReceiver(mGattUpdateReceiver,  getIntentFilter());
+        Bundle bundle =getIntent().getExtras();
+        deviceBD_ADDR =  bundle.getString(APPConfig.deviceBddrTag);
+        userData = (UserData) bundle.getSerializable("data");
+        findViews();
+        setListeners();
+        mIDETV.setText(userData.getId());
+        mPWDETV.setText(userData.getPasswrod());
 
-                bpProtocol.getUserProperty(userData.getUserIndex());
-                currentClassName = getLocalClassName();
-            }
+        bpProtocol.getUserProperty(userData.getUserIndex());
+        currentClassName = getLocalClassName();
+    }
 
     @Override
     protected void onRestart() {
@@ -89,175 +89,188 @@ public class UserInfoActivity extends bpActivity implements View.OnClickListener
             bpProtocol.setProperty(tmpWriteUserProperty);
             isUpdateProperty = false;
         }
-            currentClassName = getLocalClassName();
+        currentClassName = getLocalClassName();
 
 
     }
 
     private void findViews() {
-                mScheduleTV = (FontTextView) findViewById(R.id.schedule);
-                mIDETV = (MyEditText)findViewById(R.id.id_info);
-                mPWDETV = (MyEditText)findViewById(R.id.password_info);
-                //mIDETV.setViewFocusable(false);
-                //mPWDETV.setViewFocusable(false);
-                //mIDETV.setCursorEnable(false);
-                //mPWDETV.setCursorEnable(false);
-                mIDETV.setInputType(InputType.TYPE_NULL);
-                mIDETV.setClickable(true);
-                mIDETV.setOnClickListener(this);
-                mPWDETV.setInputType(InputType.TYPE_NULL);
-                mKeyPadSwitch = (MySwitch)findViewById(R.id.keypad_switch);
-                mKeyPadSwitch.setSwitchClickable(false);
-                mLimitTypeTV = (My2TextView) findViewById(R.id.limitType);
+        mScheduleTV = (FontTextView) findViewById(R.id.schedule);
+        mIDETV = (MyEditText)findViewById(R.id.id_info);
+        mPWDETV = (MyEditText)findViewById(R.id.password_info);
+        //mIDETV.setViewFocusable(false);
+        //mPWDETV.setViewFocusable(false);
+        //mIDETV.setCursorEnable(false);
+        //mPWDETV.setCursorEnable(false);
+        mIDETV.setInputType(InputType.TYPE_NULL);
+        mIDETV.setClickable(true);
+        mIDETV.setOnClickListener(this);
+        mPWDETV.setInputType(InputType.TYPE_NULL);
+        mKeyPadSwitch = (MySwitch)findViewById(R.id.keypad_switch);
+        mKeyPadSwitch.setSwitchClickable(false);
+        mLimitTypeTV = (My2TextView) findViewById(R.id.limitType);
 
-            }
+        mIDETV.findViewById(R.id.value).setFocusable(false);
+        mIDETV.findViewById(R.id.value).setFocusableInTouchMode(false);
+        mPWDETV.findViewById(R.id.value).setFocusable(false);
+        mPWDETV.findViewById(R.id.value).setFocusableInTouchMode(false);
 
-            private void setListeners() {
-                MyToolbar toolbar = (MyToolbar) findViewById(R.id.toolbarView);
-                toolbar.setRightBtnClickListener(this);
-                mKeyPadSwitch.setOnClickListener(this);
-                mPWDETV.setETVOnClickListener(this);
-                mIDETV.setETVOnClickListener(this);
-                mIDETV.setTextTag("IDETV");
-                mPWDETV.setTextTag("PDETV");
-                //LinearLayout userIDlayOut = (LinearLayout)findViewById(R.id.userID_layOut);
-                //LinearLayout userPwdlayOut = (LinearLayout)findViewById(R.id.userPwd_layOut);
-                //userIDlayOut.setOnClickListener(this);
-                //userPwdlayOut.setOnClickListener(this);
-                mLimitTypeTV.setOnClickListener(this);
-            }
+    }
 
-            @Override
-            public void onClick(View view) {
-                Util.debugMessage(TAG,"getEvent ID="+view.getId(),debugFlag);
-                LinearLayout layout = (LinearLayout)findViewById(R.id.userInfoLayout);
+    private void setListeners() {
+        MyToolbar toolbar = (MyToolbar) findViewById(R.id.toolbarView);
+        toolbar.setRightBtnClickListener(this);
+        mKeyPadSwitch.setOnClickListener(this);
+        mPWDETV.setETVOnClickListener(this);
+        mIDETV.setETVOnClickListener(this);
+        mIDETV.setTextTag("IDETV");
+        mPWDETV.setTextTag("PDETV");
+        //LinearLayout userIDlayOut = (LinearLayout)findViewById(R.id.userID_layOut);
+        //LinearLayout userPwdlayOut = (LinearLayout)findViewById(R.id.userPwd_layOut);
+        //userIDlayOut.setOnClickListener(this);
+        //userPwdlayOut.setOnClickListener(this);
+        mLimitTypeTV.setOnClickListener(this);
+    }
 
-                switch (view.getId()) {
-                    case R.id.rightTV:
-                        showDeleteDialog();
-                        break;
+    @Override
+    public void onClick(View view) {
+        Util.debugMessage(TAG,"getEvent ID="+view.getId(),debugFlag);
+        LinearLayout layout = (LinearLayout)findViewById(R.id.userInfoLayout);
 
-                    case R.id.value:
-                        if(view.getTag().equals("IDETV"))
-                        Users_Edit_Dialog_Name(mUserDataList,userData, APPConfig.ADMIN_ID,APPConfig.ADMIN_ENROLL,layout);
-                        else  if(view.getTag().equals("PDETV"))
-                        {
+        switch (view.getId()) {
+            case R.id.rightTV:
+                showDeleteDialog();
+                break;
 
-                            String AdminPWD = sharedPreferences.getString(APPConfig.ADMINPWD_Tag + deviceBD_ADDR, "");
-                            Users_Edit_Dialog_Password(mUserDataList, userData, layout, AdminPWD);
-                        }
-                        break;
-                    case R.id.limitType:
-                        openAccessTypesSchedulePage();
-                        break;
-                    case R.id.keypad_switch:
+            case R.id.value:
+                if(view.getTag().equals("IDETV"))
+                    Users_Edit_Dialog_Name(mUserDataList,userData, APPConfig.ADMIN_ID,APPConfig.ADMIN_ENROLL,layout);
+                else  if(view.getTag().equals("PDETV"))
+                {
 
-                        tmpWriteUserProperty[0] = (byte)(userData.getUserIndex() >> 8 );
-                        tmpWriteUserProperty[1] = (byte)(userData.getUserIndex() & 0xFF);
-                        for(int i=0;i<BPprotocol.len_UserProperty_write-2;i++)
-                            tmpWriteUserProperty[i+2]= currUserProperty[i];
-                        if(mKeyPadSwitch.isSwitchCheck())
-                             tmpWriteUserProperty[2] = 0x00;
-                        else
-                            tmpWriteUserProperty[2] = 0x01;
-                        bpProtocol.setProperty(tmpWriteUserProperty);
-                        break;
+                    String AdminPWD = sharedPreferences.getString(APPConfig.ADMINPWD_Tag + deviceBD_ADDR, "");
+                    Users_Edit_Dialog_Password(mUserDataList, userData, layout, AdminPWD);
                 }
-            }
+                break;
+            case R.id.limitType:
+                openAccessTypesSchedulePage();
+                break;
+            case R.id.keypad_switch:
 
-            private void showDeleteDialog() {
-                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-                dialogBuilder.setTitle(R.string.msg_delete);
-
-                dialogBuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-
-                        UsersActivity2.updateStatus = UsersActivity2.up_user_del;
-                        UsersActivity2.userInfoData = userData;
-                        onBackPressed();
-                    }
-                });
-                dialogBuilder.setNegativeButton(R.string.cancel, null);
-
-                dialogBuilder.show();
-            }
-
-            private void openAccessTypesSchedulePage() {
-                for(int i =0;i<tmpWriteUserProperty.length;i++)
-                    tmpWriteUserProperty[i] = 0x00;
+                tmpWriteUserProperty[0] = (byte)(userData.getUserIndex() >> 8 );
+                tmpWriteUserProperty[1] = (byte)(userData.getUserIndex() & 0xFF);
                 for(int i=0;i<BPprotocol.len_UserProperty_write-2;i++)
                     tmpWriteUserProperty[i+2]= currUserProperty[i];
+                if(mKeyPadSwitch.isSwitchCheck())
+                    tmpWriteUserProperty[2] = 0x00;
+                else
+                    tmpWriteUserProperty[2] = 0x01;
+                bpProtocol.setProperty(tmpWriteUserProperty);
+                break;
+        }
+    }
 
-                for(int i=0;i<tmpWriteUserProperty.length;i++)
-                    Util.debugMessage(TAG,"tmpWriteUserProperty["+i+"]="+String.format("%02x",tmpWriteUserProperty[i]),debugFlag);
-                isUpdateProperty = false;
-                Intent intent = new Intent(this, AccessTypesScheduleActivity.class);
-                startActivity(intent);
+    private void showDeleteDialog() {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setTitle(R.string.msg_delete);
 
-                overridePendingTransitionRightToLeft();
-            }
+        dialogBuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
 
-            @Override
-            public void onBackPressed() {
-                super.onBackPressed();
+                UsersActivity2.updateStatus = UsersActivity2.up_user_del;
                 UsersActivity2.userInfoData = userData;
-                overridePendingTransitionLeftToRight();
-            }
-
-            @Override
-            public boolean onSupportNavigateUp() {
                 onBackPressed();
-                return true;
             }
+        });
+        dialogBuilder.setNegativeButton(R.string.cancel, null);
 
-            @Override
-            public void cmdAnalysis(byte cmd, byte cmdType, byte data[], int datalen) {
-                String  message = "";
-                Util.debugMessage(TAG,"test2",debugFlag);
-                switch ((char) cmd) {
-                    case BPprotocol.cmd_set_user_id:
-                        if (data[0] == BPprotocol.result_success){
-                            message = getResources().getString(R.string.program_success);
-                            int nameLen = BPprotocol.UserID_maxLen;
-                            for(int i=0;i<tmpID.length;i++){
-                                if(tmpID[i]==(byte)BPprotocol.nullData){
-                                    nameLen = i;
-                                    i = tmpID.length+i;
-                                }
-                            }
-                            byte nameArray[]= Arrays.copyOf(tmpID,nameLen);
-                            String userID = new String(nameArray, Charset.forName("UTF-8"));
-                            userData = new UserData(userID, userData.getPasswrod(), userData.getUserIndex());
-                            int o_Position = getUserPosition(userData.getUserIndex());
-                            mUserDataList.remove(o_Position);
-                            mUserDataList.add(o_Position,userData);
-                            mIDETV.setText(userID);
+        dialogBuilder.show();
+    }
 
-                        }else
-                            message = getResources().getString(R.string.program_fail);
-                       // show_toast_msg(message);
-                        break;
-                    case BPprotocol.cmd_set_user_pwd:
-                        if (data[0] == BPprotocol.result_success){
-                            message = getResources().getString(R.string.program_success);
-                            String strPassword = new String(tmpPWD, Charset.forName("UTF-8"));
-                            userData = new UserData(userData.getId(), strPassword, userData.getUserIndex());
-                            int o_Position = getUserPosition(userData.getUserIndex());
-                            mUserDataList.remove(o_Position);
-                            mUserDataList.add(o_Position,userData);
-                            mPWDETV.setText(strPassword);
+    private void openAccessTypesSchedulePage() {
+        for(int i =0;i<tmpWriteUserProperty.length;i++)
+            tmpWriteUserProperty[i] = 0x00;
+        for(int i=0;i<BPprotocol.len_UserProperty_write-2;i++)
+            tmpWriteUserProperty[i+2]= currUserProperty[i];
+
+        for(int i=0;i<tmpWriteUserProperty.length;i++)
+            Util.debugMessage(TAG,"tmpWriteUserProperty["+i+"]="+String.format("%02x",tmpWriteUserProperty[i]),debugFlag);
+        isUpdateProperty = false;
+        Intent intent = new Intent(this, AccessTypesScheduleActivity.class);
+        startActivity(intent);
+
+        overridePendingTransitionRightToLeft();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        UsersActivity2.userInfoData = userData;
+        overridePendingTransitionLeftToRight();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public void cmdAnalysis(byte cmd, byte cmdType, byte data[], int datalen) {
+        String  message = "";
+        Util.debugMessage(TAG,"test2",debugFlag);
+        switch ((char) cmd) {
+            case BPprotocol.cmd_set_user_id:
+                if (data[0] == BPprotocol.result_success){
+                    message = getResources().getString(R.string.program_success);
+                    int nameLen = BPprotocol.UserID_maxLen;
+                    for(int i=0;i<tmpID.length;i++){
+                        if(tmpID[i]==(byte)BPprotocol.nullData){
+                            nameLen = i;
+                            i = tmpID.length+i;
                         }
-                        else
-                            message = getResources().getString(R.string.program_fail);
-                        //show_toast_msg(message);
-                        break;
-                    case BPprotocol.cmd_user_property:
+                    }
+                    byte nameArray[]= Arrays.copyOf(tmpID,nameLen);
+                    String userID = new String(nameArray, Charset.forName("UTF-8"));
+                    userData = new UserData(userID, userData.getPasswrod(), userData.getUserIndex());
+                    int o_Position = getUserPosition(userData.getUserIndex());
+                    mUserDataList.remove(o_Position);
+                    mUserDataList.add(o_Position,userData);
+                    mIDETV.setText(userID);
 
-                        if (cmdType == (byte) BPprotocol.type_read) {
-                            Util.debugMessage(TAG,"test1",debugFlag);
-                            update_UserProperty(data);
-                        }else
-                        if (data[0] == BPprotocol.result_success) {
+                }else
+                    message = getResources().getString(R.string.program_fail);
+                // show_toast_msg(message);
+                break;
+            case BPprotocol.cmd_set_user_pwd:
+                if (data[0] == BPprotocol.result_success){
+                    message = getResources().getString(R.string.program_success);
+                    int pwdLen = BPprotocol.UserPD_maxLen;
+                    for(int i=0;i<tmpPWD.length;i++){
+                        if(tmpPWD[i]==(byte)BPprotocol.nullData){
+                            pwdLen = i;
+                            i = tmpPWD.length+i;
+                        }
+                    }
+                    byte pwdArray[]= Arrays.copyOf(tmpPWD,pwdLen);
+                    String strPassword = new String(pwdArray, Charset.forName("UTF-8"));
+                    userData = new UserData(userData.getId(), strPassword, userData.getUserIndex());
+                    int o_Position = getUserPosition(userData.getUserIndex());
+                    mUserDataList.remove(o_Position);
+                    mUserDataList.add(o_Position,userData);
+                    mPWDETV.setText(strPassword);
+                }
+                else
+                    message = getResources().getString(R.string.program_fail);
+                //show_toast_msg(message);
+                break;
+            case BPprotocol.cmd_user_property:
+
+                if (cmdType == (byte) BPprotocol.type_read) {
+                    Util.debugMessage(TAG,"test1",debugFlag);
+                    update_UserProperty(data);
+                }else
+                if (data[0] == BPprotocol.result_success) {
                           /*  int year =0;
                             mUsersListAdapter.notifyDataSetChanged();
                             mUsers_Edit_Curr_Item.limit.code_unlock = tmpProperty[2];
@@ -270,150 +283,125 @@ public class UserInfoActivity extends bpActivity implements View.OnClickListener
                             mUsers_Edit_Curr_Item.limit.weekly = tmpProperty[19];
                             //Update UI
                             update_UI_Page_User_Edit();*/
-                            byte updateData[]= Arrays.copyOfRange(tmpWriteUserProperty,2,tmpWriteUserProperty.length);
+                    byte updateData[]= Arrays.copyOfRange(tmpWriteUserProperty,2,tmpWriteUserProperty.length);
 
-                            update_UserProperty(updateData);
-                            message = getResources().getString(R.string.program_success);
-                        }else
-                            message = getResources().getString(R.string.program_fail);
-                        //show_toast_msg(message);
-                        break;
-                }
+                    update_UserProperty(updateData);
+                    message = getResources().getString(R.string.program_success);
+                }else
+                    message = getResources().getString(R.string.program_fail);
+                //show_toast_msg(message);
+                break;
+        }
 
+    }
+
+    public void update_UserProperty(byte data[]){
+        for(int i = 0;i<data.length;i++)
+            Util.debugMessage(TAG,"data["+ i +"]="+data[i],debugFlag);
+        boolean isKeypad = (data[0]!= 0);
+        byte limitType = data[1];
+        byte startTime[] = Arrays.copyOfRange(data,2,9);
+        byte endTime[] = Arrays.copyOfRange(data,9,16);
+        byte times = data[16];
+        byte weekly = data[17];
+        Resources res = getResources();
+        Calendar calendar = Calendar.getInstance();
+        String limitContent = "";
+        int isfirstAdd = 0;
+        for(int i=0;i<startTime.length;i++) {
+            if (startTime[i]==0x00){
+                ++isfirstAdd;
             }
 
-            public void update_UserProperty(byte data[]){
-                for(int i = 0;i<data.length;i++)
-                Util.debugMessage(TAG,"data["+ i +"]="+data[i],debugFlag);
-                boolean isKeypad = (data[0]!= 0);
-                byte limitType = data[1];
-                byte startTime[] = Arrays.copyOfRange(data,2,9);
-                byte endTime[] = Arrays.copyOfRange(data,9,16);
-                byte times = data[16];
-                byte weekly = data[17];
-                Resources res = getResources();
-                Calendar calendar = Calendar.getInstance();
-                String limitContent = "";
-                int isfirstAdd = 0;
-                for(int i=0;i<startTime.length;i++) {
-                    if (startTime[i]==0x00){
-                        ++isfirstAdd;
-                    }
+        }
+        if(isfirstAdd == 7){
+            data[2] = (byte)(calendar.get(Calendar.YEAR) >> 8);
+            data[3] = (byte)(calendar.get(Calendar.YEAR)&0x00FF);
+            data[4] = (byte)(byte)(calendar.get(Calendar.MONTH)+1);
+            data[5] = (byte)(byte)(calendar.get(Calendar.DAY_OF_MONTH));
+            data[6] = (byte)(byte)(calendar.get(Calendar.HOUR_OF_DAY));
+            data[7] = (byte)(byte)(calendar.get(Calendar.MINUTE));
+            data[8] = (byte)(byte)(calendar.get(Calendar.SECOND));
+            data[9] = (byte)(calendar.get(Calendar.YEAR) >> 8);
+            data[10] = (byte)(calendar.get(Calendar.YEAR)&0x00FF);
+            data[11] = (byte)(byte)(calendar.get(Calendar.MONTH)+1);
+            data[12] = (byte)(byte)(calendar.get(Calendar.DAY_OF_MONTH));
+            data[13] = (byte)(byte)(calendar.get(Calendar.HOUR_OF_DAY));
+            data[14] = (byte)(byte)(calendar.get(Calendar.MINUTE));
+            data[15] = (byte)(byte)(calendar.get(Calendar.SECOND));
 
-                }
-                if(isfirstAdd == 7){
-                    data[2] = (byte)(calendar.get(Calendar.YEAR) >> 8);
-                    data[3] = (byte)(calendar.get(Calendar.YEAR)&0x00FF);
-                    data[4] = (byte)(byte)(calendar.get(Calendar.MONTH)+1);
-                    data[5] = (byte)(byte)(calendar.get(Calendar.DAY_OF_MONTH));
-                    data[6] = (byte)(byte)(calendar.get(Calendar.HOUR_OF_DAY));
-                    data[7] = (byte)(byte)(calendar.get(Calendar.MINUTE));
-                    data[8] = (byte)(byte)(calendar.get(Calendar.SECOND));
-                    data[9] = (byte)(calendar.get(Calendar.YEAR) >> 8);
-                    data[10] = (byte)(calendar.get(Calendar.YEAR)&0x00FF);
-                    data[11] = (byte)(byte)(calendar.get(Calendar.MONTH)+1);
-                    data[12] = (byte)(byte)(calendar.get(Calendar.DAY_OF_MONTH));
-                    data[13] = (byte)(byte)(calendar.get(Calendar.HOUR_OF_DAY));
-                    data[14] = (byte)(byte)(calendar.get(Calendar.MINUTE));
-                    data[15] = (byte)(byte)(calendar.get(Calendar.SECOND));
-
-                }else{
-                if(calendar.get(Calendar.YEAR) > (((data[2] << 8) & 0x0000ff00) | (data[3] & 0x000000ff)))
-                {
-                    data[2] = (byte)(calendar.get(Calendar.YEAR) >> 8);
-                    data[3] = (byte)(calendar.get(Calendar.YEAR)&0x00FF);
-                }
-
-                if(calendar.get(Calendar.YEAR) > (((data[9] << 8) & 0x0000ff00) | (data[10] & 0x000000ff)))
-                {
-                    data[9] = (byte)(calendar.get(Calendar.YEAR) >> 8);
-                    data[10] = (byte)(calendar.get(Calendar.YEAR)&0x00FF);
-                }
-                }
-                mKeyPadSwitch.setSwitchCheck(isKeypad);
-
-                if (limitType == BPprotocol.LIMIT_TYPE_NA) {
-                    mLimitTypeTV.setValue(getString(R.string.permanent));
-                    limitContent = "";
-                }else if (limitType == BPprotocol.LIMIT_TYPE_PERIOD) {
-                    mLimitTypeTV.setValue(getString(R.string.schedule));
-                    int year = ((startTime[0] << 8) & 0x0000ff00) | (startTime[1] & 0x000000ff);
-
-                    calendar.set(year,startTime[2]-1,startTime[3],startTime[4],startTime[5],startTime[6]);
-                    Date date = calendar.getTime();
-                    String startTimeStr = dateTimeFormat(date); //Util.Convert_Date_Time_Str(calendar);
-                    Util.debugMessage(TAG,"start date="+date.toString(),debugFlag);
-                    year = ((endTime[0] << 8) & 0x0000ff00) | (endTime[1] & 0x000000ff);
-                    calendar.set(year,endTime[2]-1,endTime[3],endTime[4],endTime[5],endTime[6]);
-                    date = calendar.getTime();
-                    Util.debugMessage(TAG,"end date="+date.toString(),debugFlag);
-
-                    String endTimeStr = dateTimeFormat(date);//Util.Convert_Date_Time_Str(calendar);
-                    limitContent = startTimeStr + "~" + endTimeStr;
-                }else if (limitType == BPprotocol.LIMIT_TYPE_TIMES) {
-                    mLimitTypeTV.setValue(getString(R.string.access_times));
-                    limitContent = res.getString(R.string.users_edit_access_control_dialog_type_times_mark)+ String.valueOf(times&0xFF);
-
-                }else if (limitType == BPprotocol.LIMIT_TYPE_WEEKLY) {
-                    mLimitTypeTV.setValue(getString(R.string.recurrent));
-                    int year = ((startTime[0] << 8) & 0x0000ff00) | (startTime[1] & 0x000000ff);
-
-                    calendar.set(year,startTime[2],startTime[3],startTime[4],startTime[5],startTime[6]);
-                    String startTimeStr = Util.Convert_Limit_Time(calendar);
-                    year = ((endTime[0] << 8) & 0x0000ff00) | (endTime[1] & 0x000000ff);
-                    calendar.set(year,endTime[2],endTime[3],endTime[4],endTime[5],endTime[6]);
-                    String endTimeStr = Util.Convert_Limit_Time(calendar);
-                    limitContent = bpProtocol.Convert_Limit_Weekly(res,weekly);
-                    if(weekly != BPprotocol.WEEKLY_TYPE_NA)
-                    limitContent +=  "\r\n" + startTimeStr + "~" +endTimeStr;
-
-                }
-                mScheduleTV.setText(limitContent);
-
-
-
-                currUserProperty = data;
+        }else{
+            if(calendar.get(Calendar.YEAR) > (((data[2] << 8) & 0x0000ff00) | (data[3] & 0x000000ff)))
+            {
+                data[2] = (byte)(calendar.get(Calendar.YEAR) >> 8);
+                data[3] = (byte)(calendar.get(Calendar.YEAR)&0x00FF);
             }
+
+            if(calendar.get(Calendar.YEAR) > (((data[9] << 8) & 0x0000ff00) | (data[10] & 0x000000ff)))
+            {
+                data[9] = (byte)(calendar.get(Calendar.YEAR) >> 8);
+                data[10] = (byte)(calendar.get(Calendar.YEAR)&0x00FF);
+            }
+        }
+        mKeyPadSwitch.setSwitchCheck(isKeypad);
+
+        if (limitType == BPprotocol.LIMIT_TYPE_NA) {
+            mLimitTypeTV.setValue(getString(R.string.permanent));
+            limitContent = "";
+        }else if (limitType == BPprotocol.LIMIT_TYPE_PERIOD) {
+            mLimitTypeTV.setValue(getString(R.string.schedule));
+            int year = ((startTime[0] << 8) & 0x0000ff00) | (startTime[1] & 0x000000ff);
+
+            calendar.set(year,startTime[2]-1,startTime[3],startTime[4],startTime[5],startTime[6]);
+            Date date = calendar.getTime();
+            String startTimeStr = dateTimeFormat(date); //Util.Convert_Date_Time_Str(calendar);
+            Util.debugMessage(TAG,"start date="+date.toString(),debugFlag);
+            year = ((endTime[0] << 8) & 0x0000ff00) | (endTime[1] & 0x000000ff);
+            calendar.set(year,endTime[2]-1,endTime[3],endTime[4],endTime[5],endTime[6]);
+            date = calendar.getTime();
+            Util.debugMessage(TAG,"end date="+date.toString(),debugFlag);
+
+            String endTimeStr = dateTimeFormat(date);//Util.Convert_Date_Time_Str(calendar);
+            limitContent = startTimeStr + "~" + endTimeStr;
+        }else if (limitType == BPprotocol.LIMIT_TYPE_TIMES) {
+            mLimitTypeTV.setValue(getString(R.string.access_times));
+            limitContent = res.getString(R.string.users_edit_access_control_dialog_type_times_mark)+ String.valueOf(times&0xFF);
+
+        }else if (limitType == BPprotocol.LIMIT_TYPE_WEEKLY) {
+            mLimitTypeTV.setValue(getString(R.string.recurrent));
+            int year = ((startTime[0] << 8) & 0x0000ff00) | (startTime[1] & 0x000000ff);
+
+            calendar.set(year,startTime[2],startTime[3],startTime[4],startTime[5],startTime[6]);
+            String startTimeStr = Util.Convert_Limit_Time(calendar);
+            year = ((endTime[0] << 8) & 0x0000ff00) | (endTime[1] & 0x000000ff);
+            calendar.set(year,endTime[2],endTime[3],endTime[4],endTime[5],endTime[6]);
+            String endTimeStr = Util.Convert_Limit_Time(calendar);
+            limitContent = bpProtocol.Convert_Limit_Weekly(res,weekly);
+            if(weekly != BPprotocol.WEEKLY_TYPE_NA)
+                limitContent +=  "\r\n" + startTimeStr + "~" +endTimeStr;
+
+        }
+        mScheduleTV.setText(limitContent);
+
+
+
+        currUserProperty = data;
+    }
 
     public void Users_Edit_Dialog_Name(final List<UserData> mUsersItems, final UserData Current_User, final String ADMIN_USER_NAME1, final String ADMIN_USER_NAME2, LinearLayout layout) {
         final Activity currActivity = this;
         final View item = LayoutInflater.from(this).inflate(R.layout.users_edit_name_dialog, layout, false);
 
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        dialog.setTitle(getResources().getString(R.string.users_id_edit_dialog_title));
+        builder.setTitle(getResources().getString(R.string.users_id_edit_dialog_title));
 
-        dialog.setView(item);
+        builder.setView(item);
 
         EditText tmp_name = (EditText) item.findViewById(R.id.editText_Users_Edit_Dialog_Name);
         tmp_name.setText(Current_User.getId());
-        tmp_name.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                int bytes_len = s.toString().getBytes().length;
-                int pos = s.length();
-
-                Util.debugMessage(TAG, "String Len= " + s.length(),debugFlag);
-                Util.debugMessage(TAG, "Bytes Len= " + bytes_len,debugFlag);
-
-                if (bytes_len > BPprotocol.UserID_maxLen) {
-                    s.delete(pos - 1, pos);
-                }
-
-            }
-        });
-        dialog.setPositiveButton(getResources().getString(R.string.Confirm), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.Confirm), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 EditText tmp_name_2 = (EditText) item.findViewById(R.id.editText_Users_Edit_Dialog_Name);
@@ -440,10 +428,44 @@ public class UserInfoActivity extends bpActivity implements View.OnClickListener
             }
         });
 
-        dialog.setNeutralButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
+        builder.setNeutralButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 //
+            }
+        });
+
+        final AlertDialog dialog = builder.create();
+
+        tmp_name.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                int bytes_len = s.toString().getBytes().length;
+                int pos = s.length();
+
+                Util.debugMessage(TAG, "String Len= " + s.length(),debugFlag);
+                Util.debugMessage(TAG, "Bytes Len= " + bytes_len,debugFlag);
+
+                if (bytes_len > BPprotocol.UserID_maxLen) {
+                    s.delete(pos - 1, pos);
+                }
+
+                if (s.toString().length() < 1)
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                else
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
+
             }
         });
 
@@ -478,7 +500,8 @@ public class UserInfoActivity extends bpActivity implements View.OnClickListener
                 }  else if(isAdminPassword)
                     GeneralDialog.MessagePromptDialog(currActivity,"", getResources().getString(R.string.users_manage_edit_status_Admin_pwd));
                 else {
-                    byte password_buffer[] = Util.convertStringToByteBuffer(new_User_Data.getPasswrod(),new_User_Data.getPasswrod().length());
+                    //byte password_buffer[] = Util.convertStringToByteBuffer(new_User_Data.getPasswrod(),new_User_Data.getPasswrod().length());
+                    byte password_buffer[] = Util.convertStringToByteBuffer(password.getText().toString(),BPprotocol.UserPD_maxLen);
                     Log.e("sean","user edit pwdindex="+new_User_Data.getUserIndex());
                     bpProtocol.setUserPWD(password_buffer,new_User_Data.getUserIndex());
                     tmpPWD = password_buffer;
@@ -508,11 +531,6 @@ public class UserInfoActivity extends bpActivity implements View.OnClickListener
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.toString().length() < 4)
-                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
-                else
-                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
-
                 try {
 
                     int isNumeric = Integer.parseInt(password .getText().toString());
@@ -520,6 +538,12 @@ public class UserInfoActivity extends bpActivity implements View.OnClickListener
                 }catch(NumberFormatException e){
                     dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
                 }
+
+                if (s.toString().length() < 4)
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                else
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
+
             }
         });
 

@@ -23,7 +23,7 @@ public class MyDeviceView extends FrameLayout {
         LayoutInflater.from(context).inflate(R.layout.my_device_view, this);
 
         mDeviceNameTV = (FontTextView) findViewById(R.id.foundDeviceName);
-
+        mDeviceNameTV.setTextColor(Color.BLACK);
         showMyAttrs(context, attrs);
     }
 
@@ -61,7 +61,7 @@ public class MyDeviceView extends FrameLayout {
             if(selection)
                 mDeviceNameTV.setTextColor(getResources().getColor(R.color.dark_yellow));
             else
-                mDeviceNameTV.setTextColor(getResources().getColor(R.color.gray4));
+                mDeviceNameTV.setTextColor(Color.BLACK);
 
 
     }

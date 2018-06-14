@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
     defaultConfig {
-        applicationId "com.anxell.e3ak"
+        applicationId "com.rofu.B3000"
         minSdkVersion 21
-        targetSdkVersion 25
-        versionCode 11
-        versionName "1.4.1"
+        targetSdkVersion 26
+        versionCode 3  //0611
+        versionName "1.2" //0611
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -26,7 +26,7 @@ dependencies {
     })
 
 
-
+    compile 'net.vidageek:mirror:1.6.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:percent:22.2.0'

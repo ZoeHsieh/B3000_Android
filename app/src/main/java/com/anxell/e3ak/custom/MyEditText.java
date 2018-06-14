@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.text.InputFilter;
+import android.text.InputType;
 import android.text.TextWatcher;
+import android.text.method.NumberKeyListener;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.inputmethod.EditorInfo;
@@ -12,6 +14,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.anxell.e3ak.R;
+
 
 /**
  * Created by kay on 2017/6/8.
@@ -60,18 +63,34 @@ public class MyEditText extends FrameLayout {
 
     public void setTextChangedListener(TextWatcher watcher){
         if(watcher != null)
-        mValueET.addTextChangedListener(watcher);
+            mValueET.addTextChangedListener(watcher);
     };
     public int getLength(){
 
-    return mValueET.length();
+        return mValueET.length();
     }
     public void setHintText(String Text){
 
-         mValueET.setHint(Text);
+        mValueET.setHint(Text);
     }
     public void setInputType(int type){
         mValueET.setInputType(type);
+        NumberKeyListener myKeyListener = new NumberKeyListener() {
+            public int getInputType()
+            {
+                //指定键盘类型
+                return InputType.TYPE_CLASS_PHONE;
+            }
+
+            protected char[] getAcceptedChars()
+            {
+                //指定你所接受的字符
+                String txt = "1234567890";
+                return txt.toCharArray();
+            }
+        };
+
+        mValueET.setKeyListener(myKeyListener);
     }
 
     public void setViewFocusable(boolean enable){

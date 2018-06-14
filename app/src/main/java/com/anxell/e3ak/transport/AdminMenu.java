@@ -126,6 +126,7 @@ public class AdminMenu {
 
                 HomeActivity activity =(HomeActivity)currActivity;
                 activity.isEnroll = true;
+                activity.start_anime();
                 activity.connect(bdAddr);
                 activity.StartConnectTimer();
             }

@@ -288,6 +288,7 @@ public class UsersActivity2 extends bpActivity implements View.OnClickListener, 
 
                     }else if(userMax == 0){
                         userMax =0;
+                        mAdapter.notifyDataSetChanged();
                         isLoadUserListCompleted = true;
                         GeneralDialog.MessagePromptDialog(this,"",getString(R.string.no_user_note));
                     }

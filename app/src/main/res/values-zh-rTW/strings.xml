@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">E3AK</string>
+    <string name="app_name">ROFU B3000</string>
 
     <string name="bluetooth_access_control_system">Bluetooth Access Control System</string>
-    <string name="anxell_technology_coproration">&#169; 2017 Anxell Technology Coproration</string>
+    <string name="anxell_technology_coproration">© 2018 Copyright ROFU Security International Corp.</string>
 
     <string name="hello">Hello!</string>
     <string name="welcome">歡迎使用 E3AK</string>
@@ -25,8 +25,8 @@
     <string name="cancel">取消</string>
     <string name="model">%1$s</string>
     <string name="choose_device">請選擇裝置</string>
-    <string name="door_closed">DOOR CLOSED</string>
-    <string name="door_opened">DOOR OPENED</string>
+    <string name="door_closed">LOCKED</string>
+    <string name="door_opened">UNLOCKED</string>
     <string name="open">OPEN</string>
     <string name="automatic_sensor_to_open">自動感應開門</string>
 
@@ -44,8 +44,8 @@
     <string name="always_locked">常閉</string>
 
     <string name="tamper_sensor">防拆感應</string>
-    <string name="proximity_read_range">感應距離</string>
-    <string name="door_re_lock_time">延遲上鎖時間</string>
+    <string name="proximity_read_range">自動開門感應範圍</string>
+    <string name="door_re_lock_time">依據延遲上鎖時間</string>
     <string name="sec">%1$s 秒</string>
 
     <string name="please_choose">請選擇</string>
@@ -57,7 +57,7 @@
     <string name="please_wait">請稍候</string>
 
     <string name="device_distance">您目前距離裝置</string>
-    <string name="proximity_read_range_setting">感應距離設定</string>
+    <string name="proximity_read_range_setting">自動開門感應範圍設定</string>
 
     <string name="edit_door_re_lock_time">請輸入上鎖時間 (1~1800秒)</string>
     <string name="please_enter_the_number_of_seconds">請輸入秒數</string>
@@ -117,7 +117,7 @@
     <string name="add_more">新增更多</string>
 
     <string name="done">完成</string>
-    <string name="please_setting_proximity_read_range">請設定感測距離</string>
+    <string name="please_setting_proximity_read_range">請設定自動開門感應範圍</string>
     <string name="msg_password_error">密碼錯誤，請重新輸入</string>
     <string name="msg_please_enter_account">請輸入帳號</string>
     <string name="msg_please_enter_password_1">請輸入密碼</string>
@@ -198,9 +198,33 @@
     <string name="restore_status">還原狀態</string>
     <string name="restore_dialog_title">還原裝置資料</string>
 
-
     <string name="settings_device_vr">韌體版本</string>
     <string name="APP_version">APP 版本:</string>
     <string name="over_range_alarm">超過範圍</string>
 
+    <string name="open_fail_permission_denied">Access Denied. Please Contact Your Administrator.</string>
+    <string name="open_fail_no_eroll">Access Denied. Please Login First to Get Access.</string>
+    <string name="eroll_fail">Login Failed. Please Verify Your Login Information Or Contact Your Administrator.</string>
+    <string name="eroll_success">You Have Successfully Logged In. You May Now Unlock A Door.</string>
+
+    <string name="tooltip_FAQ">FAQ</string>
+    <string name="tooltip_dsc_door_sensor">Door Sensor is deactivated by default. To enable Door Sensor when you connect to a closed-circuit magnetic sensors or a monitored door lock that has door sensor (or lock sensor) outputs to monitor the open or closed state of a door.</string>
+    <string name="tooltip_dsc_tamper_alarm">Tamper Alarm is deactivated by default. Once activated the Tamper Alarm if the keypad/reader has been moved or if burglars or vandals break in, Tamper Alarm will be effectively for deterring potential thieves and vandals. Note that Tamper Alarm only can be switched off by the Administrator.</string>
+    <string name="tooltip_dsc_proximity_read_range">You can adjust Auto Proximity Range between minimum 1 to maximum 20 for your Auto unlock access. May have different results due to different areas and circumstances with different smartphones.</string>
+    <string name="tooltip_dsc_device_time">Make sure to set up Device Time precisely as your current time zone of where you are. It helps having correct and precise access data and information.</string>
+    <string name="tooltip_dsc_users">Up to 1000 users/passcodes available. You can Add/Delete/Edit user information.</string>
+    <string name="tooltip_dsc_history">Audit Trail is tracking last 1000 event logs, including Tamper Alarm. Audit Trail can be exported in an excel file.</string>
+    <string name="tooltip_dsc_backup">Backup Data is to backup all data to Administrator\'s smartphone and can be restored, except Device Name, Audit Trail logs and Device Time.</string>
+    <string name="tooltip_dsc_restore">Restore Backup is to restore last backup from Administrator\’s smartphone to a new Access Control Device.</string>
+    <string name="tooltip_dsc_admin_passcode">12345 is Admin default passcode. It’s important to change your Admin passcode immediately. Admin passcode must be between 4 to 8 numeric passcodes.</string>
+    <string name="tooltip_dsc_reset_title">Reset Procedures</string>
+    <string name="tooltip_dsc_reset_button_title">How to Reset a Bluetooth Keypad with Reset Button on the PC board?</string>
+    <string name="tooltup_dsc_reset_button_detail">1. Power off Access Control Keypad/Reader.\n2. Press and hold the Reset Button, then power on.\n3. Hear a long beep to complete resetting procedures.\n4. Login as Admin and check all users, audit trail events are all cleared and all data is reset to factory default setting, except device name and device time.</string>
+    <string name="tooltip_dsc_reset_pins_title">How to Reset a Bluetooth Reader with Reset Pins on the PC board?</string>
+    <string name="tooltup_dsc_reset_pins_detail">1. Power off Access Control Keypad/Reader.\n2. Short the two Reset Pins, then power on.\n3. Hear a long beep to complete resetting procedures.\n4. Login as Admin and check all users, audit trail events are all cleared and all data is reset to factory default setting, except device name and device time.</string>
+
+    <string name="permission_title">功能受限</string>
+    <string name="permission_message_location">需授予位置的存取權限，APP才能掃瞄藍牙裝罝</string>
+    <string name="permission_message_storage">需授予儲存空間的存取權限，APP才能執行備份設定功能</string>
+    <string name="need_gps">安卓6.0以上裝置需開啟位罝服務才能掃瞄藍牙裝罝</string>
 </resources>

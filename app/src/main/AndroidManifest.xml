@@ -14,12 +14,24 @@
 
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
+
         <activity
             android:name=".HomeActivity"
             android:screenOrientation="portrait" />
@@ -86,6 +98,10 @@
             android:name=".DeviceTimeActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".AboutUsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MasterFAQ"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".UserFAQ"
             android:screenOrientation="portrait"/>
         <service
             android:name="com.anxell.e3ak.transport.RBLService"

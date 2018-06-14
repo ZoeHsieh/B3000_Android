@@ -5,8 +5,10 @@ import android.content.res.TypedArray;
 import android.support.v7.widget.SwitchCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Switch;
 
 import com.anxell.e3ak.R;

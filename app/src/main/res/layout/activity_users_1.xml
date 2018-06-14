@@ -17,15 +17,15 @@
         android:layout_above="@+id/btnContainer"
         android:layout_alignParentTop="true"
         android:paddingBottom="10dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
 
         <com.anxell.e3ak.custom.FontTextView
             android:id="@+id/deviceView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:drawableLeft="@drawable/green_dot"
+            android:drawableStart="@drawable/green_dot"
             android:drawablePadding="10dp"
             android:text="E3AK001"
             android:textColor="@android:color/darker_gray"
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:background="@null"
-            android:gravity="right"
+            android:gravity="end"
             android:paddingBottom="10dp"
             android:paddingStart="20dp"
             android:text="@string/skip"

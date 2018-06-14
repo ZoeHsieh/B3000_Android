@@ -1,6 +1,10 @@
 package com.anxell.e3ak.util;
 
+import android.content.Context;
 import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 
 
 import com.anxell.e3ak.data.UserData;
@@ -187,6 +191,51 @@ private static final boolean debugFlag = false;
     public static void debug_vMessage(String tag, String log, boolean enable){
         if(enable)
             Log.v(tag,log);
+    }
+
+
+    public static String padLeft(String src, int len, char ch) {
+        int diff = len - src.length();
+        if (diff <= 0) {
+            return src;
+        }
+
+        char[] charr = new char[len];
+        System.arraycopy(src.toCharArray(), 0, charr, 0, src.length());
+        for (int i = src.length(); i < len; i++) {
+            charr[i] = ch;
+        }
+        return new String(charr);
+    }
+
+    public static String padRight(String src, int len, char ch) {
+        int diff = len - src.length();
+        if (diff <= 0) {
+            return src;
+        }
+
+        char[] charr = new char[len];
+        System.arraycopy(src.toCharArray(), 0, charr, diff, src.length());
+        for (int i = 0; i < diff; i++) {
+            charr[i] = ch;
+        }
+        return new String(charr);
+    }
+
+
+
+    public static void showSoftKeyboard(View view, Context mContext) {
+        if (view.requestFocus()) {
+            InputMethodManager imm = (InputMethodManager)mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+        }
+    }
+
+
+
+    public static void closeSoftKeybord(EditText mEditText, Context mContext) {
+        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(mEditText.getWindowToken(), 0);
     }
 
 

@@ -8,13 +8,17 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.UiThread;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.SwitchCompat;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -25,6 +29,7 @@ import com.anxell.e3ak.custom.FontTextView;
 import com.anxell.e3ak.custom.My2TextView;
 import com.anxell.e3ak.custom.My4TextView;
 import com.anxell.e3ak.custom.MySwitch;
+import com.anxell.e3ak.custom.MyToolbar;
 import com.anxell.e3ak.transport.APPConfig;
 import com.anxell.e3ak.transport.AdminMenu;
 import com.anxell.e3ak.transport.BPprotocol;
@@ -57,6 +62,11 @@ public class SettingActivity extends bpActivity implements View.OnClickListener 
     private FontTextView versionTV;
     private RelativeLayout settingMainlayOut;
     private ProgressBar loadDeviceDataBar;
+
+    private MyToolbar toolbar;
+    private ImageButton toolbar_right_button1;
+
+
     //private int mProgressStatus = 0;
     //private Handler handler = new Handler();
     private String deviceBDDR = "";
@@ -107,6 +117,7 @@ public class SettingActivity extends bpActivity implements View.OnClickListener 
         // getDeviceTime();
         currentClassName = getLocalClassName();
 
+        toolbar_right_button1.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -115,9 +126,9 @@ public class SettingActivity extends bpActivity implements View.OnClickListener 
         //RegisterReceiver(this);
         currentClassName = getLocalClassName();
 
-           // registerReceiver(mGattUpdateReceiver, getIntentFilter());
+        // registerReceiver(mGattUpdateReceiver, getIntentFilter());
 
-            switch(updateStatus){
+        switch(updateStatus){
 
             case up_deviceConfig:
                 bpProtocol.setConfig(tmpConfig);
@@ -163,6 +174,9 @@ public class SettingActivity extends bpActivity implements View.OnClickListener 
         loadDeviceDataBar = (ProgressBar)findViewById(R.id.setting_loadingBar);
         adminMenu = new AdminMenu(this, settingMainlayOut,bpProtocol);
 
+        toolbar = (MyToolbar) findViewById(R.id.toolbarView);
+        toolbar_right_button1 = (ImageButton) findViewById(R.id.rightIcon1);
+
     }
 
     @Override
@@ -194,7 +208,35 @@ public class SettingActivity extends bpActivity implements View.OnClickListener 
         mTampSwitch.setOnClickListener(this);
         mDoorSwitch.setOnClickListener(this);
         findViewById(R.id.aboutUs).setOnClickListener(this);
+
+        toolbar.setRight1IconClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMasterFAQ();
+            }
+        });
+
+
+        settingUI.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+
+                }
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    setcurrentdate();
+                }
+
+                return false;
+            }
+        });
+
+
+
+
+
     }
+
 
     @Override
     public void onBackPressed() {
@@ -203,7 +245,10 @@ public class SettingActivity extends bpActivity implements View.OnClickListener 
         unbindService(ServiceConnection);
         unregisterReceiver(mGattUpdateReceiver);
         overridePendingTransitionLeftToRight();
+        finish();
+
     }
+
 
     @Override
     public void onClick(View view) {
@@ -217,6 +262,7 @@ public class SettingActivity extends bpActivity implements View.OnClickListener 
             case R.id.history:
 
                 openHistoryPage();
+                //finish();
                 break;
 
             case R.id.backup:
@@ -277,6 +323,7 @@ public class SettingActivity extends bpActivity implements View.OnClickListener 
                 }
                 break;
 
+
             case R.id.doorLockAction:
                 tmpConfig = currConfig;
                 openDoorLockActionPage();
@@ -311,7 +358,7 @@ public class SettingActivity extends bpActivity implements View.OnClickListener 
 
         overridePendingTransitionRightToLeft();
 
-       // unregisterReceiver(mGattUpdateReceiver);
+        // unregisterReceiver(mGattUpdateReceiver);
 
     }
 
@@ -333,8 +380,15 @@ public class SettingActivity extends bpActivity implements View.OnClickListener 
     }
 
     private void openProximityReadPage() {
-        readRSSI();
+        //        readRSSI();
+        Intent intent = new Intent(this, ProximityReadRangeActivity1.class);
 
+//        intent.putExtra(APPConfig.RSSI_LEVEL_Tag,curr_rssi_level);
+        intent.putExtra(APPConfig.deviceBddrTag,deviceBDDR);
+//        Util.debugMessage(TAG,"RSSI="+curr_rssi_level+"deviceBDDR="+deviceBDDR,debugFlag);
+
+        startActivity(intent);
+        overridePendingTransitionRightToLeft();
     }
 
     private void openDoorReLockTimePage() {
@@ -566,22 +620,22 @@ public class SettingActivity extends bpActivity implements View.OnClickListener 
                 Button b = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
                 b.setOnClickListener(new View.OnClickListener() {
 
-                    @Override
-                    public void onClick(View view) {
-                        String time = editText.getText().toString();
-                        try{
-                        final int delayTime =  Integer.parseInt(time);
-                        if (delayTime >0 && delayTime <=1800) {
-                            tmpConfig[2] = (byte) (delayTime >> 8);
-                            tmpConfig[3] = (byte) (delayTime & 0xFF);
-                            bpProtocol.setConfig(tmpConfig);
-                        }
-                        }catch(NumberFormatException e){
+                                         @Override
+                                         public void onClick(View view) {
+                                             String time = editText.getText().toString();
+                                             try{
+                                                 final int delayTime =  Integer.parseInt(time);
+                                                 if (delayTime >0 && delayTime <=1800) {
+                                                     tmpConfig[2] = (byte) (delayTime >> 8);
+                                                     tmpConfig[3] = (byte) (delayTime & 0xFF);
+                                                     bpProtocol.setConfig(tmpConfig);
+                                                 }
+                                             }catch(NumberFormatException e){
 
-                        }
-                            dialog.dismiss();
-                        }
-                    }
+                                             }
+                                             dialog.dismiss();
+                                         }
+                                     }
                 );
             }
         });
@@ -612,9 +666,9 @@ public class SettingActivity extends bpActivity implements View.OnClickListener 
                         alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
                     else
                         alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
-                    }catch(NumberFormatException e){
-                      alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
-                    }
+                }catch(NumberFormatException e){
+                    alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                }
                 }else
                     alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
 
@@ -734,15 +788,15 @@ public class SettingActivity extends bpActivity implements View.OnClickListener 
 
                 if(cmdType == (byte) BPprotocol.type_read){
                     for(int i=0;i<data.length;i++)
-                    Util.debugMessage(TAG,String.format("Time[%d]=%02x\r\n",i,data[i]),true);
+                        Util.debugMessage(TAG,String.format("Time[%d]=%02x\r\n",i,data[i]),true);
                     updata_device_time(data);
                 }else{
 
-                      //  Util.debugMessage(TAG,"restore ok",debugFlag);
-                        if(data[0]  == BPprotocol.result_success){
-                           // message = getResources().getString(R.string.program_success);
-                            updata_device_time(tmpTime);
-                        }
+                    //  Util.debugMessage(TAG,"restore ok",debugFlag);
+                    if(data[0]  == BPprotocol.result_success){
+                        // message = getResources().getString(R.string.program_success);
+                        updata_device_time(tmpTime);
+                    }
                        /* else
                             message = getResources().getString(R.string.program_fail);
                         show_toast_msg(message);*/
@@ -778,8 +832,8 @@ public class SettingActivity extends bpActivity implements View.OnClickListener 
                             //message = getResources().getString(R.string.program_success);
 
                         } //else
-                           // message = getResources().getString(R.string.program_fail);
-                       // show_toast_msg(message);
+                        // message = getResources().getString(R.string.program_fail);
+                        // show_toast_msg(message);
                     }
                 }
                 break;
@@ -823,10 +877,12 @@ public class SettingActivity extends bpActivity implements View.OnClickListener 
                         isLiveHTHD = false;
                         isLiveUSTHD = false;
                         isBackMain = false;*/
-                        //bpProtocol.getUsersCount();
-                        HistoryActivity.isHistoryDownloadOK = false;
-                        UsersActivity2.isLoadUserListCompleted = false;
-                        bpProtocol.getAdminPWD();
+                    //bpProtocol.getUsersCount();
+                    HistoryActivity.isHistoryDownloadOK = false;
+                    UsersActivity2.isLoadUserListCompleted = false;
+                    mUserDataList.clear();
+                    mHistoryDatas.clear();
+                    bpProtocol.getAdminPWD();
 
                 }
                 else {
@@ -936,7 +992,7 @@ public class SettingActivity extends bpActivity implements View.OnClickListener 
 
                 break;
 
-                }
+        }
 
     }
 
@@ -946,7 +1002,7 @@ public class SettingActivity extends bpActivity implements View.OnClickListener 
 
         Util.debugMessage(TAG,String.format("curr_Y =%04d\r\n, d_Y= %04x=", deviceDataTime.get(Calendar.YEAR),(((data[0] << 8) & 0x0000ff00) | (data[1] & 0x000000ff))),true);
         if( deviceDataTime.get(Calendar.YEAR) < (((data[0] << 8) & 0x0000ff00) | (data[1] & 0x000000ff)))
-        deviceDataTime.set(Calendar.YEAR,((data[0] << 8) & 0x0000ff00) | (data[1] & 0x000000ff));
+            deviceDataTime.set(Calendar.YEAR,((data[0] << 8) & 0x0000ff00) | (data[1] & 0x000000ff));
         deviceDataTime.set(Calendar.MONTH,data[2]-1);
         deviceDataTime.set(Calendar.DAY_OF_MONTH,data[3]);
         deviceDataTime.set(Calendar.HOUR_OF_DAY,data[4]);
@@ -983,6 +1039,21 @@ public class SettingActivity extends bpActivity implements View.OnClickListener 
         //sendProcessMessage(MSG_PROGRESS_BAR_SETUP_INVISIBLE);
 
         //mLinearLayout_Setup_Items.setVisibility(View.VISIBLE);
+
+
+        String language =Locale.getDefault().getLanguage();
+        Util.debugMessage(TAG,language,debugFlag);
+
+        if (language.equals("en") || language.equals("it") || language.equals("fr") || language.equals("ja") || language.equals("es"))
+        {
+            toolbar_right_button1.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            toolbar_right_button1.setVisibility(View.INVISIBLE);
+        }
+
+
         settingUI.setVisibility(View.VISIBLE);
         loadDeviceDataBar.setVisibility(View.GONE);
         //Get Data
@@ -1003,7 +1074,7 @@ public class SettingActivity extends bpActivity implements View.OnClickListener 
         mTampSwitch.setSwitchCheck(tamper_opt);
         currConfig = data;
 
-
+        setcurrentdate();
     }
     private void update_FW_Version(byte[] data) {
         int major, minor;
@@ -1061,7 +1132,7 @@ public class SettingActivity extends bpActivity implements View.OnClickListener 
                         @Override
                         public void run() {
                             if(!isReady)
-                            onBackPressed();
+                                onBackPressed();
                             Util.debugMessage(TAG,"Connect Time out",debugFlag);
                             ConTimer = null;
                         }
@@ -1073,4 +1144,34 @@ public class SettingActivity extends bpActivity implements View.OnClickListener 
 
         }
     }
+
+
+
+
+
+
+    private void openMasterFAQ() {
+        Intent intent = new Intent(this, MasterFAQ.class);
+        startActivity(intent);
+        overridePendingTransitionRightToLeft();
+    }
+
+
+
+    public static void setcurrentdate(){
+        Calendar calendar = Calendar.getInstance();
+        SettingActivity.tmpTime[0] = (byte) (calendar.get(Calendar.YEAR) >> 8);
+        SettingActivity.tmpTime[1] = (byte) (calendar.get(Calendar.YEAR) & 0xFF);
+        SettingActivity.tmpTime[2] = (byte)((calendar.get(Calendar.MONTH) &0xFF)+1);
+        SettingActivity.tmpTime[3] = (byte)(calendar.get(Calendar.DAY_OF_MONTH) &0xFF);
+        SettingActivity.tmpTime[4] = (byte)(calendar.get(Calendar.HOUR_OF_DAY) &0xFF);
+        SettingActivity.tmpTime[5] = (byte)(calendar.get(Calendar.MINUTE) &0xFF);
+        SettingActivity.tmpTime[6] = (byte)(calendar.get(Calendar.SECOND) &0xFF);
+        bpProtocol.setDateTime(tmpTime);
+
+    }
+
+
+
+
 }

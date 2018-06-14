@@ -8,8 +8,9 @@ import android.widget.RadioGroup;
 
 import com.anxell.e3ak.custom.MyToolbar;
 import com.anxell.e3ak.transport.BPprotocol;
+import com.anxell.e3ak.transport.bpActivity;
 
-public class DoorLockActionActivity extends BaseActivity {
+public class DoorLockActionActivity extends bpActivity {
     private RadioGroup doorAction;
     private RadioButton doorDelayTime;
     private RadioButton doorAlwaysOpen;
@@ -18,6 +19,7 @@ public class DoorLockActionActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Initial(getLocalClassName());
         setContentView(R.layout.activity_door_lock_action);
         doorAction = (RadioGroup) findViewById(R.id.rgroup);
         doorDelayTime = (RadioButton) findViewById(R.id.use_re_lock_time);
@@ -59,12 +61,12 @@ public class DoorLockActionActivity extends BaseActivity {
             doorAlwaysOpen.setChecked(true);
             doorAlwayslock.setChecked(false);
         } else if (SettingActivity.tmpConfig[1] == BPprotocol.door_statis_KeepLock) {
-        doorDelayTime.setChecked(false);
-        doorAlwaysOpen.setChecked(false);
-        doorAlwayslock.setChecked(true);
-    }
+            doorDelayTime.setChecked(false);
+            doorAlwaysOpen.setChecked(false);
+            doorAlwayslock.setChecked(true);
+        }
 
-}
+    }
     @Override
     public void onBackPressed() {
         super.onBackPressed();

@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">E3AK</string>
+    <string name="app_name">ROFU B3000</string>
 
     <string name="bluetooth_access_control_system">Bluetooth Access Control System</string>
-    <string name="anxell_technology_coproration">&#169; 2017 Anxell Technology Coproration</string>
+    <string name="anxell_technology_coproration">© 2018 Copyright ROFU Security International Corp.</string>
 
     <string name="hello">Hello!</string>
     <string name="welcome">Welcome</string>
@@ -21,8 +21,8 @@
 
     <string name="add">Aggiungi</string>
 
-    <string name="ok">Fatto</string>
-    <string name="cancel">Cancella</string>
+    <string name="ok">Conferma</string>
+    <string name="cancel">Annulla</string>
     <string name="model">%1$s</string>
     <string name="choose_device">Prego scegliere </string>
     <string name="door_closed">PORTA CHIUSA</string>
@@ -43,8 +43,8 @@
     <string name="door_lock_action">Azione porta</string>
 
     <string name="use_re_lock_time">Tempo di richiusura</string>
-    <string name="always_unlocked">Porta sempre chiusa</string>
-    <string name="always_locked">Porta sempre aperta</string>
+    <string name="always_unlocked">Porta sempre aperta</string>
+    <string name="always_locked">Porta sempre chiusa</string>
 
     <string name="tamper_sensor">Anti-tamper</string>
     <string name="proximity_read_range">Raggio di azione</string>
@@ -120,7 +120,7 @@
 
     <string name="add_more">Aggiungi altro</string>
 
-    <string name="done">Fatto</string>
+    <string name="done">Conferma</string>
     <string name="please_setting_proximity_read_range">Raggio di azione</string>
     <string name="msg_password_error">Password sbagliata. Riprova</string>
     <string name="msg_please_enter_account">Inserisci nome</string>
@@ -143,7 +143,7 @@
     <string name="restore_dialog_message">Sto recuperando i dati</string>
     <string name="restore_status">Stato del recupero</string>
     <string name="restore_status_file_not_found">File di Backup non trovato Fare prima il Backup</string>
-    <string name="restore_success">Fatto</string>
+    <string name="restore_success">Conferma</string>
     <string name="msg_searching">Devi collegarti ad un dispositivo</string>
     <string name="if_you_forget_your_id_or_password">Se hai dimenticato il tuo ID o password, contatta l\'amministratore</string>
     <string name="hello_1">Hello！</string>
@@ -183,7 +183,7 @@
     <string name="settings_history_list">" Elenco eventi"</string>
     <string name="settings_users_manage_list"> Lista utenti</string>
     <string name="progress_dialog_hide_btn_title">NASCONDI</string>
-    <string name="progress_dialog_cancel_btn_title">Cancella</string>
+    <string name="progress_dialog_cancel_btn_title">Annulla</string>
     <string name="no_user_note">Non ci sono utenti, aggiungerli ora?</string>
     <string name="users_manage_edit_status_Admin_name">Invalid ID !!</string>
     <string name="users_manage_edit_status_Admin_pwd">Invalid Password!!</string>
@@ -195,6 +195,31 @@
     <string name="users_pwd_edit_dialog_title">Modifica password</string>
     <string name="Confirm">Conferma</string>
     <string name="APP_version">Versione APP:</string>
-    <string name="over_range_alarm">Over range</string>
+    <string name="over_range_alarm">Out of range!! Please enter a number within 0-255.</string>
 
+    <string name="open_fail_permission_denied">Accesso negato. Contatta l’Amministratore</string>
+    <string name="open_fail_no_eroll">Accesso negato. Fare prima la registrazione</string>
+    <string name="eroll_fail">Registrazione fallita</string>
+    <string name="eroll_success">Ok sei registrato</string>
+
+    <string name="tooltip_FAQ">FAQ</string>
+    <string name="tooltip_dsc_door_sensor">Il sensore porta è disattivato di default. Deve essere abilitato quando il dispositivo viene connesso ad un sensore magnetico o ad una serratura con a bordo il sensore di stato porta</string>
+    <string name="tooltip_dsc_tamper_alarm">L’Anti tamper è disattivato di default. Se attivato, farà suonare un buzzer in caso il dispositivo venga spostato od aperto. Solo l’Amministratore potrà spegnere il buzzer</string>
+    <string name="tooltip_dsc_proximity_read_range">È possibile regolare il campo di azione tra un minimo di 1 fino a 20 per la funzione “mani libere”. Questa scala non rappresenta unità di misura lineari, es. metri, ma semplicemente una misura variabile e molto dipendente dal tipo di Smartphone</string>
+    <string name="tooltip_dsc_device_time">Assicurarsi che l’ora del dispositivo sia esatta. Questo permetterà di avere dei report precisi sugli accessi</string>
+    <string name="tooltip_dsc_users">Fino a 1000 utenti con password diverse. È possibile aggiungere, cancellare o modificare le informazione</string>
+    <string name="tooltip_dsc_history">Questa è la lista degli ultimi 1000 eventi. Include gli allarmi Anti-Tamper e gli accessi. Può essere esportata in un file Excel v</string>
+    <string name="tooltip_dsc_backup">Questa funzione permette di fare un Backup dei dati dal telefono al dispositivo. I dati possono essere recuperati usando la funzione Ripristina dati. Tutti i dati sono recuperabili, tranne il nome del dispositivo, la lista eventi e l’ora del dispositivo</string>
+    <string name="tooltip_dsc_restore">Con questa funzione è possibile recuperare i dati dal dispositivo su un Nuovo smartphone dell’Amministratore</string>
+    <string name="tooltip_dsc_admin_passcode">La password di default è 12345. È importante cambiare la password immediatamente. La nuova password deve essere un numero da 4 a 8 cifre</string>
+    <string name="tooltip_dsc_reset_title">Procedura di reset</string>
+    <string name="tooltip_dsc_reset_button_title">Come ripristinare una tastiera Bluetooth con il pulsante resettare sulla scheda PC?</string>
+    <string name="tooltup_dsc_reset_button_detail">1. Togliere corrente al tastiera / lettore di controllo dell\'accesso.\n2. Tenere premuto il pulsante reset e ridare corrente.\n3. Un segnale beep lungo confermerà l’avvenuto reset.\n4. Tutti i dati sono stati riportati a quelli di fabbrica. Tranne il nome e l’ora del dispositivo e la selezione del raggio di azione della funzione automatica.</string>
+    <string name="tooltip_dsc_reset_pins_title">Come ripristinare una lettore Bluetooth con il ripristina i pin sulla scheda PC?</string>
+    <string name="tooltup_dsc_reset_pins_detail">1. Togliere corrente al dispositivo.\n2. Collegare i due morsetti di reset tra loro (cortocircuitare) e ridare corrente.\n3. Un segnale beep lungo confermerà l’avvenuto reset.\n4. Tutti i dati sono stati riportati a quelli di fabbrica. Tranne il nome e l’ora del dispositivo e la selezione del raggio di azione della funzione automatica.</string>
+
+    <string name="permission_title">Functionality limited</string>
+    <string name="permission_message_location">Since location access has not been granted, this app will not be able to discover beacons.</string>
+    <string name="permission_message_storage">Since storage access has not been granted, this app will not be able to backup settings.</string>
+    <string name="need_gps">Android OS 6.0 and up require to enable Location service to find nearby Bluetooth devices. Make sure to enable Location service on your phone.</string>
 </resources>

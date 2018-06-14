@@ -2,6 +2,7 @@ package com.anxell.e3ak.transport;
 
 
 import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
@@ -20,11 +21,17 @@ import android.provider.Settings;
 import android.util.Log;
 //import android.support.v7.app.AppCompatActivity;
 import android.content.ServiceConnection;
+import android.view.Gravity;
 import android.widget.Toast;
 
 import com.anxell.e3ak.BaseActivity;
+import com.anxell.e3ak.HomeActivity;
+import com.anxell.e3ak.data.HistoryData;
 import com.anxell.e3ak.data.UserData;
+import com.anxell.e3ak.util.InstallationID;
 import com.anxell.e3ak.util.Util;
+
+import net.vidageek.mirror.dsl.Mirror;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,6 +41,7 @@ import java.util.Locale;
 import java.util.Queue;
 import java.util.Timer;
 import java.util.TimerTask;
+
 
 import static com.anxell.e3ak.transport.APPConfig.E3K_DEVICES_BLE_RSSI_LEVEL_DEFAULT;
 
@@ -59,6 +67,7 @@ public class bpActivity extends BaseActivity {
     public byte mSYS_BLE_MAC_Address_RAW[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
     public String mSYS_BLE_MAC_Address;
     public static List<UserData> mUserDataList = new ArrayList<>();
+    public static List<HistoryData> mHistoryDatas = new ArrayList<>();
     private Thread CmdWorkerThread = null;
 
     public void Initial(String localClassName) {
@@ -80,14 +89,25 @@ public class bpActivity extends BaseActivity {
 
     public void update_system_ble_mac_addrss() {
         //Get System BLE MAC Address
-        mSYS_BLE_MAC_Address = Settings.Secure.getString(getApplicationContext().getContentResolver(), "bluetooth_address");
+
+//        mSYS_BLE_MAC_Address = Settings.Secure.getString(getApplicationContext().getContentResolver(), "bluetooth_address");
+//        mSYS_BLE_MAC_Address = getBluetoothAddress();
+//        mSYS_BLE_MAC_Address = GetLocalMacAddress();
+        //mSYS_BLE_MAC_Address = getBtAddressViaReflection();
+       // if (mSYS_BLE_MAC_Address == null || mSYS_BLE_MAC_Address.equals("02:00:00:00:00:00"))
+       // {
+            mSYS_BLE_MAC_Address = InstallationID.id(bpActivity.this);
+            mSYS_BLE_MAC_Address = mSYS_BLE_MAC_Address.substring(mSYS_BLE_MAC_Address.length()-12);
+      //  }
 
         //ble_mac_addr_Value.setText(mSYS_BLE_MAC_Address);
+//        Util.debugMessage(TAG, "UUUUUUUUUupdate_system_ble_mac_addrss(): " + mSYS_BLE_MAC_Address,true);
+//        show_toast_msg("UUUUUUUUUupdate_system_ble_mac_addrss(): " + mSYS_BLE_MAC_Address);
 
         mSYS_BLE_MAC_Address_RAW = Util.hexStringToByteArray(mSYS_BLE_MAC_Address.replaceAll(":", ""));
 
-        Util.debugMessage(TAG, "update_system_ble_mac_addrss(): " + mSYS_BLE_MAC_Address,debugFlag);
-
+//        Util.debugMessage(TAG, "update_system_ble_mac_addrss(): " + mSYS_BLE_MAC_Address,debugFlag);
+        return;
         //nki_show_toast_msg(mSYS_BLE_MAC_Address);
     }
     protected void onStop() {
@@ -100,15 +120,15 @@ public class bpActivity extends BaseActivity {
         super.onStop();
     }
 
-  
-	@Override
-	protected void onRestart() {
-		
-		//app.registerReceiver(this.mGattUpdateReceiver, filter);
-		super.onRestart();
-	}
 
-	protected void onDestroy() {
+    @Override
+    protected void onRestart() {
+
+        //app.registerReceiver(this.mGattUpdateReceiver, getIntentFilter());
+        super.onRestart();
+    }
+
+    protected void onDestroy() {
         //unbindService(this.ServiceConnection);
 
         super.onDestroy();
@@ -121,7 +141,15 @@ public class bpActivity extends BaseActivity {
     public void update_RSSI(String rssi){}
     public void conTimeOutUpdate() {}
     public void disconnectUpdate() {
-        isBLE_Service_Ready = false;
+        finish();
+        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+
+        startActivity(intent);
+        overridePendingTransitionRightToLeft();
+
+
     }
     public void discoverUpdate() {}
     public void getDataUpdate(String rawData) {}
@@ -134,7 +162,7 @@ public class bpActivity extends BaseActivity {
     }
     public void readRSSI(){
 
-         bleService.readRssi();
+        bleService.readRssi();
     }
     public void cmdAnalysis(byte cmd, byte cmdType,byte data[], int datalen){}
     private void protocolCheck(byte rawData[]){
@@ -148,16 +176,16 @@ public class bpActivity extends BaseActivity {
 
             String message = "";
             byte data[] = Arrays.copyOfRange(cmd, 4, cmd.length);
-             if (datalen == cmd.length - 4) {
+            if (datalen == cmd.length - 4) {
                 Util.debugMessage(TAG,"current="+currentClassName + "local="+localClassName,debugFlag);
                 if(currentClassName.equals(localClassName))
                     cmdAnalysis(cmd[0], cmd[1], data, datalen);
-                }
-            }else
-                Util.debugMessage(TAG,"cmd fail",debugFlag);
+            }
+        }else
+            Util.debugMessage(TAG,"cmd fail",debugFlag);
 
 
-}
+    }
 
 
     public IntentFilter getIntentFilter() {
@@ -202,6 +230,7 @@ public class bpActivity extends BaseActivity {
             final String action = intent.getAction();
 
             if (RBLService.ACTION_GATT_DISCONNECTED.equals(action)) {
+                isBLE_Service_Ready = false;
                 disconnectUpdate();
 
 
@@ -299,7 +328,8 @@ public class bpActivity extends BaseActivity {
 
             }
 
-            }
+
+        }
     };
 
 
@@ -310,22 +340,22 @@ public class bpActivity extends BaseActivity {
     }
 
     public boolean scan(boolean eanble, long SCAN_PERIOD)
-    {  
-       
+    {
+
       return bleService.BLEScan(eanble,SCAN_PERIOD);
-    
-    
+
+
     }
     public boolean btEnable()
     {
-      return  bleService.btON();	
-    	
+      return  bleService.btON();
+
     }
-    
+
     public boolean btDisable()
     {
     	return bleService.btOFF();
-    	
+
     }*/
 
     private void cmdSendProcess(Queue<Queue_Item> queue) {
@@ -338,7 +368,7 @@ public class bpActivity extends BaseActivity {
             if (!isMessageProcessing) {
                 try {
                     if(queue!=null)
-                    temp = queue.poll();
+                        temp = queue.poll();
                 }catch ( java.util.NoSuchElementException e){
                     Util.debugMessage(TAG,"No such issue",true);
                     noSuchElement();
@@ -373,7 +403,7 @@ public class bpActivity extends BaseActivity {
             MessageProcess_timeout_count++;
 
             if (MessageProcess_timeout_count > MESSAGE_PROCESS_TIMEOUT_LIMIT) {
-                 isMessageProcessing = false;
+                isMessageProcessing = false;
                 MessageProcess_timeout_count = 0;
             }
         }
@@ -382,12 +412,12 @@ public class bpActivity extends BaseActivity {
     }
     public void show_toast_msg(String text) {
 
-        final Toast toastItem = Toast.makeText(this, "", Toast.LENGTH_SHORT);
+        final Toast toastItem = Toast.makeText(this, "", Toast.LENGTH_LONG);
 
         if (text.equals(""))
             toastItem.cancel();
         else {
-            //toastItem.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
+            toastItem.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
             toastItem.setText(text);
             toastItem.show();
             Handler handler = new Handler();
@@ -396,65 +426,65 @@ public class bpActivity extends BaseActivity {
                 public void run() {
                     toastItem.cancel();
                 }
-            }, 500);
+            }, 3000);
         }
     }
- private void cmdDataCache(byte rawData[]) {
-     Util.debugMessage(TAG, "cmdDataCache", debugFlag);
-     final byte cmd[] = rawData;
-     if (cmd.length > 3) {
-         Util.debugMessage(TAG, "cmdPacket=" + encode.BytetoHexString(cmd), debugFlag);
-         final int datalen = cmd[2] << 8 | cmd[3];
-         Util.debugMessage(TAG, "datalen=" + datalen + "length=" + cmd.length, debugFlag);
+    private void cmdDataCache(byte rawData[]) {
+        Util.debugMessage(TAG, "cmdDataCache", debugFlag);
+        final byte cmd[] = rawData;
+        if (cmd.length > 3) {
+            Util.debugMessage(TAG, "cmdPacket=" + encode.BytetoHexString(cmd), debugFlag);
+            final int datalen = cmd[2] << 8 | cmd[3];
+            Util.debugMessage(TAG, "datalen=" + datalen + "length=" + cmd.length, debugFlag);
 
-         final byte data[] = Arrays.copyOfRange(cmd, 4, cmd.length);
-         if (datalen == cmd.length - 4) {
-             Util.debugMessage(TAG, "cmdDataCacheEvent", debugFlag);
-             runOnUiThread(new Runnable() {
-                 @Override
-                 public void run() {
-                     if (currentClassName.equals(localClassName))
-                         cmdDataCacheEvent(cmd[0], cmd[1], data, datalen);
-                 }
-             });
+            final byte data[] = Arrays.copyOfRange(cmd, 4, cmd.length);
+            if (datalen == cmd.length - 4) {
+                Util.debugMessage(TAG, "cmdDataCacheEvent", debugFlag);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (currentClassName.equals(localClassName))
+                            cmdDataCacheEvent(cmd[0], cmd[1], data, datalen);
+                    }
+                });
 
-         } else
-             Util.debugMessage(TAG, "cmd fail", debugFlag);
-     }
- }
-
-
-private void CmdWorkerInit(){
-if(CmdWorkerThread == null){
-    CmdWorkerThread = new Thread(new Runnable() {
-        @Override
-        public void run() {
-            Process.setThreadPriority(APPConfig.PROCESS_THREAD_PRIORITY);
-
-            while (true) {
-
-
-                if (bleService != null) {
-
-                    //cmd send Queue Process
-                    cmdSendProcess(bpProtocol.getQueue());
-
-                } else {
-                    bpProtocol.queueClear();
-                }
-
-                try {
-                    Thread.sleep(APPConfig.QUEUE_PROCESS_PERIOD);
-
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
+            } else
+                Util.debugMessage(TAG, "cmd fail", debugFlag);
         }
-    });
-  }
-    CmdWorkerThread.start();
-}
+    }
+
+
+    private void CmdWorkerInit(){
+        if(CmdWorkerThread == null){
+            CmdWorkerThread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Process.setThreadPriority(APPConfig.PROCESS_THREAD_PRIORITY);
+
+                    while (true) {
+
+
+                        if (bleService != null) {
+
+                            //cmd send Queue Process
+                            cmdSendProcess(bpProtocol.getQueue());
+
+                        } else {
+                            bpProtocol.queueClear();
+                        }
+
+                        try {
+                            Thread.sleep(APPConfig.QUEUE_PROCESS_PERIOD);
+
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            });
+        }
+        CmdWorkerThread.start();
+    }
 
 
     public boolean checkDeviceLevelExist(String bdAddr){
@@ -466,7 +496,7 @@ if(CmdWorkerThread == null){
         int RSSI_Level = E3K_DEVICES_BLE_RSSI_LEVEL_DEFAULT;
 
         boolean isExist = false;
-         isExist = sharedPreferences.getBoolean(APPConfig.RSSI_DB_EXIST+bdAddr,false);
+        isExist = sharedPreferences.getBoolean(APPConfig.RSSI_DB_EXIST+bdAddr,false);
         if(isExist) {
 
             RSSI_Level = sharedPreferences.getInt(APPConfig.RSSI_LEVEL_Tag + bdAddr, 123);
@@ -483,15 +513,15 @@ if(CmdWorkerThread == null){
 
     public boolean connect(String  BDaddress)
     {
-       return bleService.connect(BDaddress);
-   
+        return bleService.connect(BDaddress);
+
     }
 
     public void disconnect()
-    { 
-       bleService.disconnect();
-       bleService.close();
-     
+    {
+        bleService.disconnect();
+        bleService.close();
+
     }
 
     public void BLESocketClose()
@@ -500,10 +530,10 @@ if(CmdWorkerThread == null){
 
     }
 
-     public String getBluetoothDeviceAddress(){
+    public String getBluetoothDeviceAddress(){
 
-         return bleService.getBluetoothDeviceAddress();
-     }
+        return bleService.getBluetoothDeviceAddress();
+    }
     public void getGattService(BluetoothGattService gattService) {
         if (gattService == null) {
             Util.debugMessage(TAG, "gattService is null !!",debugFlag);
@@ -543,5 +573,30 @@ if(CmdWorkerThread == null){
                 BLEReady();
         }
     };
+
+
+
+
+
+
+    private String getBtAddressViaReflection() {
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        Object bluetoothManagerService = new Mirror().on(bluetoothAdapter).get().field("mService");
+        if (bluetoothManagerService == null) {
+            Log.w(TAG, "couldn't find bluetoothManagerService");
+            return null;
+        }
+        Object address = new Mirror().on(bluetoothManagerService).invoke().method("getAddress").withoutArgs();
+        if (address != null && address instanceof String) {
+            Log.w(TAG, "using reflection to get the BT MAC address: " + address);
+            return (String) address;
+        } else {
+            return null;
+        }
+    }
+
+
+
+
 
 }

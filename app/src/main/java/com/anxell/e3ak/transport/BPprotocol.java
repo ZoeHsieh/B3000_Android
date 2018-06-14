@@ -107,6 +107,8 @@ public class BPprotocol {
     public static final byte WEEKLY_TYPE_FRI	    = (0x1 << 5);  //Friday
     public static final byte WEEKLY_TYPE_SAT	    = (0x1 << 6);  //Saturday
     public static final byte WEEKLY_TYPE_ALL	    = (WEEKLY_TYPE_SUN | WEEKLY_TYPE_MON | WEEKLY_TYPE_TUE | WEEKLY_TYPE_WED | WEEKLY_TYPE_THU | WEEKLY_TYPE_FRI | WEEKLY_TYPE_SAT); //ALL
+    public static final byte open_fail_PD = 0x01; //Permission denied
+    public static final byte open_fail_no_eroll= 0x02;
     public static final String indexTag = "userIndex";
     private Queue<Queue_Item> queue = new LinkedList<>();
     public static char nullData =0xFF;

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ROFU B3000</string>
+    <string name="_4_8_digits">من 4 الي 8 أرقام</string>
+    <string name="about_us">معلومات عنا</string>
+    <string name="access_types_schedule">أنواع أنظمة الدخول</string>
+    <string name="weekly_Fri">يوم الجمعة</string>
+    <string name="weekly_Mon">يوم الأثنين</string>
+    <string name="weekly_Sat">يوم السبت</string>
+    <string name="weekly_Thu">يوم الخميس</string>
+    <string name="weekly_Tue">يوم الثلاثاء</string>
+    <string name="weekly_Wed">يوم الأربعاء</string>
+    <string name="msg_please_enter_password_2">من 4 الي 8 أرقام</string>
+    <string name="types">أنواع أنظمة الدخول</string>
+    <string name="add">اضافة</string>
+    <string name="add_more">اضافة أكثر</string>
+    <string name="add_user">اضافة مستخدمين</string>
+
+    <string name="openType_Alarm">انذار</string>
+    <string name="APP_version">نسخة التطبيق</string>
+    <string name="history">مسار الفحص</string>
+    <string name="automatic_sensor_to_open">تلقائي أو أوتوماتيكيا</string>
+    <string name="automatic_setting">الأعداد التلقائي</string>
+    <string name="please_setting_proximity_read_range">النطاق التلقائي التقريبي</string>
+    <string name="proximity_read_range_setting">النطاق التلقائي التقريبي</string>
+    <string name="backup_dialog_message">نسخ المعلومات</string>
+    <string name="backup_all_data_now">نسخ كل المعلومات الان</string>
+    <string name="backup_completed">النسخة الأحتياطية أكتملت</string>
+    <string name="backup">نسخة معلومات أحتياطية</string>
+    <string name="openType_Button">ذر</string>
+    <string name="can_not_find_device">لايمكن العثور علي الجهاز</string>
+    <string name="cancel">ألغاء</string>
+    <string name="progress_dialog_cancel_btn_title">ألغاء</string>
+
+
+    <string name="Confirm">تأكيد</string>
+    <string name="users_edit_access_control_dialog_type_times_mark">عددالممرات الحالية</string>
+    <string name="date">تاريخ</string>
+    <string name="delete">حذف</string>
+    <string name="msg_delete">ألغاء مستخدم</string>
+    <string name="device_distance">مسافة الجهاز</string>
+    <string name="Device_Model">موديل الجهاز</string>
+    <string name="device_name">اسم الجهاز</string>
+    <string name="device_time">وقت الجهاز</string>
+    <string name="done">تم</string>
+    <string name="ok">تم</string>
+    <string name="restore_success">تم</string>
+    <string name="always_locked">الباب مغلق دائما</string>
+    <string name="always_unlocked">الباب مفتوح دائما</string>
+    <string name="door_re_lock_time">وقت اعادة غلق الباب</string>
+    <string name="use_re_lock_time">وقت اعادة غلق الباب</string>
+    <string name="door_sensor">حساس الباب</string>
+    <string name="download_dialog_title">تنزيل</string>
+
+    <string name="edit_device_name">تحرير أسم الجهاز</string>
+    <string name="msg_please_enter_device_name">تحرير أسم الجهاز</string>
+    <string name="edit_door_re_lock_time">تعديل وقت اعادة الغلق من 1~ 1800 ثانية</string>
+    <string name="end">أنهاء الوقت</string>
+    <string name="end_time">أنهاء الوقت</string>
+
+    <string name="friday">كل جمعة</string>
+    <string name="monday">كل يوم أثنين</string>
+    <string name="saturday">كل سبت</string>
+    <string name="sunday">كل أحد</string>
+    <string name="thursday">كل خميس</string>
+    <string name="tuesday">كل ثلاثاء</string>
+    <string name="wednesday">كل اربعاء</string>
+    <string name="every_week">كل أسبوع</string>
+    <string name="settings_device_vr">نسخة برنامج ثابت</string>
+    <string name="progress_dialog_hide_btn_title">أخفاء</string>
+    <string name="id">الهوية</string>
+    <string name="ID">الهوية</string>
+    <string name="user_name">الهوية</string>
+    <string name="users_manage_edit_status_duplication_name">هوية مكررة</string>
+    <string name="if_you_forget_your_id_or_password">اذا نسيت رمز المرور من فضلك قم بالأتصال بالأدارة</string>
+    <string name="msg_password_error">رمز دخول خطا يرجي اعادة المحاولة</string>
+
+    <string name="openType_Keypad">لوحة مفتاح</string>
+    <string name="enable_keypad_pin_code_to_access">لوحة مفاتيح للدخول</string>
+
+    <string name="download_dialog_message">تحميل</string>
+    <string name="door_lock_action">عمل القفل</string>
+    <string name="door_closed">مغلق</string>
+    <string name="access_times">عدد المرات</string>
+    <string name="Access_Times">عدد المرات</string>
+    <string name="over_range_alarm">خارج النطاق من فضلك أدخل الرقم من (0 الي 255)</string>
+    <string name="password">رمز العبور (الدخول)</string>
+    <string name="Password">رمز العبور (الدخول)</string>
+    <string name="please_enter_password">رمز العبور (الدخول)</string>
+    <string name="password_pin_code">رمز العبور من 4 الي 8 أرقام</string>
+    <string name="users_manage_edit_status_duplication_password">كلمة مرورمكررة</string>
+    <string name="permanent">دائمة</string>
+    <string name="Permanent">دائمة</string>
+
+    <string name="please_choose">من فضلك أختار</string>
+    <string name="choose_device">من فضلك أختار</string>
+    <string name="AUTO_ENABLE_CONFLICT">من فضلك قم بالغاء التفعيل التلقائي أولا</string>
+    <string name="msg_please_enter_account">من فضلك أدخل الهوية</string>
+    <string name="access_times_2">من فضلك أدخل عدد الممرات من</string>
+    <string name="msg_please_enter_password_1">من فضلك أدخل رمز المرور</string>
+    <string name="please_try_later">من فضلك حاول بعد فترة</string>
+    <string name="please_wait">من فضلك أنتظر لحظة</string>
+    <string name="repeat">تكرار</string>
+    <string name="select_repeat">تكرار</string>
+
+    <string-array name="week">
+        <item>كل اثنين</item>
+        <item>كل ثلاثاء</item>
+        <item>كل اربعاء</item>
+        <item>كل خميس</item>
+        <item>كل جمعة</item>
+        <item>كل سبت</item>
+        <item>كل أحد</item>
+    </string-array>
+
+    <string name="restore_all_data_now">اعادة كل المعلومات الان</string>
+    <string name="revert">أعادة النسخة الأحتياطية</string>
+    <string name="restore_completed">اكتمال اعادة النسخة الأحتياطية</string>
+    <string name="recurrent">المجدولة</string>
+    <string name="searching1">يبحث</string>
+    <string name="searching2">يبحث</string>
+    <string name="setting">أعدادات</string>
+    <string name="tamper_sensor">أنذار العبث</string>
+
+    <string name="schedule">مؤقتة</string>
+    <string name="Schedule">مؤقتة</string>
+    <string name="door_opened">مفتوح</string>
+    <string name="device">الفتح بواسطة</string>
+    <string name="up_to_16_characters">حتي 16 حرف</string>
+    <string name="user_info">معلومات المستخدم</string>
+    <string name="user">مستخدمين</string>
+    <string name="settings_users_manage_list">قائمةالمستخدمين</string>
+    <string name="msg_searching">لتشغيل الجهاز يجب التوصيل بالبلوتوث</string>
+    <string name="weekly_Sun">أحد</string>
+    <string name="settings_Admin_pwd">رمز المرور للمدير</string>
+    <string name="restore_check_dialog_title">هل أنت متأكد من أنك تريد اعادة الجهاز</string>
+    <string name="proximity_read_range">نطاق تلقائي تقريبي</string>
+    <string name="backup_dialog_title">انسخ معلومات الجهاز</string>
+    <string name="backup_status">حالة النسخ</string>
+    <string name="settings_Admin_pwd_Edit">تعديل رمز مرور المدير</string>
+    <string name="users_id_edit_dialog_title">تعديل هوية (16 حرف)</string>
+    <string name="users_pwd_edit_dialog_title">تعديل رمز الدخول (4-8) أرقام</string>
+    <string name="program_fail">Fail</string>
+    <string name="hello">Hello!</string>
+    <string name="hello_user">Hello! %1$s.</string>
+    <string name="hello_1">Hello！</string>
+    <string name="Please_Provide_Up_to_16_characters">الي 16 حرف</string>
+    <string name="users_manage_edit_status_Admin_name">Invalid ID !!</string>
+    <string name="users_manage_edit_status_Admin_pwd">Invalid Passcode!!</string>
+    <string name="Enroll">تسجيل دخول</string>
+    <string name="enroll_dialog_title">تسجيل دخول</string>
+    <string name="eroll_fail">Login Failed. Please Verify Your Login Information Or Contact Your Administrator.</string>
+    <string name="next">Next</string>
+    <string name="open">افتح</string>
+    <string name="please_enter_the_number_of_seconds">Please enter the number of seconds</string>
+    <string name="please_press_next_to_continue">Please press Nextto continue</string>
+    <string name="restore_dialog_title">اعادة معلومات الجهاز</string>
+    <string name="restore_status">حالة الاعادة</string>
+    <string name="restore_dialog_message">Restoring...</string>
+    <string name="search">Search</string>
+    <string name="search_result">Search result</string>
+    <string name="skip">Skip</string>
+    <string name="start">وقت البدء</string>
+    <string name="start_time">وقت البدء</string>
+    <string name="program_success">Success</string>
+    <string name="anxell_technology_coproration">© 2018 Copyright ROFU Security International Corp.</string>
+    <string name="model">%1$s</string>
+    <string name="sec">%1$s Sec.</string>
+
+
+    <string name="open_fail_permission_denied">Access Denied. Please Contact Your Administrator.</string>
+    <string name="open_fail_no_eroll">Access Denied. Please Login First to Get Access.</string>
+    <string name="settings_history_list">Event List</string>
+    <string name="characters_16">Please Provide Up to 16 characters</string>
+    <string name="Recurrent">Recurring</string>
+    <string name="there_is_no_users">There\'s no user. Tap Addto add new users.</string>
+    <string name="no_user_note">There\'s no users!!</string>
+    <string name="time">Time:</string>
+    <string name="welcome">Welcome</string>
+    <string name="you_can_find_the_password_from_the_manual">You can find default passcode from the manual. Please change your Admin passcode for security control.</string>
+    <string name="eroll_success">You Have Successfully Logged In. You May Now Unlock A Door.</string>
+    <string name="please_enter_account">Your ID</string>
+    <string name="user_name_optional">使用者名稱 (非必填)</string>
+    <string name="user_name_up_to_12_characters">使用者名稱 (最多12個字元)</string>
+    <string name="bluetooth_access_control_system">Bluetooth Access Control System</string>
+    <string name="restore_status_file_not_found">Backup File Not Found!! Please Do Backup First!!</string>
+
+    <string name="tooltip_FAQ">FAQ</string>
+    <string name="tooltip_dsc_door_sensor">Door Sensor is deactivated by default. To enable Door Sensor when you connect to a closed-circuit magnetic sensors or a monitored door lock that has door sensor (or lock sensor) outputs to monitor the open or closed state of a door.</string>
+    <string name="tooltip_dsc_tamper_alarm">Tamper Alarm is deactivated by default. Once activated the Tamper Alarm if the keypad/reader has been moved or if burglars or vandals break in, Tamper Alarm will be effectively for deterring potential thieves and vandals. Note that Tamper Alarm only can be switched off by the Administrator.</string>
+    <string name="tooltip_dsc_proximity_read_range">You can adjust Auto Proximity Range between minimum 1 to maximum 20 for your Auto unlock access. May have different results due to different areas and circumstances with different smartphones.</string>
+    <string name="tooltip_dsc_device_time">Make sure to set up Device Time precisely as your current time zone of where you are. It helps having correct and precise access data and information.</string>
+    <string name="tooltip_dsc_users">Up to 1000 users/passcodes available. You can Add/Delete/Edit user information.</string>
+    <string name="tooltip_dsc_history">Audit Trail is tracking last 1000 event logs, including Tamper Alarm. Audit Trail can be exported in an excel file.</string>
+    <string name="tooltip_dsc_backup">Backup Data is to backup all data to Administrator\'s smartphone and can be restored, except Device Name, Audit Trail logs and Device Time.</string>
+    <string name="tooltip_dsc_restore">Restore Backup is to restore last backup from Administrator\’s smartphone to a new Access Control Device.</string>
+    <string name="tooltip_dsc_admin_passcode">12345 is Admin default passcode. It’s important to change your Admin passcode immediately. Admin passcode must be between 4 to 8 numeric passcodes.</string>
+    <string name="tooltip_dsc_reset_title">Reset Procedures</string>
+    <string name="tooltip_dsc_reset_button_title">How to Reset a Bluetooth Keypad with Reset Button on the PC board?</string>
+    <string name="tooltup_dsc_reset_button_detail">1. Power off Access Control Keypad/Reader.\n2. Press and hold the Reset Button, then power on.\n3. Hear a long beep to complete resetting procedures.\n4. Login as Admin and check all users, audit trail events are all cleared and all data is reset to factory default setting, except device name and device time.</string>
+    <string name="tooltip_dsc_reset_pins_title">How to Reset a Bluetooth Reader with Reset Pins on the PC board?</string>
+    <string name="tooltup_dsc_reset_pins_detail">1. Power off Access Control Keypad/Reader.\n2. Short the two Reset Pins, then power on.\n3. Hear a long beep to complete resetting procedures.\n4. Login as Admin and check all users, audit trail events are all cleared and all data is reset to factory default setting, except device name and device time.</string>
+
+    <string name="permission_title">Functionality limited</string>
+    <string name="permission_message_location">Since location access has not been granted, this app will not be able to discover beacons.</string>
+    <string name="permission_message_storage">Since storage access has not been granted, this app will not be able to backup settings.</string>
+    <string name="need_gps">Android OS 6.0 and up require to enable Location service to find nearby Bluetooth devices. Make sure to enable Location service on your phone.</string>
+</resources>

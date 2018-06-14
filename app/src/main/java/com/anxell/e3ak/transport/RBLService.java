@@ -36,6 +36,8 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
+
+import com.anxell.e3ak.ProximityReadRangeActivity2;
 import com.anxell.e3ak.transport.bpEncode;
 import com.anxell.e3ak.transport.RBLGattAttributes;
 import com.anxell.e3ak.util.Util;
@@ -50,7 +52,7 @@ public class RBLService extends Service {
 	private BluetoothManager mBluetoothManager;
 	private BluetoothAdapter mBluetoothAdapter;
 	private String mBluetoothDeviceAddress;
-	private BluetoothGatt mBluetoothGatt;
+	public static BluetoothGatt mBluetoothGatt;
 	private String tmpConAddr="";
 	private boolean isNeedConnection = false;
 	public final static String ACTION_GATT_CONNECTED = "ACTION_GATT_CONNECTED";
@@ -116,8 +118,7 @@ public class RBLService extends Service {
 		}
 		public void onReadRemoteRssi(BluetoothGatt gatt, int rssi, int status) {
 			if (status == BluetoothGatt.GATT_SUCCESS) {
-
-				broadcastUpdate(ACTION_GATT_RSSI, rssi);
+				broadcastUpdate("TWKAZUYA", rssi);
 			} else {
 				Log.i(TAG, "onReadRemoteRssi received: " + status);
 			}
@@ -330,7 +331,7 @@ public class RBLService extends Service {
 			return;
 		}
 		mBluetoothGatt.close();
-		mBluetoothGatt = null;
+//		mBluetoothGatt = null;
 	}
 
 	/**
@@ -468,4 +469,7 @@ public class RBLService extends Service {
 	public String getBluetoothDeviceAddress() {
 		return mBluetoothDeviceAddress;
 	}
+
+
+
 }

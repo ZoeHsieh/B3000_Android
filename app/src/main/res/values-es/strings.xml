@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">E3AK</string>
+    <string name="app_name">ROFU B3000</string>
 
-    <string name="bluetooth_access_control_system">Bluetooth Access Control System</string>
-    <string name="anxell_technology_coproration">&#169; 2017 Anxell Technology Coproration</string>
+    <string name="bluetooth_access_control_system">BLUETOOTH DOOR OPENER</string>
+    <string name="anxell_technology_coproration">© 2018 Copyright ROFU Security International Corp.</string>
 
     <string name="hello">Hello!</string>
     <string name="welcome">Welcome</string>
@@ -21,7 +21,7 @@
 
     <string name="add">Añadir</string>
 
-    <string name="ok">Listo</string>
+    <string name="ok">Confirmar</string>
     <string name="cancel">Anular</string>
     <string name="model">%1$s</string>
     <string name="choose_device">Ruego elegir </string>
@@ -43,8 +43,8 @@
     <string name="door_lock_action">Comando cerradura</string>
 
     <string name="use_re_lock_time">Tiempo de recierre</string>
-    <string name="always_unlocked">Puerta siempre cerrada</string>
-    <string name="always_locked">Puerta siempre abierta</string>
+    <string name="always_unlocked">Puerta siempre abierta</string>
+    <string name="always_locked">Puerta siempre cerrada</string>
 
     <string name="tamper_sensor">Anti-Tamper</string>
     <string name="proximity_read_range">Rango de acción</string>
@@ -120,7 +120,7 @@
 
     <string name="add_more">Añadir otro</string>
 
-    <string name="done">Listo</string>
+    <string name="done">Confirmar</string>
     <string name="please_setting_proximity_read_range">Rango de acción</string>
     <string name="msg_password_error">Password incorrecta</string>
     <string name="msg_please_enter_account">Añadir nombre</string>
@@ -143,7 +143,7 @@
     <string name="restore_dialog_message">Haciendo la recuperación</string>
     <string name="restore_status">Estado de la recuperación</string>
     <string name="restore_status_file_not_found">Archivo no encontrado Por favor haga el Backup</string>
-    <string name="restore_success">Listo</string>
+    <string name="restore_success">Confirmar</string>
     <string name="msg_searching">Tienes que conectarte a un dispositivo</string>
     <string name="if_you_forget_your_id_or_password">Si ha olvidado los datos, póngase en contacto con su administrador</string>
     <string name="hello_1">Hello！</string>
@@ -195,6 +195,31 @@
     <string name="users_pwd_edit_dialog_title">Cambiar contraseña</string>
     <string name="Confirm">Confirmar</string>
     <string name="APP_version"> Versión App:</string>
-    <string name="over_range_alarm">Over range</string>
+    <string name="over_range_alarm">Out of range!! Please enter a number within 0-255.</string>
 
+    <string name="open_fail_permission_denied">Acceso negado. Ponte en contacto con el Administrador</string>
+    <string name="open_fail_no_eroll">Acceso negado. Realizar antes el registro</string>
+    <string name="eroll_fail">Registro fallido</string>
+    <string name="eroll_success">Correcto, estás registrado</string>
+
+    <string name="tooltip_FAQ">FAQ</string>
+    <string name="tooltip_dsc_door_sensor">El sensor de la puerta está desactivado por defecto. Se debe habilitar cuando el dispositivo se conecta con un sensor magnético o con un cierre que incluye el sensor de estado de la puerta</string>
+    <string name="tooltip_dsc_tamper_alarm">El sistema anti sabotaje está desactivado por defecto. Si se activa, hará sonar una sirena en el caso en que el dispositivo se traslade o se abra. Solo el Administrador podrá apagar la sirena</string>
+    <string name="tooltip_dsc_proximity_read_range">Es posible regular el campo de acción de un mínimo de 1 hasta 20 en la función \"manos libres\". Esta escala no representa unidades de medida lineares, por ejemplo metros, sino que es simplemente una medida variable y fuertemente dependiente del tipo de Smartphone</string>
+    <string name="tooltip_dsc_device_time">Asegurarse de que la hora del dispositivo sea exacta. Esto permitirá contar con informes precisos sobre los accesos</string>
+    <string name="tooltip_dsc_users">Hasta 1000 usuarios con contraseñas distintas. Es posible añadir, borrar o modificar la información</string>
+    <string name="tooltip_dsc_history">Esta es la lista con los últimos 1000 eventos. Incluye las alarmas anti sabotaje y los accesos. Se puede exportar a un documento Excel.</string>
+    <string name="tooltip_dsc_backup">Esta función permite realizar una Copia de seguridad de los datos desde el teléfono al dispositivo. Los datos se pueden recuperar usando la función Restauración de datos. Se pueden recuperar todos los datos, excepto el nombre del dispositivo, la lista de eventos y la hora del dispositivo.</string>
+    <string name="tooltip_dsc_restore">Con esta función es posible recuperar los datos del dispositivo en un Nuevo smartphone del Administrador</string>
+    <string name="tooltip_dsc_admin_passcode">La contraseña por defecto es 12345. Es importante cambiar la contraseña inmediatamente. La nueva contraseña debe ser un número de 4 a 8 cifras</string>
+    <string name="tooltip_dsc_reset_title">Procedimiento de reseteo</string>
+    <string name="tooltip_dsc_reset_button_title">¿Cómo reiniciar un teclado Bluetooth con el botón Restablecer en la placa de PC?</string>
+    <string name="tooltup_dsc_reset_button_detail">1. Cortar el suministro de corriente del dispositivo\n2. Mantenga presionado el botón Restablecer y luego enciéndalo.\n3. Un largo pitido confirmará el correcto reseteo\n4. Se han restablecido todos los datos al estado de fábrica, excepto el nombre y la hora del dispositivo y la selección del radio de acción de la función automática</string>
+    <string name="tooltip_dsc_reset_pins_title">¿Cómo resetear el dispositivo Bluetooth?</string>
+    <string name="tooltup_dsc_reset_pins_detail">1. Cortar el suministro de corriente del dispositivo\n2. Conectar las dos abrazaderas de reseteo entre ellas (provocar un cortocircuito) y volver a activar la alimentación eléctrica\n3. Un largo pitido confirmará el correcto reseteo\n4. Se han restablecido todos los datos al estado de fábrica, excepto el nombre y la hora del dispositivo y la selección del radio de acción de la función automática</string>
+
+    <string name="permission_title">Functionality limited</string>
+    <string name="permission_message_location">Since location access has not been granted, this app will not be able to discover beacons.</string>
+    <string name="permission_message_storage">Since storage access has not been granted, this app will not be able to backup settings.</string>
+    <string name="need_gps">Android OS 6.0 and up require to enable Location service to find nearby Bluetooth devices. Make sure to enable Location service on your phone.</string>
 </resources>

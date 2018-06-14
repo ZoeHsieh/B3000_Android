@@ -8,9 +8,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.anxell.e3ak.transport.BPprotocol;
+import com.anxell.e3ak.transport.bpActivity;
 
 
-public class RepeatActivity extends BaseActivity implements AdapterView.OnItemClickListener {
+public class RepeatActivity extends bpActivity implements AdapterView.OnItemClickListener {
 
     private ListView mListView;
     private WeekAdapter mAdapter;
@@ -18,6 +19,7 @@ public class RepeatActivity extends BaseActivity implements AdapterView.OnItemCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Initial(getLocalClassName());
         setContentView(R.layout.activity_repeat);
 
         findViews();
@@ -59,19 +61,19 @@ public class RepeatActivity extends BaseActivity implements AdapterView.OnItemCl
         mAdapter.updateItemCheck(weeklyCheckList);
         mAdapter.notifyDataSetChanged();
         byte weekValue[] = { BPprotocol.WEEKLY_TYPE_MON,
-                             BPprotocol.WEEKLY_TYPE_TUE,
-                             BPprotocol.WEEKLY_TYPE_WED,
-                             BPprotocol.WEEKLY_TYPE_THU,
-                             BPprotocol.WEEKLY_TYPE_FRI,
-                             BPprotocol.WEEKLY_TYPE_SAT,
-                             BPprotocol.WEEKLY_TYPE_SUN};
+                BPprotocol.WEEKLY_TYPE_TUE,
+                BPprotocol.WEEKLY_TYPE_WED,
+                BPprotocol.WEEKLY_TYPE_THU,
+                BPprotocol.WEEKLY_TYPE_FRI,
+                BPprotocol.WEEKLY_TYPE_SAT,
+                BPprotocol.WEEKLY_TYPE_SUN};
         byte tmpWeekly =0x00;
         for(int i=0;i<weeklyCheckList.length;i++) {
             if (weeklyCheckList[i])
                 tmpWeekly |= weekValue[i];
         }
         AccessTypesScheduleActivity.tmpWeekly = tmpWeekly;
-       // Toast.makeText(RepeatActivity.this, "您點選了第 "+(position+1)+" 項", Toast.LENGTH_SHORT).show();
+        // Toast.makeText(RepeatActivity.this, "您點選了第 "+(position+1)+" 項", Toast.LENGTH_SHORT).show();
     }
 
     @Override
