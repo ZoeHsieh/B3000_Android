@@ -428,14 +428,14 @@ public class HomeActivity extends bpActivity implements View.OnClickListener {
                 return;
 
 
-            if  (customIDStr != APPConfig.CustomID.toUpperCase())
-            {
-                return;
-            }
+//            if  (customIDStr != APPConfig.CustomID.toUpperCase())
+//            {
+//                return;
+//            }
 
 
-            String deviceModel = Util.bytesToHex(Arrays.copyOfRange(mandufacturerData.valueAt(0),0,2));
-            Util.debugMessage(TAG,"deviceModel="+deviceModel,debugFlag);
+//            String deviceModel = Util.bytesToHex(Arrays.copyOfRange(mandufacturerData.valueAt(0),0,2));
+//            Util.debugMessage(TAG,"deviceModel="+deviceModel,debugFlag);
             String deviceCategory = Util.bytesToHex(Arrays.copyOfRange(mandufacturerData.valueAt(0),2,3));
             Util.debugMessage(TAG,"deviceCategory="+deviceCategory,debugFlag);
 
@@ -443,11 +443,11 @@ public class HomeActivity extends bpActivity implements View.OnClickListener {
             Util.debugMessage(TAG,"deviceReserved="+deviceReserved,debugFlag);
 
 
-            String deviceModelStr = (String)APPConfig.advertisingData.dev_Model.get(deviceModel.toUpperCase());
-            if(deviceModelStr==null) {
-                return;
-            }
-            Util.debugMessage(TAG,"deviceModelStr="+deviceModelStr,debugFlag);
+//            String deviceModelStr = (String)APPConfig.advertisingData.dev_Model.get(deviceModel.toUpperCase());
+//            if(deviceModelStr==null) {
+//                return;
+//            }
+//            Util.debugMessage(TAG,"deviceModelStr="+deviceModelStr,debugFlag);
             String deviceCategoryStr = (String)APPConfig.advertisingData.dev_Category.get(deviceCategory.toUpperCase());
             if(deviceCategory==null)
             {
@@ -465,17 +465,18 @@ public class HomeActivity extends bpActivity implements View.OnClickListener {
             }
             Util.debugMessage(TAG,"deviceReservedStr="+deviceReservedStr,debugFlag);
 
-            if(!APPConfig.CustomID.equals(customIDStr)) {
+            ///0505
+            if(APPConfig.CustomID.equals(customIDStr)) {
                 return;
             }
 //            if(!deviceModelStr.contains(APPConfig.deviceSeries))
 //            {
 //                return;
 //            }
-            if(!APPConfig.deviceSeries.contains(deviceModelStr))   //easiprox特殊比對
-            {
-                return;
-            }
+//            if(!APPConfig.deviceSeries.contains(deviceModelStr))   //easiprox特殊比對
+//            {
+//                return;
+//            }
 
             /////123123123///////
 

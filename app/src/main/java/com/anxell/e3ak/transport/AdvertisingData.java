@@ -17,6 +17,7 @@ public class AdvertisingData {
         //Custom ID list
         CUSTOM_IDs.put("0000","custom1");
         CUSTOM_IDs.put("0001","ROFU");
+        CUSTOM_IDs.put("0002","SECO-LARM");
         CUSTOM_IDs.put("FFFE","GEM");
         CUSTOM_IDs.put("FFFF","ANXELL");
 

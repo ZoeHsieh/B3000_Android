@@ -36,7 +36,7 @@ public class APPConfig {
 
     public static final AdvertisingData advertisingData = new AdvertisingData();
     public static final String deviceSeries = "BK-3000B,BK-3000S";  //0322 新增型號Easiprox⁺,Easiprox⁺ Slim,DG-800⁺,DG-160⁺
-    public static final String CustomID = (String)APPConfig.advertisingData.CUSTOM_IDs.get("0001");
+    public static final String CustomID = (String)APPConfig.advertisingData.CUSTOM_IDs.get("0002");
 
 
     public static int Convert_RSSI_to_LEVEL(int rssi)
